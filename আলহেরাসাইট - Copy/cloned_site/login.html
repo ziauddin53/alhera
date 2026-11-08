@@ -239,8 +239,100 @@
     .bg .aurora, .card::before, .halo .ring::after, .btn-signin::after, .bg .stars{ animation:none !important; }
   }
 </style>
+<style>
+  .login-page {
+    background: #071b14 !important;
+    background-image: none !important;
+    color: #f8f7f0 !important;
+    line-height: 1.55 !important;
+  }
+  .login-page .bg .sky {
+    background:
+      radial-gradient(120% 100% at 50% -10%, #205b3d 0%, #103b28 37%, #071b14 100%) !important;
+  }
+  .login-page .bg .a1 { background: radial-gradient(circle, #39805b, transparent 68%) !important; }
+  .login-page .bg .a2 { background: radial-gradient(circle, #d7a640, transparent 68%) !important; }
+  .login-page .bg .a3 { background: radial-gradient(circle, #164b32, transparent 70%) !important; }
+  .login-page .bg .skyline .dome,
+  .login-page .bg .skyline .min {
+    background: linear-gradient(180deg, rgba(70, 139, 94, .46), rgba(8, 37, 26, .96)) !important;
+  }
+  .login-page .stage > .card {
+    border: 1px solid rgba(255, 255, 255, .82);
+    background: linear-gradient(145deg, rgba(255, 253, 246, .94), rgba(240, 246, 236, .86)) !important;
+    color: #173a28 !important;
+    box-shadow: 0 0 0 1px rgba(242, 209, 138, .18), 0 32px 88px rgba(0, 0, 0, .34) !important;
+    backdrop-filter: blur(28px) saturate(155%);
+    -webkit-backdrop-filter: blur(28px) saturate(155%);
+  }
+  .login-page .stage > .card::before {
+    background: conic-gradient(from var(--ang, 0deg), #d7a640, #fff1bd, #a8791d, #d7a640) !important;
+    opacity: .58;
+  }
+  .login-page .stage > .card h1 { color: #173a28 !important; }
+  .login-page .stage > .card p,
+  .login-page .field label,
+  .login-page .chk,
+  .login-page .newhere {
+    color: #344b3b !important;
+  }
+  .login-page .stage > .card .name { color: #173a28; }
+  .login-page .stage > .card .name em,
+  .login-page .newhere a { color: #9a6d13 !important; }
+  .login-page .stage > .card h1 em {
+    background: none;
+    color: #9a6d13;
+  }
+  .login-page .stage > .card .tag,
+  .login-page .stage > .card .sub { color: #506556 !important; }
+  .login-page .halo .ring {
+    background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.16), rgba(38,103,67,.4));
+    box-shadow: 0 0 0 1px rgba(242,209,138,.25), 0 0 44px -6px rgba(57,128,91,.58);
+  }
+  .login-page .field label a { color: #f2d18a !important; }
+  .login-page .input input {
+    border-color: rgba(32, 74, 50, .2);
+    background: rgba(255, 255, 255, .72);
+    color: #173a28;
+  }
+  .login-page .input input::placeholder { color: #718276; }
+  .login-page .input input:hover { border-color: rgba(154,109,19,.58); }
+  .login-page .input input:focus {
+    border-color: #b38326;
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 0 0 4px rgba(215,166,64,.2);
+  }
+  .login-page .input i.lead,
+  .login-page .eye { color: #536c5a; }
+  .login-page .btn-signin {
+    background: linear-gradient(135deg, #f5df9d, #d7a640 58%, #bd8a2c) !important;
+    color: #173a28 !important;
+    box-shadow: 0 16px 34px -18px rgba(154,109,19,.72), inset 0 1px 0 rgba(255,255,255,.58) !important;
+  }
+  .login-page .btn-signin:hover {
+    box-shadow: 0 20px 40px -17px rgba(154,109,19,.82), inset 0 1px 0 rgba(255,255,255,.72) !important;
+  }
+  .login-page .trust div {
+    border-color: rgba(32,74,50,.12);
+    background: rgba(255,255,255,.48);
+    color: #344b3b;
+  }
+  .login-page .trust i { color: #28724d; }
+  .login-page .trust .g i { color: #9a6d13; }
+  .login-page .or { color: #536c5a; }
+  .login-page .backhome { color: #506556 !important; }
+  .login-page .backhome:hover { color: #9a6d13 !important; }
+  .login-page .foot-bar {
+    background: rgba(5, 24, 17, .94) !important;
+    border-color: rgba(242,209,138,.18) !important;
+    color: #c1d0c4 !important;
+  }
+  .login-page .foot-bar a { color: #d2dfd4 !important; }
+  .login-page .foot-bar a:hover { color: #f2d18a !important; }
+</style>
+<link rel="stylesheet" href="/assets/css/advanced-ui.css">
 </head>
-<body>
+<body class="login-page">
 
 <div class="bg" aria-hidden="true">
   <div class="sky"></div>
@@ -268,11 +360,15 @@
 
 <main class="stage">
   <section class="card" aria-labelledby="loginTitle">
-    <div class="halo">
-      <div class="ring"><img src="/uploads/1787224184_logo_logoalhera.png" alt="আল হেরা অনলাইন মাদরাসা"></div>
+    <div class="login-brand">
+      <img src="/uploads/1787224184_logo_logoalhera.png" alt="আল হেরা অনলাইন মাদরাসা">
+      <div>
+        <strong>Al-Hera</strong>
+        <span><b>Online</b> Madrasa</span>
+        <small>কুরআন ও সুন্নাহ ভিত্তিক শিক্ষা</small>
+      </div>
     </div>
-    <div class="name">Al-Hera <em>Online</em> Madrasa</div>
-    <span class="tag">কুরআন ও সুন্নাহ ভিত্তিক শিক্ষা</span>
+    <div class="login-ornament" aria-hidden="true"><span></span><i class="fa-solid fa-mosque"></i><span></span></div>
 
     <h1 id="loginTitle">Welcome <em>Back</em></h1>
     <p class="sub">Login to your Al-Hera Online Account</p>

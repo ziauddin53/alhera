@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = 'B:/PERSONAL/আলহেরাসাইট/cloned_site';
+const ROOT = path.join(__dirname, 'cloned_site');
 const PORT = 8811;
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.php': 'text/html; charset=utf-8',
@@ -27,7 +27,7 @@ function candidates(urlPath) {
 
 function resolve(urlPath) {
   for (const p of candidates(urlPath)) {
-    const clean = p === '' || p === '/' ? '/index.html' : p;
+    const clean = p === '' || p === '/' ? '/Frontend/index.html' : p;
     const tries = [clean];
     if (clean.endsWith('.php')) tries.push(clean.slice(0, -4) + '.html');
     tries.push(clean + '.html');
@@ -71,7 +71,7 @@ server.on('error', err => {
   process.exit(1);
 });
 
-server.listen(PORT, '127.0.0.1', () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log('Al-Hera clone served from ' + ROOT);
-  console.log('Open http://127.0.0.1:' + PORT + '/');
+  console.log('Listening on port ' + PORT + ' (forward this port to share the preview)');
 });

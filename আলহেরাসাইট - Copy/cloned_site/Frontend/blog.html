@@ -1671,13 +1671,13 @@ function toggleBookmark(btn) {
     else { i.className = 'far fa-bookmark'; showToast('বুকমার্ক থেকে সরানো হয়েছে', 'fa-bookmark'); }
 }
 function sharePost(p, id) {
-    var u = window.location.origin + '/blog.php?id=' + id;
+    var u = new URL('blog.html?id=' + id, window.location.href).href;
     var t = document.querySelector('.card-title') ? document.querySelector('.card-title').textContent : 'ব্লগ';
     if (p === 'facebook') window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u), '_blank', 'width=600,height=400');
     else if (p === 'twitter') window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(u) + '&text=' + encodeURIComponent(t), '_blank', 'width=600,height=400');
 }
 function copyLink(id) {
-    var u = window.location.origin + '/blog.php?id=' + id;
+    var u = new URL('blog.html?id=' + id, window.location.href).href;
     navigator.clipboard.writeText(u).then(function() { showToast('লিংক কপি হয়েছে', 'fa-link'); }).catch(function() { showToast('সমস্যা হয়েছে', 'fa-exclamation-circle'); });
 }
 function showToast(msg, icon) {

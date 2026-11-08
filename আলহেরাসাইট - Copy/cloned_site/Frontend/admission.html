@@ -8,6 +8,7 @@
 <link rel="icon" href="/uploads/1787225537_favicon_logoalhera.png" type="image/x-icon">
 <link rel="stylesheet" href="/assets/css/inter-local.css">
 <link rel="stylesheet" href="/assets/css/fonts-hind-siliguri.css">
+<link rel="stylesheet" href="/assets/css/advanced-ui.css">
 <link rel="stylesheet" href="/assets/vendor/fontawesome-6.5.0/css/all.min.css">
 <style>/* ===== Al-Hera public site shell (shared) ===== */
 :root { --ah-gold:#f2a900; --ah-gold-soft:#f5d77b; --ah-ink:#0a0e14; --ah-ink2:#0f1720; --ah-line:rgba(242,169,0,.22); --ah-muted:#9aa4b2; }
@@ -316,7 +317,7 @@ img{ max-width:100%; }
 @media (max-width:560px){ .ah-footer .ah-fin{ grid-template-columns:1fr; } .ah-fn-form input{ min-width:0; } .ah-fbot{ justify-content:center; text-align:center; } }
 </style>
 </head>
-<body>
+<body class="advanced-ui">
 <a class="ah-skip" href="#ah-main">মূল কনটেন্টে যান</a>
 <div class="ah-topbar"><div class="ah-in">
   <div><i class="fa-solid fa-phone"></i> <a href="tel:+8801700000000">01700-000000</a> &nbsp;·&nbsp; <i class="fa-solid fa-envelope"></i> <a href="mailto:info@alheraonline.com">info@alheraonline.com</a></div>
@@ -358,7 +359,7 @@ img{ max-width:100%; }
 <nav class="ah-crumb"><a href="/">হোম</a> › ভর্তি আবেদন</nav>
 <section class="ah-hero">
   <h1>ভর্তি <span>আবেদন</span></h1>
-  <p>২০২৬-২০২৭ শিক্ষাবর্ষে ভর্তি চলছে। নিচের ফরমটি পূরণ করলেই আপনার আবেদন আমাদের অফিসে পৌঁছে যাবে — ইনশাআল্লাহ ২ কর্মদিবসের মধ্যে আমরা ফোন করে ক্লাস, রুটিন ও ফি সম্পর্কে জানিয়ে দেব।</p>
+  <p>২০২৬-২০২৭ শিক্ষাবর্ষে ভর্তি চলছে। এই প্রিভিউতে আবেদনটি শুধু আপনার ব্রাউজারে ডেমো হিসেবে জমা হবে; আবেদন নম্বর দিয়ে Pending, গ্রহণ বা বাতিল অবস্থা দেখতে পারবেন।</p>
 </section>
 
 <section class="ah-grid ah-g2" style="align-items:start;">
@@ -366,10 +367,11 @@ img{ max-width:100%; }
     <div class="ah-card">
       <h2><i class="fa-solid fa-file-signature"></i> অনলাইন ভর্তি ফরম</h2>
       <div class="ah-ok" id="okBox">
-        <b>জাযাকাল্লাহু খাইরান!</b> আপনার আবেদন গ্রহণ করা হয়েছে।<br>
-        আপনার <b>আবেদন নম্বর: <span id="appNo"></span></b><br>
-        এই নম্বরটি সংরক্ষণ করুন। আমাদের অফিস থেকে শীঘ্রই আপনাকে ফোন করা হবে।
+        <b>জাযাকাল্লাহু খাইরান!</b> আপনার আবেদন জমা হয়েছে।<br>
+        আবেদন নম্বর: <b id="appNo"></b> · জমার সময় অবস্থা: <b>Pending (পর্যালোচনাধীন)</b><br>
+        স্ট্যাটাস দেখার জন্য আবেদন নম্বর ও মোবাইল নম্বরটি সংরক্ষণ করুন।
       </div>
+      <div class="ah-submit-error" id="submitError" role="alert" hidden></div>
       <form class="ah-form" id="admForm" novalidate>
         <div class="ah-row">
           <div class="ah-field">
@@ -395,9 +397,9 @@ img{ max-width:100%; }
             <div class="ah-err">সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন (যেমন 01712345678)।</div>
           </div>
           <div class="ah-field">
-            <label for="email">ইমেইল (ঐচ্ছিক)</label>
-            <input type="email" id="email" name="email" placeholder="example@email.com">
-            <div class="ah-err">সঠিক ইমেইল ঠিকানা দিন।</div>
+            <label for="email">ইমেইল <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" autocomplete="email" required>
+            <div class="ah-err">ইমেইল আবশ্যক—সঠিক ইমেইল ঠিকানা লিখুন।</div>
           </div>
         </div>
 
@@ -418,25 +420,18 @@ img{ max-width:100%; }
             <label for="course">কোন কোর্সে ভর্তি হতে চান <span class="req">*</span></label>
             <select id="course" name="course" required>
               <option value="">নির্বাচন করুন</option>
-              <option>৭ বছরে আলেম কোর্স</option>
-              <option>আন্তর্জাতিক হিফজুল কুরআন কোর্স</option>
-              <option>ফরজে আইন কোর্স</option>
-              <option>নাযেরা / তাজবীদ কোর্স</option>
-              <option>আরবি ভাষা কোর্স</option>
+              <option value="alim">৭ বছরে আলেম কোর্স</option>
+              <option value="hifz">আন্তর্জাতিক হিফজুল কুরআন কোর্স</option>
+              <option value="farz">ফরজে আইন কোর্স</option>
+              <option value="nazera">নাযেরা / তাজবীদ কোর্স</option>
+              <option value="arabic">আরবি ভাষা কোর্স</option>
             </select>
             <div class="ah-err">একটি কোর্স নির্বাচন করুন।</div>
           </div>
           <div class="ah-field">
-            <label for="year">কোন বর্ষে ভর্তি হতে চান</label>
-            <select id="year" name="year">
-              <option>১ম বছর</option>
-              <option>২য় বছর</option>
-              <option>৩য় বছর</option>
-              <option>৪র্থ বছর</option>
-              <option>৫ম বছর</option>
-              <option>৬ষ্ঠ বছর</option>
-              <option>৭ম বছর</option>
-              <option>জানি না — পরামর্শ চাই</option>
+            <label for="year">কোন বর্ষ / স্তরে ভর্তি হতে চান</label>
+            <select id="year" name="year" disabled>
+              <option value="">আগে কোর্স নির্বাচন করুন</option>
             </select>
           </div>
         </div>
@@ -445,15 +440,28 @@ img{ max-width:100%; }
           <div class="ah-field">
             <label for="batch">ক্লাসের সময় পছন্দ</label>
             <select id="batch" name="batch">
-              <option>সকাল</option>
-              <option>বিকাল</option>
-              <option>রাত</option>
-              <option>যেকোনো সময়</option>
+              <option value="morning">সকাল (৬টা–১২টা)</option>
+              <option value="afternoon">দুপুর / বিকাল (১২টা–৬টা)</option>
+              <option value="evening">সন্ধ্যা / রাত (৬টা–১০টা)</option>
+              <option value="any">যেকোনো সময়</option>
+              <option value="custom">নিজের পছন্দের সময়</option>
             </select>
           </div>
           <div class="ah-field">
             <label for="prev">পূর্ববর্তী দ্বীনি শিক্ষা</label>
             <input type="text" id="prev" name="prev" placeholder="যেমন: মক্তব / নাযেরা / হিফজ (কিছু না হলে ফাঁকা রাখুন)">
+          </div>
+        </div>
+
+        <div class="ah-row custom-time-fields" id="customTimeFields" hidden>
+          <div class="ah-field">
+            <label for="batchStart">শুরু সময়</label>
+            <input type="time" id="batchStart" name="batchStart">
+          </div>
+          <div class="ah-field">
+            <label for="batchEnd">শেষ সময়</label>
+            <input type="time" id="batchEnd" name="batchEnd">
+            <div class="ah-err">শেষ সময় শুরুর সময়ের পরে হতে হবে।</div>
           </div>
         </div>
 
@@ -468,9 +476,9 @@ img{ max-width:100%; }
         </div>
 
         <div class="ah-field">
-          <label for="photo">শিক্ষার্থীর ছবি <span class="req">*</span></label>
+          <label for="photo">শিক্ষার্থীর ছবি (ঐচ্ছিক)</label>
           <div class="ah-drop" id="dropPhoto">
-            <input type="file" id="photo" name="photo" accept="image/png,image/jpeg,image/webp" required>
+            <input type="file" id="photo" name="photo" accept="image/png,image/jpeg,image/webp">
             <div class="ah-drop-inner">
               <i class="fa-solid fa-cloud-arrow-up"></i>
               <b>ছবি আপলোড করুন</b>
@@ -478,7 +486,8 @@ img{ max-width:100%; }
             </div>
             <div class="ah-file" id="filePhoto"></div>
           </div>
-          <div class="ah-err">শিক্ষার্থীর একটি ছবি আপলোড করুন।</div>
+          <div class="ah-help">ছবি দিলে JPG, PNG বা WebP দিন (সর্বোচ্চ ৫MB)।</div>
+          <div class="ah-err">JPG, PNG বা WebP ছবি দিন (সর্বোচ্চ ৫MB)।</div>
         </div>
 
         <div class="ah-field">
@@ -509,7 +518,7 @@ img{ max-width:100%; }
         <div>
           <button type="submit" class="ah-submit" id="admBtn"><i class="fa-solid fa-paper-plane"></i> আবেদন জমা দিন</button>
         </div>
-        <div class="ah-note"><i class="fa-solid fa-circle-info"></i> এটি ডেমো ফরম — জমা দেওয়ার পর আবেদন নম্বর দেখানো হয় এবং আবেদনটি এই ব্রাউজারে সংরক্ষিত থাকে। লাইভ সার্ভারে যুক্ত করলে আবেদন সরাসরি Admissions মডিউলে (SRS §5.2) যাবে।</div>
+        <div class="ah-note"><i class="fa-solid fa-circle-info"></i> ডেমো: আবেদন ও স্ট্যাটাস শুধু এই ব্রাউজারে সংরক্ষিত হবে। এখানে আপলোড করা ছবি/কাগজপত্র সংরক্ষিত বা পাঠানো হয় না—আসল NID বা সংবেদনশীল তথ্য দেবেন না।</div>
       </form>
     </div>
   </div>
@@ -518,22 +527,22 @@ img{ max-width:100%; }
     <div class="ah-card">
       <h2><i class="fa-solid fa-list-check"></i> ভর্তির ধাপ</h2>
       <div class="ah-steps">
-        <div class="ah-step"><b>ফরম পূরণ</b><p>অনলাইনে আবেদন ফরম পূরণ করুন।</p></div>
-        <div class="ah-step"><b>ফোন কল</b><p>আমাদের অফিস থেকে কল করে সময় ও ক্লাস নিশ্চিত করা হবে।</p></div>
-        <div class="ah-step"><b>ফি পরিশোধ</b><p>নির্ধারিত ভর্তি ফি বিকাশ/নগদ/ব্যাংকে পরিশোধ।</p></div>
-        <div class="ah-step"><b>ক্লাস শুরু</b><p>লগইন আইডি পেয়ে লাইভ ক্লাসে যুক্ত হবেন।</p></div>
+        <div class="ah-step"><b>আবেদন জমা</b><p>অনলাইনে আবেদন জমা দিয়ে আবেদন নম্বর নিন।</p></div>
+        <div class="ah-step"><b>পর্যালোচনা</b><p>জমার পর আবেদন Pending অবস্থায় থাকবে।</p></div>
+        <div class="ah-step"><b>গ্রহণ / বাতিল</b><p>আবেদনের নম্বর দিয়ে সিদ্ধান্তের অবস্থা দেখুন।</p></div>
+        <div class="ah-step"><b>পরবর্তী নির্দেশনা</b><p>গ্রহণ হলে ফি ও ক্লাসের পরবর্তী ধাপ অনুসরণ করুন।</p></div>
       </div>
     </div>
 
     <div class="ah-card" style="margin-top:22px;">
-      <h2><i class="fa-solid fa-cloud-arrow-up"></i> যা অনলাইনে আপলোড করবেন</h2>
+      <h2><i class="fa-solid fa-cloud-arrow-up"></i> আসল ভর্তির জন্য যা লাগতে পারে</h2>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;font-size:.93rem;color:#4a5560;line-height:1.7;">
-        <li><i class="fa-solid fa-check" style="color:#0f6b45;"></i> শিক্ষার্থীর পাসপোর্ট সাইজের ছবি <b>(আবশ্যক)</b></li>
+        <li><i class="fa-solid fa-check" style="color:#0f6b45;"></i> শিক্ষার্থীর পাসপোর্ট সাইজের ছবি (ঐচ্ছিক)</li>
         <li><i class="fa-solid fa-check" style="color:#0f6b45;"></i> জন্ম নিবন্ধন বা জন্ম তারিখের প্রমাণ</li>
         <li><i class="fa-solid fa-check" style="color:#0f6b45;"></i> পূর্ববর্তী মাদরাসা/স্কুলের সনদ (প্রযোজ্য হলে)</li>
         <li><i class="fa-solid fa-check" style="color:#0f6b45;"></i> অভিভাবকের NID/ছবি (প্রযোজ্য হলে)</li>
       </ul>
-      <div class="ah-note" style="margin-bottom:0;"><i class="fa-solid fa-laptop-file"></i> <b>সম্পূর্ণ ভর্তি প্রক্রিয়াই অনলাইন</b> — ফরম, ছবি ও কাগজপত্র সব এখানেই জমা হবে। অফিসে এসে বা কাগজ পাঠিয়ে কিছু জমা দেওয়ার প্রয়োজন নেই। ভর্তি নিশ্চিত হলে লগইন আইডি ও ক্লাসের লিংক আপনার মোবাইলে/ইমেইলে পৌঁছে যাবে।</div>
+      <div class="ah-note" style="margin-bottom:0;"><i class="fa-solid fa-laptop-file"></i> এই প্রিভিউতে ছবি বা কাগজপত্র সার্ভারে পাঠানো হয় না। লাইভ আবেদন চালু হলে নিরাপদ সার্ভার ও অনুমোদিত অফিস-অ্যাকাউন্টের মাধ্যমে কাগজপত্র জমা ও সিদ্ধান্ত জানানো যাবে।</div>
     </div>
     </div>
 
@@ -545,6 +554,31 @@ img{ max-width:100%; }
         <a href="https://wa.me/8801700000000" target="_blank" rel="noopener" class="ah-btn" style="border-color:#25d366;color:#128c4a;"><i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপ</a>
       </p>
     </div>
+  </div>
+</section>
+
+<section class="ah-grid ah-g2" style="align-items:start;margin-top:26px;">
+  <div class="ah-card">
+    <h2><i class="fa-solid fa-magnifying-glass"></i> আবেদনের অবস্থা দেখুন</h2>
+    <p class="status-demo-note">আবেদন নম্বর ও আবেদনে দেওয়া মোবাইল নম্বর দিয়ে খুঁজুন। এই ডেমোর তথ্য শুধু একই ব্রাউজারে দেখা যাবে।</p>
+    <form class="ah-form" id="statusLookupForm" novalidate>
+      <div class="ah-field">
+        <label for="lookupAppNo">আবেদন নম্বর</label>
+        <input id="lookupAppNo" name="appNo" placeholder="যেমন: AH-2026-..." required autocomplete="off">
+      </div>
+      <div class="ah-field">
+        <label for="lookupPhone">মোবাইল নম্বর</label>
+        <input id="lookupPhone" name="phone" type="tel" inputmode="numeric" placeholder="আবেদনে দেওয়া নম্বর" required autocomplete="tel">
+      </div>
+      <button class="ah-submit" type="submit"><i class="fa-solid fa-magnifying-glass"></i> স্ট্যাটাস দেখুন</button>
+      <div class="status-result" id="statusResult" role="status" aria-live="polite" hidden></div>
+    </form>
+  </div>
+  <div class="ah-card">
+    <h2><i class="fa-solid fa-clipboard-check"></i> অফিস পর্যালোচনা — ডেমো</h2>
+    <p class="status-demo-note">এটি কোনো সুরক্ষিত অ্যাডমিন প্যানেল নয়। একই ব্রাউজারের ডেমো আবেদন এখানে গ্রহণ বা বাতিল করা যাবে।</p>
+    <div class="review-list" id="admissionReviewList" aria-live="polite"></div>
+    <div class="submit-error" id="reviewError" role="alert" hidden></div>
   </div>
 </section>
 
@@ -663,49 +697,7 @@ img{ max-width:100%; }
   if(b&&n){ b.addEventListener('click',function(){ n.classList.toggle('open'); b.classList.toggle('on'); b.setAttribute('aria-expanded', n.classList.contains('open')?'true':'false'); }); }
 })();
 </script>
-<script>
-(function(){
-  var f = document.getElementById('admForm');
-  var ok = document.getElementById('okBox');
-  function setBad(el, bad){ el.closest('.ah-field').classList.toggle('bad', bad); }
-  function validate(){
-    var good = true;
-    var name = document.getElementById('name');
-    var nOk = name.value.trim().length >= 3; setBad(name, !nOk); good = good && nOk;
-    var g = document.getElementById('gender'); var gOk = !!g.value; setBad(g, !gOk); good = good && gOk;
-    var p = document.getElementById('phone'); var pOk = /^01[3-9]\d{8}$/.test(p.value.trim()); setBad(p, !pOk); good = good && pOk;
-    var em = document.getElementById('email'); var eOk = !em.value.trim() || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim()); setBad(em, !eOk); good = good && eOk;
-    var c = document.getElementById('course'); var cOk = !!c.value; setBad(c, !cOk); good = good && cOk;
-    var ag = document.getElementById('agree');
-    document.getElementById('agreeErr').style.display = ag.checked ? 'none' : 'block';
-    good = good && ag.checked;
-    return good;
-  }
-  f.addEventListener('submit', function(e){
-    e.preventDefault();
-    if (!validate()) { var bad = f.querySelector('.ah-field.bad'); if (bad) bad.scrollIntoView({behavior:'smooth', block:'center'}); return; }
-    var btn = document.getElementById('admBtn');
-    btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> পাঠানো হচ্ছে...';
-    setTimeout(function(){
-      var no = 'AH-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000);
-      document.getElementById('appNo').textContent = no;
-      var data = { appNo: no, at: new Date().toISOString() };
-      f.querySelectorAll('input,select,textarea').forEach(function(el){ if(el.id && el.type !== 'checkbox') data[el.id] = el.value; });
-      try {
-        var all = JSON.parse(localStorage.getItem('ah_admissions') || '[]');
-        all.push(data); localStorage.setItem('ah_admissions', JSON.stringify(all));
-      } catch (err) {}
-      ok.classList.add('on');
-      ok.scrollIntoView({behavior:'smooth', block:'center'});
-      f.querySelectorAll('input,select,textarea').forEach(function(el){ if(el.type!=='checkbox') el.value=''; else el.checked=false; });
-      btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> আরেকটি আবেদন করুন';
-    }, 700);
-  });
-  f.querySelectorAll('input,select,textarea').forEach(function(el){
-    el.addEventListener('blur', validate);
-  });
-})();
-</script>
+<script src="/assets/js/admission-demo.js" defer></script>
 
 <script>
 (function(){

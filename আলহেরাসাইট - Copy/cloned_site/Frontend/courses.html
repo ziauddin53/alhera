@@ -1402,7 +1402,7 @@ function toggleBookmark(btn) {
 }
 
 function shareC(el, id) {
-    var u = window.location.origin + '/course-details.php?id=' + id;
+    var u = new URL('course-details.html?id=' + id, window.location.href).href;
     var card = el.closest('.course-card');
     var t = card ? card.querySelector('.card-title').textContent : 'কোর্স';
     var label = el.getAttribute('aria-label') || '';
@@ -1411,7 +1411,7 @@ function shareC(el, id) {
 }
 
 function copyC(id) {
-    var u = window.location.origin + '/course-details.php?id=' + id;
+    var u = new URL('course-details.html?id=' + id, window.location.href).href;
     navigator.clipboard.writeText(u).then(function() {
         showToast('লিংক কপি হয়েছে', 'fa-link');
     }).catch(function() {
