@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>সার্চ | আল হেরা অনলাইন মাদরাসা</title>
+<meta name="description" content="আল হেরা অনলাইন মাদরাসা — কুরআন ও সুন্নাহ ভিত্তিক অনলাইন দ্বীনি শিক্ষা। ৭ বছরে আলেম, আন্তর্জাতিক হিফজুল কুরআন ও ফরজে আইন কোর্স। ২০২৬-২০২৭ সেশনে ভর্তি চলছে।">
+<link rel="icon" href="/uploads/1787225537_favicon_logoalhera.png" type="image/x-icon">
+<link rel="stylesheet" href="/assets/css/inter-local.css">
+<link rel="stylesheet" href="/assets/css/fonts-hind-siliguri.css">
+<link rel="stylesheet" href="/assets/vendor/fontawesome-6.5.0/css/all.min.css">
+<style>/* ===== Al-Hera public site shell (shared) ===== */
+:root { --ah-gold:#f2a900; --ah-gold-soft:#f5d77b; --ah-ink:#0a0e14; --ah-ink2:#0f1720; --ah-line:rgba(242,169,0,.22); --ah-muted:#9aa4b2; }
+.ah-topbar { position:relative; z-index:1001; background:#062017; color:#cfe8d9; font-size:12.5px; }
+.ah-topbar .ah-in { max-width:1240px; margin:0 auto; padding:8px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.ah-topbar a { color:#cfe8d9; }
+.ah-topbar a:hover { color:var(--ah-gold-soft); }
+.ah-topbar .ah-tb-right { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.ah-topbar .ah-pill { display:inline-flex; align-items:center; gap:6px; background:rgba(242,169,0,.14); border:1px solid var(--ah-line); color:var(--ah-gold-soft); padding:2px 10px; border-radius:999px; font-weight:600; }
+
+.ah-header { position:sticky; top:0; z-index:1000; background:#000; border-bottom:1px solid rgba(255,215,0,.12); box-shadow:0 4px 30px rgba(0,0,0,.4); }
+.ah-header .ah-in { max-width:1240px; margin:0 auto; padding:0 24px; height:74px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+.ah-brand { display:flex; align-items:center; gap:12px; }
+.ah-brand img { max-height:46px; width:auto; }
+.ah-brand .ah-bt { display:flex; flex-direction:column; line-height:1.15; }
+.ah-brand .ah-b1 { color:#fff; font-size:22px; font-weight:700; letter-spacing:-.3px; }
+.ah-brand .ah-b2 { color:#cfd6df; font-size:11.5px; }
+.ah-brand:hover .ah-b1 { color:var(--ah-gold-soft); }
+.ah-nav { display:flex; align-items:center; gap:22px; list-style:none; }
+.ah-nav a { color:#fff; font-size:14px; font-weight:500; position:relative; padding:4px 0; }
+.ah-nav a::after { content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--ah-gold-soft); transition:width .3s; }
+.ah-nav a:hover { color:var(--ah-gold-soft); }
+.ah-nav a:hover::after, .ah-nav a.is-active::after { width:100%; }
+.ah-nav a.is-active { color:var(--ah-gold-soft); }
+.ah-actions { display:flex; align-items:center; gap:10px; }
+.ah-btn { display:inline-flex; align-items:center; gap:7px; padding:9px 18px; border-radius:30px; font-size:13px; font-weight:700; border:1px solid #fff; color:#fff; transition:all .25s; white-space:nowrap; }
+.ah-btn:hover { background:rgba(255,255,255,.08); color:var(--ah-gold-soft); border-color:var(--ah-gold-soft); }
+.ah-btn-apply { background:linear-gradient(135deg,#f2a900,#e08e00); border-color:transparent; color:#1a1200; }
+.ah-btn-apply:hover { background:linear-gradient(135deg,#ffc233,#f2a900); color:#1a1200; border-color:transparent; }
+.ah-search-btn { width:38px; height:38px; display:grid; place-items:center; border-radius:50%; border:1px solid rgba(255,255,255,.35); color:#fff; background:transparent; cursor:pointer; }
+.ah-search-btn:hover { color:var(--ah-gold-soft); border-color:var(--ah-gold-soft); }
+.ah-burger { display:none; flex-direction:column; gap:5px; background:none; border:0; padding:6px; cursor:pointer; }
+.ah-burger span { width:24px; height:2px; background:#fff; border-radius:4px; transition:.3s; }
+.ah-burger.on span:nth-child(1){ transform:rotate(45deg) translate(4px,5px); }
+.ah-burger.on span:nth-child(2){ opacity:0; }
+.ah-burger.on span:nth-child(3){ transform:rotate(-45deg) translate(4px,-5px); }
+.ah-skip { position:absolute; left:-9999px; }
+.ah-skip:focus { left:12px; top:12px; z-index:9999; background:#fff; color:#000; padding:8px 14px; border-radius:6px; }
+
+@media (max-width:1100px){ .ah-nav{ gap:16px; } .ah-nav a{ font-size:13px; } }
+@media (max-width:992px){
+  .ah-nav { display:none; flex-direction:column; position:absolute; top:100%; left:0; width:100%; background:#000; padding:20px 24px; gap:14px; align-items:flex-start; border-bottom:1px solid rgba(255,215,0,.1); }
+  .ah-nav.open { display:flex; }
+  .ah-burger { display:flex; }
+  .ah-header .ah-in { height:68px; }
+  .ah-btn-apply span { display:none; }
+}
+@media (max-width:600px){
+  .ah-brand .ah-b1 { font-size:17px; }
+  .ah-brand .ah-b2 { font-size:10px; }
+  .ah-brand img { max-height:38px; }
+  .ah-topbar .ah-in { justify-content:center; text-align:center; font-size:11.5px; }
+  .ah-actions .ah-btn { padding:7px 12px; font-size:12px; }
+}
+
+/* page hero used by the new pages */
+.ah-page { max-width:1240px; margin:0 auto; padding:36px 24px 70px; }
+.ah-hero { background:radial-gradient(ellipse 70% 60% at 20% 0%, #0d3a2a 0%, #061a12 55%, #030b08 100%); border:1px solid var(--ah-line); border-radius:24px; padding:44px 40px; color:#fff; margin-bottom:36px; }
+.ah-hero h1 { font-size:clamp(1.6rem,3.4vw,2.4rem); line-height:1.3; margin-bottom:12px; }
+.ah-hero h1 span { color:var(--ah-gold); }
+.ah-hero p { color:#c9d6cf; font-size:1.02rem; line-height:1.8; max-width:820px; }
+.ah-crumb { color:var(--ah-muted); font-size:13px; margin-bottom:14px; }
+.ah-crumb a { color:var(--ah-gold-soft); }
+.ah-card { background:#fff; border:1px solid #e8e8e8; border-radius:18px; padding:26px; box-shadow:0 10px 30px -22px rgba(0,0,0,.5); }
+.ah-card h2 { font-size:1.35rem; margin-bottom:14px; color:#0f2419; }
+.ah-card h3 { font-size:1.08rem; margin:18px 0 10px; color:#173b2a; }
+.ah-grid { display:grid; gap:22px; }
+.ah-g2 { grid-template-columns:1fr 1fr; }
+.ah-g3 { grid-template-columns:repeat(3,1fr); }
+.ah-g4 { grid-template-columns:repeat(4,1fr); }
+@media (max-width:992px){ .ah-g3,.ah-g4{ grid-template-columns:1fr 1fr; } .ah-g2{ grid-template-columns:1fr; } }
+@media (max-width:640px){ .ah-g3,.ah-g4{ grid-template-columns:1fr; } .ah-hero{ padding:30px 22px; } .ah-page{ padding:24px 16px 56px; } }
+
+.ah-tile { background:#fff; border:1px solid #e6e6e6; border-radius:16px; padding:22px; transition:.25s; }
+.ah-tile:hover { transform:translateY(-4px); box-shadow:0 16px 36px -24px rgba(0,0,0,.55); border-color:var(--ah-line); }
+.ah-tile .ah-ic { width:46px; height:46px; border-radius:12px; display:grid; place-items:center; background:rgba(242,169,0,.14); color:#b07d00; font-size:1.15rem; margin-bottom:14px; }
+.ah-tile h4 { font-size:1.02rem; margin-bottom:8px; color:#10291d; }
+.ah-tile p { font-size:.92rem; color:#5b6673; line-height:1.7; }
+
+.ah-note { border-left:4px solid var(--ah-gold); background:#fffaf0; padding:14px 18px; border-radius:10px; color:#5a4700; font-size:.93rem; line-height:1.7; margin:16px 0; }
+
+/* tables */
+.ah-table-wrap { overflow-x:auto; border:1px solid #e6e6e6; border-radius:14px; }
+.ah-table { width:100%; border-collapse:collapse; font-size:.92rem; min-width:520px; }
+.ah-table th, .ah-table td { padding:12px 14px; text-align:left; border-bottom:1px solid #eee; }
+.ah-table th { background:#0f3a29; color:#fff; font-weight:600; }
+.ah-table tr:last-child td { border-bottom:0; }
+.ah-table tbody tr:nth-child(even) { background:#fafafa; }
+
+/* notice list */
+.ah-notices { display:flex; flex-direction:column; gap:12px; }
+.ah-notice { display:flex; gap:16px; align-items:flex-start; background:#fff; border:1px solid #e8e8e8; border-radius:14px; padding:16px 18px; transition:.2s; }
+.ah-notice:hover { border-color:var(--ah-line); box-shadow:0 12px 28px -24px rgba(0,0,0,.6); }
+.ah-notice .ah-date { flex:none; width:64px; text-align:center; background:#0f3a29; color:#fff; border-radius:10px; padding:8px 4px; }
+.ah-notice .ah-date b { display:block; font-size:1.25rem; line-height:1; color:var(--ah-gold); }
+.ah-notice .ah-date span { font-size:11px; }
+.ah-notice .ah-nt b { display:block; color:#10291d; margin-bottom:4px; }
+.ah-notice .ah-nt p { color:#5b6673; font-size:.9rem; line-height:1.7; }
+.ah-tag { display:inline-block; font-size:11px; padding:2px 9px; border-radius:999px; background:rgba(242,169,0,.16); color:#8a6200; margin-left:8px; vertical-align:middle; }
+.ah-tag.green { background:rgba(20,120,80,.14); color:#0d6b47; }
+.ah-tag.red { background:rgba(200,40,40,.12); color:#a52626; }
+
+/* gallery */
+.ah-gal { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+.ah-gal figure { position:relative; border-radius:14px; overflow:hidden; background:#000; aspect-ratio:4/3; margin:0; cursor:zoom-in; }
+.ah-gal img { width:100%; height:100%; object-fit:cover; transition:.4s; }
+.ah-gal figure:hover img { transform:scale(1.07); opacity:.85; }
+.ah-gal figcaption { position:absolute; inset:auto 0 0 0; padding:10px 12px; font-size:.82rem; color:#fff; background:linear-gradient(transparent,rgba(0,0,0,.78)); }
+.ah-lightbox { position:fixed; inset:0; background:rgba(0,0,0,.92); display:none; align-items:center; justify-content:center; z-index:99999; padding:24px; }
+.ah-lightbox.on { display:flex; }
+.ah-lightbox img { max-width:94vw; max-height:86vh; border-radius:12px; }
+.ah-lightbox button { position:absolute; top:18px; right:20px; width:44px; height:44px; border-radius:50%; border:1px solid #fff5; background:#000a; color:#fff; font-size:1.2rem; cursor:pointer; }
+
+/* forms */
+.ah-form { display:grid; gap:18px; }
+.ah-form .ah-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media (max-width:640px){ .ah-form .ah-row{ grid-template-columns:1fr; } }
+.ah-field label { display:block; font-size:.88rem; font-weight:600; color:#1c3a2b; margin-bottom:6px; }
+.ah-field label .req { color:#c0392b; }
+.ah-field input, .ah-field select, .ah-field textarea { width:100%; padding:11px 13px; border:1px solid #d6dbe0; border-radius:10px; font-size:.95rem; font-family:inherit; background:#fff; color:#1e1e1e; }
+.ah-field input:focus, .ah-field select:focus, .ah-field textarea:focus { outline:none; border-color:var(--ah-gold); box-shadow:0 0 0 3px rgba(242,169,0,.15); }
+.ah-field .ah-help { font-size:.8rem; color:#78838f; margin-top:5px; }
+.ah-field .ah-err { font-size:.8rem; color:#c0392b; margin-top:5px; display:none; }
+.ah-field.bad input, .ah-field.bad select, .ah-field.bad textarea { border-color:#c0392b; }
+.ah-field.bad .ah-err { display:block; }
+.ah-submit { background:linear-gradient(135deg,#0f3a29,#175a40); color:#fff; border:0; padding:14px 28px; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:9px; transition:.25s; }
+.ah-submit:hover { background:linear-gradient(135deg,#175a40,#1f7a55); transform:translateY(-2px); }
+.ah-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+.ah-ok { display:none; background:#e9f7ef; border:1px solid #a9dfbf; color:#1e6b43; padding:16px 18px; border-radius:12px; font-size:.95rem; line-height:1.7; margin-bottom:18px; }
+.ah-ok.on { display:block; }
+.ah-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; counter-reset:st; }
+@media (max-width:900px){ .ah-steps{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .ah-steps{ grid-template-columns:1fr; } }
+.ah-step { background:#fff; border:1px solid #e6e6e6; border-radius:14px; padding:18px; }
+.ah-step::before { counter-increment:st; content:counter(st); display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#0f3a29; color:var(--ah-gold); font-weight:700; margin-bottom:10px; }
+.ah-step b { display:block; margin-bottom:6px; color:#10291d; }
+.ah-step p { font-size:.88rem; color:#5b6673; line-height:1.7; }
+
+/* FAQ accordion */
+.ah-faq { display:flex; flex-direction:column; gap:10px; }
+.ah-faq details { background:#fff; border:1px solid #e6e6e6; border-radius:12px; padding:0; overflow:hidden; }
+.ah-faq summary { cursor:pointer; padding:15px 18px; font-weight:600; color:#10291d; list-style:none; display:flex; justify-content:space-between; gap:12px; }
+.ah-faq summary::-webkit-details-marker { display:none; }
+.ah-faq summary::after { content:'\f078'; font-family:'Font Awesome 6 Free'; font-weight:900; font-size:.8rem; color:var(--ah-gold); transition:.25s; }
+.ah-faq details[open] summary::after { transform:rotate(180deg); }
+.ah-faq .ah-a { padding:0 18px 16px; color:#5b6673; font-size:.93rem; line-height:1.8; }
+
+/* floating contact */
+.ah-float { position:fixed; right:16px; bottom:16px; z-index:9998; display:flex; flex-direction:column; gap:10px; }
+.ah-float a { width:50px; height:50px; border-radius:50%; display:grid; place-items:center; color:#fff; font-size:1.2rem; box-shadow:0 10px 26px -10px rgba(0,0,0,.6); transition:.25s; }
+.ah-float a:hover { transform:translateY(-3px) scale(1.06); }
+.ah-float .wa { background:#25d366; }
+.ah-float .ph { background:#0f3a29; }
+.ah-float .tp { background:#0b1b2b; }
+
+/* footer */
+.ah-footer { background:#05130d; color:#b9c7c0; margin-top:40px; }
+.ah-footer .ah-fin { max-width:1240px; margin:0 auto; padding:54px 24px 0; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:34px; }
+.ah-footer h5 { color:#fff; font-size:1rem; margin-bottom:16px; }
+.ah-footer a { color:#b9c7c0; font-size:.9rem; }
+.ah-footer a:hover { color:var(--ah-gold-soft); }
+.ah-footer ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.ah-footer .ah-fbrand { display:flex; gap:12px; align-items:center; margin-bottom:14px; }
+.ah-footer .ah-fbrand img { max-height:48px; }
+.ah-footer .ah-fbrand b { color:#fff; font-size:1.05rem; display:block; }
+.ah-footer p { font-size:.9rem; line-height:1.85; }
+.ah-footer .ah-social { display:flex; gap:10px; margin-top:16px; }
+.ah-footer .ah-social a { width:36px; height:36px; border-radius:50%; display:grid; place-items:center; background:#0d2a1e; color:#fff; }
+.ah-footer .ah-social a:hover { background:var(--ah-gold); color:#1a1200; }
+.ah-footer .ah-fbot { border-top:1px solid rgba(255,255,255,.08); margin-top:40px; padding:18px 24px; text-align:center; font-size:.84rem; color:#8ba396; }
+@media (max-width:992px){ .ah-footer .ah-fin{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .ah-footer .ah-fin{ grid-template-columns:1fr; padding:40px 18px 0; } }
+
+/* live search */
+.ah-searchbar { display:flex; gap:10px; }
+.ah-searchbar input { flex:1; padding:14px 16px; border:1px solid #d6dbe0; border-radius:12px; font-size:1rem; }
+.ah-res { display:flex; flex-direction:column; gap:10px; margin-top:20px; }
+.ah-res a { display:block; background:#fff; border:1px solid #e8e8e8; border-radius:12px; padding:14px 16px; }
+.ah-res a:hover { border-color:var(--ah-line); }
+.ah-res b { color:#10291d; display:block; margin-bottom:3px; }
+.ah-res span { color:#6b7682; font-size:.88rem; }
+
+body { padding:0; background:#f5f6f7; font-family:'Hind Siliguri','Inter',sans-serif; }
+.ah-page { padding-top:28px; }
+</style>
+
+<style>
+/* ===== Al-Hera design tokens & polish (shared) ===== */
+:root{
+  --ah-green-900:#04120c; --ah-green-800:#062017; --ah-green-700:#0a3325; --ah-green-600:#0f4a34;
+  --ah-gold:#f2a900; --ah-gold-2:#f5d77b; --ah-cream:#fbf8f1; --ah-text:#16232e; --ah-muted:#5f6b76;
+  --ah-radius:18px; --ah-shadow:0 18px 44px -28px rgba(4,18,12,.55); --ah-shadow-lg:0 30px 70px -40px rgba(4,18,12,.7);
+  --ah-ease:cubic-bezier(.16,1,.3,1);
+}
+html{ scroll-behavior:smooth; }
+body{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+img{ max-width:100%; }
+::selection{ background:rgba(242,169,0,.28); }
+:focus-visible{ outline:2px solid var(--ah-gold); outline-offset:3px; border-radius:6px; }
+
+/* headings get a touch more presence on the light pages */
+.ah-page h1, .ah-hero h1{ letter-spacing:-.2px; }
+.ah-hero{ box-shadow:var(--ah-shadow-lg); }
+
+/* reveal-on-scroll */
+.ah-rv{ opacity:0; transform:translateY(26px); transition:opacity .7s var(--ah-ease), transform .7s var(--ah-ease); }
+.ah-rv.on{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .ah-rv{ opacity:1 !important; transform:none !important; transition:none !important; }
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+
+/* reading progress bar */
+.ah-progress{ position:fixed; top:0; left:0; height:3px; width:0; background:linear-gradient(90deg,var(--ah-gold),#ffd766); z-index:9999; transition:width .1s linear; }
+
+/* sticky mobile admission bar */
+.ah-mobcta{ display:none; }
+@media (max-width:768px){
+  .ah-mobcta{ display:flex; position:fixed; left:0; right:0; bottom:0; z-index:9997; background:#04120c; border-top:1px solid rgba(242,169,0,.3); padding:10px 12px; gap:10px; }
+  .ah-mobcta a{ flex:1; text-align:center; padding:11px 8px; border-radius:11px; font-size:.9rem; font-weight:700; }
+  .ah-mobcta .m1{ background:linear-gradient(135deg,#f2a900,#e08e00); color:#1a1200; }
+  .ah-mobcta .m2{ border:1px solid rgba(255,255,255,.3); color:#fff; }
+  body{ padding-bottom:64px !important; }
+  .ah-float{ bottom:76px; }
+}
+
+/* ------- dark-theme correction for the older PHP pages ------- */
+.ah-darkbody{ background:#f5f6f7 !important; color:var(--ah-text) !important; }
+.ah-darkbody .main-header{ position:sticky; top:0; background:#04120c; }
+.ah-darkbody .course-card{ background:#fff !important; color:var(--ah-text) !important; border:1px solid #e8e8e8 !important; box-shadow:var(--ah-shadow) !important; }
+.ah-darkbody .course-card *{ color:inherit; }
+.ah-darkbody .course-card .card-title,
+.ah-darkbody .course-card h3{ color:#10291d !important; }
+.ah-darkbody .course-card p{ color:#5b6673 !important; }
+.ah-darkbody .course-card .cat-b{ color:#0d3a2a !important; }
+.ah-darkbody .courses-hero,
+.ah-darkbody .blog-hero,
+.ah-darkbody .about-hero,
+.ah-darkbody .contact-hero{ background:radial-gradient(ellipse 80% 90% at 15% 0%, #0d3a2a 0%, #062017 55%, #04120c 100%) !important; }
+.ah-darkbody .courses-hero h1,
+.ah-darkbody .blog-hero h1,
+.ah-darkbody .about-hero h1,
+.ah-darkbody .contact-hero h1,
+.ah-darkbody .hero-title{ color:#fff !important; }
+.ah-darkbody .hero-sub,
+.ah-darkbody .courses-hero p,
+.ah-darkbody .contact-hero p{ color:#c3d2ca !important; }
+.ah-darkbody .filter-bar{ background:#fff !important; border:1px solid #e8e8e8; }
+.ah-darkbody .filter-input-wrap input,
+.ah-darkbody .filter-select{ background:#f7f8f9 !important; color:#16232e !important; border:1px solid #dfe3e7 !important; }
+.ah-darkbody .filter-btn{ background:#0f4a34 !important; color:#fff !important; }
+.ah-darkbody .courses-section{ background:transparent !important; }
+.ah-darkbody .contact-form-wrap,
+.ah-darkbody .contact-info{ background:#fff !important; color:var(--ah-text) !important; border:1px solid #e8e8e8; }
+.ah-darkbody .contact-form input,
+.ah-darkbody .contact-form select,
+.ah-darkbody .contact-form textarea{ background:#f7f8f9 !important; color:#16232e !important; border:1px solid #dfe3e7 !important; }
+.ah-darkbody .contact-form label{ color:#1c3a2b !important; }
+</style>
+<style>
+/* ===== footer v2 ===== */
+.ah-fnews{ background:linear-gradient(135deg,#0d3a2a,#061a12); border-bottom:1px solid rgba(242,169,0,.16); }
+.ah-fnews .ah-fn-in{ max-width:1240px; margin:0 auto; padding:26px 24px; display:flex; align-items:center; gap:28px; justify-content:space-between; flex-wrap:wrap; }
+.ah-fnews .ah-fn-txt b{ display:flex; align-items:center; gap:9px; color:#fff; font-size:1.02rem; margin-bottom:5px; }
+.ah-fnews .ah-fn-txt b i{ color:var(--ah-gold); }
+.ah-fnews .ah-fn-txt span{ color:#b9c7c0; font-size:.87rem; }
+.ah-fn-form{ display:flex; gap:9px; flex-wrap:wrap; position:relative; }
+.ah-fn-form input{ min-width:260px; flex:1; padding:12px 15px; border-radius:11px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.07); color:#fff; font-family:inherit; font-size:.9rem; }
+.ah-fn-form input::placeholder{ color:#9db3a8; }
+.ah-fn-form input:focus{ outline:none; border-color:var(--ah-gold); background:rgba(242,169,0,.09); }
+.ah-fn-form button{ padding:12px 22px; border:0; border-radius:11px; background:linear-gradient(135deg,#f2a900,#e08e00); color:#1a1200; font-weight:700; font-family:inherit; font-size:.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:8px; transition:.2s; }
+.ah-fn-form button:hover{ transform:translateY(-2px); }
+.ah-fn-msg{ flex-basis:100%; color:#8fe0b6; font-size:.82rem; min-height:1em; }
+
+.ah-footer .ah-fin{ grid-template-columns:1.5fr 1fr 1fr 1fr 1.1fr; gap:30px; }
+.ah-fcol h5{ position:relative; padding-bottom:10px; }
+.ah-fcol h5::after{ content:''; position:absolute; left:0; bottom:0; width:34px; height:2px; background:linear-gradient(90deg,var(--ah-gold),transparent); }
+.ah-footer .ah-fabout p{ margin-bottom:16px; }
+.ah-fmeta{ display:flex; flex-direction:column; gap:9px; margin-bottom:16px; }
+.ah-fmeta li{ font-size:.86rem; color:#a9bcb3; display:flex; align-items:center; gap:9px; }
+.ah-fmeta i{ color:var(--ah-gold); width:15px; }
+.ah-fcontact li{ display:flex; align-items:center; gap:9px; font-size:.88rem; }
+.ah-fcontact i{ color:var(--ah-gold); width:15px; }
+.ah-fcta{ display:inline-flex; align-items:center; gap:8px; margin-top:14px; padding:10px 16px; border-radius:10px; background:rgba(242,169,0,.14); border:1px solid rgba(242,169,0,.35); color:#f5d77b !important; font-weight:700; font-size:.85rem; }
+.ah-fcta:hover{ background:rgba(242,169,0,.24); color:#fff !important; }
+.ah-fbot{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; max-width:1240px; margin:0 auto; }
+.ah-fbot nav{ display:flex; gap:16px; flex-wrap:wrap; }
+.ah-fbot a{ font-size:.82rem; }
+@media (max-width:1100px){ .ah-footer .ah-fin{ grid-template-columns:1fr 1fr 1fr; } }
+@media (max-width:992px){ .ah-footer .ah-fin{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .ah-footer .ah-fin{ grid-template-columns:1fr; } .ah-fn-form input{ min-width:0; } .ah-fbot{ justify-content:center; text-align:center; } }
+</style>
+</head>
+<body>
+<a class="ah-skip" href="#ah-main">মূল কনটেন্টে যান</a>
+<div class="ah-topbar"><div class="ah-in">
+  <div><i class="fa-solid fa-phone"></i> <a href="tel:+8801700000000">01700-000000</a> &nbsp;·&nbsp; <i class="fa-solid fa-envelope"></i> <a href="mailto:info@alheraonline.com">info@alheraonline.com</a></div>
+  <div class="ah-tb-right">
+    <span class="ah-pill"><i class="fa-solid fa-bullhorn"></i> ২০২৬-২০২৭ সেশনে ভর্তি চলছে</span>
+    <a href="/Frontend/faq.html">সাধারণ জিজ্ঞাসা</a>
+    <a href="/Frontend/downloads.html">ডাউনলোড</a>
+  </div>
+</div></div>
+<header class="ah-header">
+  <div class="ah-in">
+    <a href="/" class="ah-brand">
+      <img src="/uploads/1787224184_logo_logoalhera.png" alt="আল হেরা অনলাইন মাদরাসা">
+      <span class="ah-bt"><span class="ah-b1">আল হেরা অনলাইন মাদরাসা</span><span class="ah-b2">কুরআন ও সুন্নাহ ভিত্তিক শিক্ষা</span></span>
+    </a>
+    <nav aria-label="প্রধান মেনু">
+      <ul class="ah-nav" id="ahNav">
+      <li><a href="/">হোম</a></li>
+      <li><a href="/Frontend/courses.html">কোর্স</a></li>
+      <li><a href="/Frontend/admission.html">ভর্তি</a></li>
+      <li><a href="/Frontend/notice.html">নোটিশ</a></li>
+      <li><a href="/Frontend/result.html">ফলাফল</a></li>
+      <li><a href="/Frontend/gallery.html">গ্যালারি</a></li>
+      <li><a href="/Frontend/about.html">আমাদের সম্পর্কে</a></li>
+      <li><a href="/Frontend/contact.html">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+    <div class="ah-actions">
+      <a href="/Frontend/search.html" class="ah-search-btn" aria-label="সার্চ"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="/login.html" class="ah-btn"><i class="fa-solid fa-right-to-bracket"></i> লগইন</a>
+      <a href="/Frontend/admission.html" class="ah-btn ah-btn-apply"><i class="fa-solid fa-user-plus"></i> <span>ভর্তি আবেদন</span></a>
+      <button class="ah-burger" id="ahBurger" aria-label="মেনু" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<main id="ah-main">
+<div class="ah-page">
+
+<nav class="ah-crumb"><a href="/">হোম</a> › সার্চ</nav>
+<section class="ah-hero">
+  <h1>সাইটে <span>সার্চ</span></h1>
+  <p>কোর্স, নোটিশ, ফি, ভর্তি বা যেকোনো তথ্য খুঁজুন।</p>
+</section>
+<section class="ah-card">
+  <div class="ah-searchbar">
+    <input type="search" id="q" placeholder="যেমন: ভর্তি, ফি, হিফজ, রুটিন..." aria-label="সার্চ" autofocus>
+    <button class="ah-submit" id="go"><i class="fa-solid fa-magnifying-glass"></i> খুঁজুন</button>
+  </div>
+  <div class="ah-res" id="res"></div>
+</section>
+
+</div>
+</main>
+<footer class="ah-footer">
+  <div class="ah-fnews">
+    <div class="ah-fn-in">
+      <div class="ah-fn-txt">
+        <b><i class="fa-solid fa-envelope-open-text"></i> নিউজলেটার</b>
+        <span>নতুন ব্যাচ, নোটিশ ও দ্বীনি লেখা সবার আগে পেতে সাবস্ক্রাইব করুন।</span>
+      </div>
+      <form class="ah-fn-form" onsubmit="event.preventDefault(); var m=this.querySelector('.ah-fn-msg'); m.textContent='জাযাকাল্লাহু খাইরান! সাবস্ক্রিপশন নিশ্চিত হয়েছে ইনশাআল্লাহ।'; this.reset();">
+        <input type="email" placeholder="আপনার ইমেইল ঠিকানা" required aria-label="ইমেইল ঠিকানা">
+        <button type="submit">সাবস্ক্রাইব <i class="fa-solid fa-arrow-right"></i></button>
+        <div class="ah-fn-msg" role="status"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="ah-fin">
+    <div class="ah-fcol ah-fabout">
+      <div class="ah-fbrand">
+        <img src="/uploads/1787224184_logo_logoalhera.png" alt="আল হেরা অনলাইন মাদরাসা">
+        <b>আল হেরা অনলাইন মাদরাসা</b>
+      </div>
+      <p>জেনারেল শিক্ষিত ভাই-বোনদের জন্য আরবি ভাষা ও দ্বীনিয়াত শিক্ষার একটি গবেষণালব্ধ সৃজনশীল প্রতিষ্ঠান। কুরআন ও সুন্নাহ ভিত্তিক শিক্ষা, অভিজ্ঞ উস্তাদদের তত্ত্বাবধানে — ঘরে বসেই ৭ বছরে আলেম হওয়ার পূর্ণাঙ্গ পথ।</p>
+      <ul class="ah-fmeta">
+        <li><i class="fa-solid fa-graduation-cap"></i> ৭ বছরের আলেম · হিফজ · ফরজে আইন</li>
+        <li><i class="fa-solid fa-clock"></i> শনি–বৃহস্পতি · সকাল ৯টা – রাত ৮টা</li>
+        <li><i class="fa-solid fa-laptop"></i> সম্পূর্ণ অনলাইন — যেকোনো ডিভাইস থেকে</li>
+      </ul>
+      <div class="ah-social">
+        <a href="https://wa.me/8801700000000" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+
+    <div class="ah-fcol">
+      <h5>দ্রুত লিংক</h5>
+      <ul>
+        <li><a href="/">হোম</a></li>
+        <li><a href="/Frontend/courses.html">কোর্সসমূহ</a></li>
+        <li><a href="/Frontend/admission.html">ভর্তি আবেদন</a></li>
+        <li><a href="/Frontend/notice.html">নোটিশ বোর্ড</a></li>
+        <li><a href="/Frontend/result.html">ফলাফল</a></li>
+        <li><a href="/Frontend/blog.html">ব্লগ</a></li>
+      </ul>
+    </div>
+
+    <div class="ah-fcol">
+      <h5>সহায়তা</h5>
+      <ul>
+        <li><a href="/Frontend/faq.html">সাধারণ জিজ্ঞাসা</a></li>
+        <li><a href="/Frontend/fees.html">ভর্তি ফি ও খরচ</a></li>
+        <li><a href="/Frontend/downloads.html">সিলেবাস ও ফরম</a></li>
+        <li><a href="/Frontend/contact.html">যোগাযোগ</a></li>
+        <li><a href="/login.html">শিক্ষার্থী লগইন</a></li>
+        <li><a href="/forgot-password.html">পাসওয়ার্ড রিসেট</a></li>
+      </ul>
+    </div>
+
+    <div class="ah-fcol">
+      <h5>জনপ্রিয় কোর্স</h5>
+      <ul>
+        <li><a href="/Frontend/course-details.html?id=59">৭ বছরে আলেম কোর্স</a></li>
+        <li><a href="/Frontend/course-details.html?id=65">আন্তর্জাতিক হিফজুল কুরআন</a></li>
+        <li><a href="/Frontend/course-details.html?id=66">ফরজে আইন কোর্স</a></li>
+        <li><a href="/Frontend/gallery.html">গ্যালারি</a></li>
+        <li><a href="/Frontend/search.html">সাইটে সার্চ</a></li>
+      </ul>
+    </div>
+
+    <div class="ah-fcol">
+      <h5>যোগাযোগ</h5>
+      <ul class="ah-fcontact">
+        <li><a href="tel:+8801700000000"><i class="fa-solid fa-phone"></i> ০১৭০০-০০০০০০</a></li>
+        <li><a href="mailto:info@alheraonline.com"><i class="fa-solid fa-envelope"></i> info@alheraonline.com</a></li>
+        <li><i class="fa-solid fa-location-dot"></i> ঢাকা, বাংলাদেশ</li>
+        <li><a href="/Frontend/contact.html"><i class="fa-solid fa-map-location-dot"></i> ম্যাপে দেখুন</a></li>
+      </ul>
+      <a href="/Frontend/admission.html" class="ah-fcta"><i class="fa-solid fa-user-plus"></i> ভর্তি আবেদন করুন</a>
+    </div>
+  </div>
+
+  <div class="ah-fbot">
+    <span>&copy; ২০২৬ আল হেরা অনলাইন মাদরাসা · সর্বস্বত্ব সংরক্ষিত</span>
+    <nav>
+      <a href="/Frontend/privacy.html">গোপনীয়তা নীতি</a>
+      <a href="/Frontend/terms.html">শর্তাবলি</a>
+      <a href="/Frontend/cookies.html">কুকি নীতি</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="ah-float">
+  <a class="wa" href="https://wa.me/8801700000000" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <a class="ph" href="tel:+8801700000000" aria-label="ফোন করুন"><i class="fa-solid fa-phone"></i></a>
+  <a class="tp" href="#ah-main" aria-label="উপরে যান"><i class="fa-solid fa-arrow-up"></i></a>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('ahBurger'), n=document.getElementById('ahNav');
+  if(b&&n){ b.addEventListener('click',function(){ n.classList.toggle('open'); b.classList.toggle('on'); b.setAttribute('aria-expanded', n.classList.contains('open')?'true':'false'); }); }
+})();
+</script>
+<script>
+(function(){
+  var INDEX = [["হোম","/","মূল পেজ, ৭ বছরে আলেম, সংক্ষিপ্ত চিত্র"],["কোর্সসমূহ","/Frontend/courses.html","৭ বছরের পূর্ণাঙ্গ সিলেবাস, মডিউল, ক্লাস"],["ভর্তি আবেদন","/Frontend/admission.html","অনলাইন ফরম, ভর্তির ধাপ, কাগজপত্র"],["নোটিশ বোর্ড","/Frontend/notice.html","নতুন ব্যাচ, ছাড়, ছুটি, পরীক্ষার ঘোষণা"],["ফলাফল","/Frontend/result.html","পরীক্ষার ফলাফল অনুসন্ধান"],["ভর্তি ফি ও খরচ","/Frontend/fees.html","ভর্তি ফি, মাসিক ফি, বৃত্তি, পেমেন্ট"],["গ্যালারি","/Frontend/gallery.html","ক্লাস ও কার্যক্রমের ছবি"],["সাধারণ জিজ্ঞাসা","/Frontend/faq.html","প্রায়ই করা প্রশ্নের উত্তর"],["ডাউনলোড","/Frontend/downloads.html","ভর্তি ফরম, সিলেবাস, রুটিন, নীতিমালা"],["আমাদের সম্পর্কে","/Frontend/about.html","লক্ষ্য, উদ্দেশ্য, শিক্ষকমণ্ডলী"],["যোগাযোগ","/Frontend/contact.html","ফোন, ইমেইল, ঠিকানা, ম্যাপ"],["ব্লগ","/Frontend/blog.html","লেখা ও প্রবন্ধ"],["শিক্ষার্থী লগইন","/login.html","শিক্ষার্থী ও শিক্ষক প্যানেল"]];
+  var q = document.getElementById('q'), res = document.getElementById('res');
+  function esc(s){ return s.replace(/[<>&]/g, function(c){ return {'<':'&lt;','>':'&gt;','&':'&amp;'}[c]; }); }
+  function run(){
+    var term = q.value.trim().toLowerCase();
+    if (!term) { res.innerHTML = '<p style="color:#78838f;font-size:.92rem;">কিছু লিখে সার্চ করুন।</p>'; return; }
+    var hits = INDEX.filter(function(it){ return (it[0] + ' ' + it[2]).toLowerCase().indexOf(term) !== -1; });
+    res.innerHTML = hits.length
+      ? '<p style="color:#78838f;font-size:.88rem;">' + hits.length + 'টি ফলাফল পাওয়া গেছে</p>' + hits.map(function(it){
+          return '<a href="' + it[1] + '"><b>' + esc(it[0]) + '</b><span>' + esc(it[2]) + '</span></a>'; }).join('')
+      : '<p style="color:#78838f;">কোনো ফলাফল পাওয়া যায়নি। ভিন্ন শব্দ দিয়ে চেষ্টা করুন।</p>';
+  }
+  document.getElementById('go').addEventListener('click', run);
+  q.addEventListener('keydown', function(e){ if (e.key === 'Enter') { e.preventDefault(); run(); } });
+  var m = new URLSearchParams(location.search).get('q'); if (m) { q.value = m; run(); }
+})();
+</script>
+
+<script>
+(function(){
+  // reading progress
+  var bar=document.createElement('div'); bar.className='ah-progress'; document.body.appendChild(bar);
+  var tick=function(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop,
+        max=(h.scrollHeight-h.clientHeight)||1;
+    bar.style.width=Math.min(100,(sc/max)*100)+'%';
+  };
+  window.addEventListener('scroll',tick,{passive:true}); tick();
+
+  // reveal on scroll
+  var els=document.querySelectorAll('.ah-card, .ah-tile, .ah-notice, .ah-gal figure, .ah-step, .ah-faq details');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('ah-rv','on'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -8% 0px', threshold:.06});
+    els.forEach(function(el,i){ el.classList.add('ah-rv'); el.style.transitionDelay=(Math.min(i,6)*45)+'ms'; io.observe(el); });
+  }
+
+  // mobile admission bar
+  if(!document.querySelector('.ah-mobcta') && window.innerWidth<=768){
+    var m=document.createElement('div'); m.className='ah-mobcta';
+    m.innerHTML='<a class="m1" href="/Frontend/admission.html"><i class="fa-solid fa-user-plus"></i> ভর্তি আবেদন</a><a class="m2" href="tel:+8801700000000"><i class="fa-solid fa-phone"></i> কল করুন</a>';
+    document.body.appendChild(m);
+  }
+})();
+</script>
+</body>
+</html>

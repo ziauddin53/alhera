@@ -1,0 +1,1249 @@
+/* ============================================================
+   Alhera Online — EduCare dark theme (v2 shell)
+   Shared by admin / teacher / student portals.
+   Scope: every rule is namespaced under html[data-theme] so a page
+   that does not load this file keeps its old look untouched.
+   ============================================================ */
+
+html[data-theme="dark"] {
+    --bg: #0b0a14;
+    --bg-glow-a: rgba(124, 58, 237, .42);
+    --bg-glow-b: rgba(56, 189, 248, .13);
+    --bg-glow-c: rgba(168, 85, 247, .27);
+    --shell: rgba(13, 11, 23, .90);
+    --panel: #191629;
+    --panel-2: #221e35;
+    --panel-3: #2a2541;
+    --line: rgba(255, 255, 255, .085);
+    --line-2: rgba(255, 255, 255, .155);
+    --text: #f2f0f7;
+    --text-2: #a49db6;
+    --text-3: #6f6883;
+    --accent: #8b5cf6;
+    --accent-2: #7c3aed;
+    --accent-soft: rgba(139, 92, 246, .16);
+    --gold: #f0b429;
+    --gold-soft: rgba(240, 180, 41, .14);
+    --green: #22c55e;
+    --green-soft: rgba(34, 197, 94, .14);
+    --red: #ef4444;
+    --red-soft: rgba(239, 68, 68, .14);
+    --blue: #3b82f6;
+    --blue-soft: rgba(59, 130, 246, .14);
+    --teal: #14b8a6;
+    --teal-soft: rgba(20, 184, 166, .14);
+    --shadow: 0 22px 48px -24px rgba(0, 0, 0, .88);
+    --scroll: rgba(255, 255, 255, .12);
+    color-scheme: dark;
+}
+
+html[data-theme="light"] {
+    --bg: #eef0f7;
+    --bg-glow-a: rgba(139, 92, 246, .16);
+    --bg-glow-b: rgba(56, 189, 248, .10);
+    --bg-glow-c: rgba(168, 85, 247, .10);
+    --shell: rgba(255, 255, 255, .92);
+    --panel: #ffffff;
+    --panel-2: #f7f7fc;
+    --panel-3: #eeeef7;
+    --line: rgba(17, 24, 39, .09);
+    --line-2: rgba(17, 24, 39, .16);
+    --text: #171425;
+    --text-2: #5c5670;
+    --text-3: #8b8599;
+    --accent: #7c3aed;
+    --accent-2: #6d28d9;
+    --accent-soft: rgba(124, 58, 237, .10);
+    --gold: #b45309;
+    --gold-soft: rgba(180, 83, 9, .10);
+    --green: #15803d;
+    --green-soft: rgba(21, 128, 61, .10);
+    --red: #b91c1c;
+    --red-soft: rgba(185, 28, 28, .10);
+    --blue: #1d4ed8;
+    --blue-soft: rgba(29, 78, 216, .10);
+    --teal: #0f766e;
+    --teal-soft: rgba(15, 118, 110, .10);
+    --shadow: 0 12px 30px -20px rgba(23, 20, 37, .45);
+    --scroll: rgba(23, 20, 37, .18);
+    color-scheme: light;
+}
+
+/* ------------------------------------------------------------
+   Legacy page tokens. The migrated pages carry their own :root ramp —
+   --gray-50…900, --primary, --success — written for the old white UI, and
+   their <style> blocks load after this file. html[data-theme] outranks :root,
+   so this one alias block re-points all of them at the EduCare palette.
+   ------------------------------------------------------------ */
+html[data-theme] {
+    --gray-50: var(--panel-2);
+    --gray-100: var(--panel-3);
+    --gray-200: var(--panel-3);
+    --gray-300: var(--line-2);
+    --gray-400: var(--text-3);
+    --gray-500: var(--text-2);
+    --gray-600: var(--text-2);
+    --gray-700: var(--text);
+    --gray-800: var(--text);
+    --gray-900: var(--text);
+    --primary: var(--accent);
+    --primary-dark: var(--accent-2);
+    --secondary: var(--blue);
+    --info: var(--blue);
+    --success: var(--green);
+    --warning: var(--gold);
+    --danger: var(--red);
+}
+
+/* ------------------------------------------------------------
+   Settings → Theme. The colour pickers in
+   Admin → Settings → General → Theme replace these tokens with the inline
+   block edu_chrome_start() prints — same specificity as the two blocks above,
+   later in the document, so it wins. Untouched they keep the EduCare look.
+   ------------------------------------------------------------ */
+html[data-theme] {
+    --sidebar-bg: var(--shell);
+    --topbar-bg: var(--shell);
+    --nav-text: var(--text-2);
+    --nav-icon: var(--text-2);
+    --nav-group: var(--text-3);
+    --nav-hover-bg: var(--panel-2);
+    --nav-hover-text: var(--text);
+    --nav-active: var(--gold);
+    --nav-active-bg: var(--gold-soft);
+    --nav-active-line: rgba(240, 180, 41, .3);
+    --sub-bg: transparent;
+    --sub-text: var(--text-3);
+    --btn-1: var(--accent);
+    --btn-2: var(--accent-2);
+}
+
+/* ── base ─────────────────────────────────────────────────── */
+html[data-theme] body {
+    margin: 0;
+    /* standalone-era pages still set body{display:flex} for their old side-by-side
+       sidebar; inside the shell that squeezes .edu-main to its content width */
+    display: block;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text);
+    background: var(--bg);
+    background-image:
+        radial-gradient(900px 480px at 88% -6%, var(--bg-glow-a), transparent 62%),
+        radial-gradient(760px 420px at 100% 96%, var(--bg-glow-c), transparent 60%),
+        radial-gradient(620px 380px at -6% 42%, var(--bg-glow-b), transparent 62%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+}
+
+html[data-theme] a { color: inherit; text-decoration: none; }
+html[data-theme] ::-webkit-scrollbar { width: 9px; height: 9px; }
+html[data-theme] ::-webkit-scrollbar-thumb { background: var(--scroll); border-radius: 8px; }
+html[data-theme] ::-webkit-scrollbar-track { background: transparent; }
+
+/* ── app frame ────────────────────────────────────────────── */
+.edu-topbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 62px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 18px 0 14px;
+    background: var(--topbar-bg);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+}
+.edu-topbar::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-2) 22%, var(--teal) 60%, transparent);
+    opacity: .55;
+}
+.tb-burger {
+    width: 38px; height: 38px;
+    flex: 0 0 auto;
+    display: grid; place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel-2);
+    color: var(--text-2);
+    cursor: pointer;
+    font-size: 15px;
+}
+.tb-burger:hover { color: var(--text); border-color: var(--line-2); }
+.tb-brand { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; min-width: 0; }
+.tb-brand img {
+    height: 36px; width: auto; object-fit: contain;
+    padding: 3px 7px; border-radius: 10px; background: #fff;
+    box-shadow: 0 8px 18px -10px rgba(0, 0, 0, .95);
+}
+.tb-brand .mark {
+    height: 34px; min-width: 34px;
+    display: grid; place-items: center;
+    border-radius: 10px;
+    background: linear-gradient(140deg, var(--accent), var(--accent-2));
+    color: #fff; font-weight: 800; font-size: 15px;
+}
+.tb-brand b { font-size: 16px; font-weight: 800; letter-spacing: .2px; white-space: nowrap; }
+.tb-brand .ver {
+    font-size: 10px; font-weight: 700; letter-spacing: .5px;
+    color: var(--accent); background: var(--accent-soft);
+    border: 1px solid rgba(139, 92, 246, .3);
+    padding: 2px 7px; border-radius: 999px;
+}
+.tb-search { flex: 1 1 auto; max-width: 560px; margin: 0 auto; position: relative; }
+.tb-search input {
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 38px;
+    border-radius: 11px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text);
+    font: inherit; font-size: 13px;
+    outline: none;
+}
+.tb-search input::placeholder { color: var(--text-3); }
+.tb-search input:focus { border-color: rgba(139, 92, 246, .55); box-shadow: 0 0 0 3px var(--accent-soft); }
+.tb-search .fa-magnifying-glass, .tb-search .si {
+    position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+    color: var(--text-3); font-size: 13px; pointer-events: none;
+}
+.tb-search .kb {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    font-size: 10px; color: var(--text-3);
+    border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px;
+}
+/* topbar preview of the newest message in the inbox */
+.tb-msg {
+    display: flex; align-items: center; gap: 10px;
+    height: 40px; padding: 0 12px;
+    border: 1px solid rgba(139, 92, 246, .35);
+    border-radius: 11px;
+    background: var(--accent-soft);
+    color: var(--text-2); font-size: 12.5px;
+    text-decoration: none; overflow: hidden;
+    animation: tbmsg-in .3s ease-out;
+}
+.tb-msg:hover { color: var(--text); border-color: rgba(139, 92, 246, .6); }
+.tb-msg .ico {
+    width: 26px; height: 26px; flex: 0 0 auto;
+    display: grid; place-items: center; border-radius: 8px;
+    background: var(--panel-2); color: var(--accent); font-size: 12px;
+}
+.tb-msg .txt { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.tb-msg .txt b { font-weight: 800; color: var(--text); white-space: nowrap; }
+.tb-msg .txt i { font-style: normal; color: var(--text-2); min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.tb-msg .ago { margin-left: auto; flex: 0 0 auto; font-size: 10.5px; font-weight: 700; color: var(--text-3); white-space: nowrap; }
+@keyframes tbmsg-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (max-width: 1280px) { .tb-msg .ago { display: none; } }
+.tb-right { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; margin-left: auto; }
+.tb-icon {
+    position: relative;
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-2);
+    cursor: pointer; font-size: 15px;
+}
+.tb-icon:hover { color: var(--text); background: var(--panel-2); border-color: var(--line); }
+.tb-icon .pip {
+    position: absolute; top: 4px; right: 3px;
+    min-width: 17px; height: 17px; padding: 0 4px;
+    display: grid; place-items: center;
+    font-size: 10px; font-weight: 700;
+    color: #fff; background: var(--red);
+    border: 2px solid var(--bg);
+    border-radius: 999px;
+}
+.tb-icon .pip.teal { background: var(--teal); }
+.tb-lang { display: flex; gap: 4px; margin: 0 4px; }
+.tb-lang span {
+    font-size: 11px; font-weight: 700; letter-spacing: .4px;
+    color: var(--text-3); padding: 5px 8px; border-radius: 8px;
+    border: 1px solid var(--line); cursor: default;
+}
+.tb-lang span.on { color: #fff; background: var(--green); border-color: transparent; }
+.tb-me { display: flex; align-items: center; gap: 10px; padding: 4px 8px 4px 4px; border-radius: 12px; cursor: pointer; }
+.tb-me:hover { background: var(--panel-2); }
+.tb-me .av {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 12px; font-weight: 800; color: #fff;
+    background: linear-gradient(140deg, var(--teal), var(--green));
+    flex: 0 0 auto;
+}
+.tb-me .who { line-height: 1.2; }
+.tb-me .who b { display: block; font-size: 13px; font-weight: 700; white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+.tb-me .who i { display: block; font-style: normal; font-size: 11px; color: var(--accent); font-weight: 600; }
+
+/* ── sidebar ──────────────────────────────────────────────── */
+.edu-sidebar {
+    position: fixed;
+    top: 62px; bottom: 0; left: 0;
+    width: 258px;
+    z-index: 55;
+    display: flex; flex-direction: column;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(14px);
+    border-right: 1px solid var(--line);
+}
+.edu-session {
+    margin: 14px 14px 6px;
+    padding: 12px 13px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    background: linear-gradient(150deg, var(--panel-2), var(--panel));
+}
+.edu-session .r1 { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.edu-session .lbl { font-size: 9.5px; font-weight: 700; letter-spacing: .9px; color: var(--text-3); text-transform: uppercase; }
+.edu-session .pill {
+    font-size: 9.5px; font-weight: 800; letter-spacing: .6px;
+    color: var(--green); background: var(--green-soft);
+    border: 1px solid rgba(34, 197, 94, .32);
+    padding: 2px 8px; border-radius: 999px;
+}
+.edu-session .r2 { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; margin-top: 6px; }
+.edu-session b { font-size: 14.5px; font-weight: 800; letter-spacing: -.2px; }
+.edu-session small { display: block; font-size: 11px; color: var(--accent); font-weight: 600; }
+.edu-session .grid {
+    width: 32px; height: 32px; flex: 0 0 auto;
+    display: grid; place-items: center;
+    border-radius: 9px; border: 1px solid var(--line);
+    background: var(--panel-3); color: var(--text-2); font-size: 13px;
+}
+.edu-nav { flex: 1 1 auto; overflow-y: auto; padding: 6px 10px 24px; }
+.edu-nav ul { list-style: none; margin: 0; padding: 0; }
+.edu-nav .grp {
+    font-size: 9.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--nav-group); padding: 16px 12px 7px;
+}
+.edu-nav a.row {
+    display: flex; align-items: center; gap: 11px;
+    padding: 10px 12px; margin-bottom: 2px;
+    border-radius: 11px;
+    border: 1px solid transparent;
+    color: var(--nav-text); font-size: 13.5px; font-weight: 600;
+    cursor: pointer; transition: background .14s, color .14s;
+}
+.edu-nav a.row > i.lead { width: 18px; text-align: center; font-size: 14px; flex: 0 0 auto; opacity: .9; color: var(--nav-icon); }
+.edu-nav a.row > span { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.edu-nav a.row i.chev { font-size: 10px; color: var(--nav-group); transition: transform .18s; }
+.edu-nav a.row:hover { color: var(--nav-hover-text); background: var(--nav-hover-bg); border-color: var(--line); }
+.edu-nav li.open > a.row { color: var(--nav-hover-text); background: var(--nav-hover-bg); border-color: var(--line); }
+.edu-nav li.open > a.row i.chev { transform: rotate(180deg); }
+.edu-nav li.active > a.row {
+    color: var(--nav-active);
+    background: var(--nav-active-bg);
+    border-color: var(--nav-active-line);
+    box-shadow: inset 2px 0 0 var(--nav-active);
+}
+.edu-nav li.active > a.row i.chev { color: var(--nav-active); }
+.edu-nav .sub {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .22s ease;
+    margin: 2px 0 6px;
+    padding-left: 22px;
+    border-left: 1px solid var(--line);
+    margin-left: 20px;
+    background: var(--sub-bg);
+}
+.edu-nav li.open .sub { max-height: 900px; }
+/* edu-shell.js sets html.js. If the script is missing or cached-stale the groups must
+   still be reachable, so the collapse only applies once the toggler is on the page. */
+html:not(.js) .edu-nav .sub { max-height: none; overflow: visible; }
+.edu-nav .sub a {
+    display: flex; align-items: center; gap: 9px;
+    padding: 7.5px 10px; border-radius: 9px;
+    color: var(--sub-text); font-size: 12.5px; font-weight: 500;
+}
+.edu-nav .sub a i { font-size: 10px; width: 14px; text-align: center; opacity: .7; }
+.edu-nav .sub a:hover { color: var(--nav-hover-text); background: var(--nav-hover-bg); }
+.edu-nav .sub a.on { color: var(--nav-active); background: var(--nav-active-bg); font-weight: 700; }
+.edu-nav a.out { color: var(--red); }
+.edu-nav a.out:hover { background: var(--red-soft); border-color: rgba(239, 68, 68, .3); color: var(--red); }
+
+/* Mobile drawer backdrop — edu-shell.js creates it on first burger tap. */
+.edu-scrim { position: fixed; inset: 0; z-index: 54; background: rgba(3, 2, 8, .62); backdrop-filter: blur(2px); opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; }
+.edu-scrim.on { opacity: 1; visibility: visible; }
+@media (min-width: 992px) { .edu-scrim { display: none; } }
+
+/* ── content ──────────────────────────────────────────────── */
+.edu-main {
+    margin: 62px 0 0 258px;
+    padding: 24px 28px 64px;
+    min-height: calc(100vh - 62px);
+    transition: margin .2s;
+}
+body.nav-collapsed .edu-main { margin-left: 0; }
+body.nav-collapsed .edu-sidebar { transform: translateX(-100%); }
+.edu-sidebar { transition: transform .2s; }
+
+.edu-page-head { display: flex; align-items: flex-start; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; }
+.edu-page-head h1 { margin: 0; font-size: 25px; font-weight: 800; letter-spacing: -.5px; }
+.edu-page-head h1 i { color: var(--accent); margin-right: 9px; }
+.edu-page-head p { margin: 4px 0 0; font-size: 13px; color: var(--text-2); }
+.edu-page-head .acts { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ── buttons ──────────────────────────────────────────────── */
+.edu-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    height: 38px; padding: 0 15px;
+    border-radius: 10px;
+    border: 1px solid var(--line-2);
+    background: var(--panel-2);
+    color: var(--text);
+    font: inherit; font-size: 13px; font-weight: 700;
+    cursor: pointer; white-space: nowrap;
+    transition: filter .14s, transform .05s;
+}
+.edu-btn:hover { filter: brightness(1.14); }
+.edu-btn:active { transform: translateY(1px); }
+.edu-btn i { font-size: 12px; opacity: .9; }
+.edu-btn.gold { background: linear-gradient(135deg, #f6c445, #e29a06); color: #221703; border-color: transparent; }
+.edu-btn.green { background: linear-gradient(135deg, #2fd27a, #0f9f57); color: #04220f; border-color: transparent; }
+.edu-btn.purple { background: linear-gradient(135deg, var(--btn-1), var(--btn-2)); color: #fff; border-color: transparent; }
+.edu-btn.red { background: linear-gradient(135deg, #f87171, #dc2626); color: #fff; border-color: transparent; }
+.edu-btn.ghost { background: transparent; }
+.edu-btn.sm { height: 32px; padding: 0 11px; font-size: 12px; border-radius: 9px; }
+
+/* ── cards / panels ───────────────────────────────────────── */
+.edu-card {
+    background: linear-gradient(165deg, var(--panel-2), var(--panel) 62%);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .055);
+}
+.edu-card .head {
+    display: flex; align-items: center; gap: 12px;
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--line);
+}
+.edu-card .head h3 { margin: 0; font-size: 14.5px; font-weight: 800; letter-spacing: -.2px; }
+.edu-card .head .sub { display: block; font-size: 11.5px; font-weight: 500; color: var(--text-3); margin-top: 2px; }
+.edu-card .head .r { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.edu-card .head .r a { font-size: 12px; font-weight: 700; color: var(--green); }
+.edu-card .head .r a:hover { text-decoration: underline; }
+.edu-card .body { padding: 18px; }
+.edu-card .body.tight { padding: 8px 0 0; }
+
+/* stat cards */
+.edu-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 18px; }
+.edu-stat {
+    position: relative; overflow: hidden;
+    padding: 16px 18px;
+    background: linear-gradient(160deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+.edu-stat .lbl { font-size: 10.5px; font-weight: 800; letter-spacing: .9px; text-transform: uppercase; color: var(--text-3); }
+.edu-stat .val { font-size: 28px; font-weight: 800; margin-top: 6px; line-height: 1.1; }
+.edu-stat .note { font-size: 11.5px; color: var(--text-2); margin-top: 4px; }
+.edu-stat .ic {
+    position: absolute; top: 15px; right: 15px;
+    width: 40px; height: 40px; border-radius: 11px;
+    display: grid; place-items: center; font-size: 15px;
+}
+.edu-stat .ic.p { color: var(--accent); background: var(--accent-soft); }
+.edu-stat .ic.g { color: var(--green); background: var(--green-soft); }
+.edu-stat .ic.r { color: var(--red); background: var(--red-soft); }
+.edu-stat .ic.o { color: var(--gold); background: var(--gold-soft); }
+.edu-stat .ic.b { color: var(--blue); background: var(--blue-soft); }
+.edu-stat .ic.t { color: var(--teal); background: var(--teal-soft); }
+
+/* chips */
+.edu-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.edu-chip {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 9px 14px;
+    border-radius: 11px;
+    border: 1px solid var(--line-2);
+    background: var(--panel-2);
+    font-size: 12.5px; font-weight: 700;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+.edu-chip b { font-size: 14px; font-weight: 800; letter-spacing: -.3px; }
+.edu-chip.p { color: var(--accent); border-color: rgba(139, 92, 246, .42); background: var(--accent-soft); }
+.edu-chip.g { color: var(--green); border-color: rgba(34, 197, 94, .42); background: var(--green-soft); }
+.edu-chip.r { color: var(--red); border-color: rgba(239, 68, 68, .42); background: var(--red-soft); }
+.edu-chip.o { color: var(--gold); border-color: rgba(240, 180, 41, .42); background: var(--gold-soft); }
+.edu-chip.b { color: var(--blue); border-color: rgba(59, 130, 246, .42); background: var(--blue-soft); }
+.edu-chip.t { color: var(--teal); border-color: rgba(20, 184, 166, .42); background: var(--teal-soft); }
+
+/* badges */
+.edu-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: .4px; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 999px; border: 1px solid transparent;
+}
+.edu-badge.p { color: var(--accent); background: var(--accent-soft); border-color: rgba(139, 92, 246, .3); }
+.edu-badge.g { color: var(--green); background: var(--green-soft); border-color: rgba(34, 197, 94, .3); }
+.edu-badge.r { color: var(--red); background: var(--red-soft); border-color: rgba(239, 68, 68, .3); }
+.edu-badge.o { color: var(--gold); background: var(--gold-soft); border-color: rgba(240, 180, 41, .3); }
+.edu-badge.b { color: var(--blue); background: var(--blue-soft); border-color: rgba(59, 130, 246, .3); }
+.edu-badge.m { color: var(--text-2); background: var(--panel-3); border-color: var(--line); }
+
+/* ── tables ───────────────────────────────────────────────── */
+.edu-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.edu-table th {
+    text-align: left; padding: 10px 18px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase;
+    color: var(--text-3);
+    background: var(--panel-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+}
+.edu-table td { padding: 12px 18px; border-bottom: 1px solid var(--line); color: var(--text-2); vertical-align: middle; }
+.edu-table td.strong, .edu-table td b { color: var(--text); font-weight: 700; }
+.edu-table tbody tr:hover td { background: rgba(255, 255, 255, .022); }
+html[data-theme="light"] .edu-table tbody tr:hover td { background: rgba(23, 20, 37, .025); }
+.edu-table tbody tr:last-child td { border-bottom: 0; }
+.edu-table .num { font-variant-numeric: tabular-nums; }
+.edu-table .actions { display: flex; gap: 6px; justify-content: flex-end; }
+
+/* ── forms ────────────────────────────────────────────────── */
+.edu-form { display: grid; gap: 14px; }
+.edu-form .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.edu-form .cols.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.edu-field label { display: block; font-size: 11px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
+.edu-field .hint { display: block; font-size: 11.5px; color: var(--text-3); margin-top: 5px; }
+.edu-input, .edu-form input[type=text], .edu-form input[type=number], .edu-form input[type=date],
+.edu-form input[type=time], .edu-form input[type=email], .edu-form input[type=month],
+.edu-form select, .edu-form textarea {
+    width: 100%;
+    min-height: 40px;
+    padding: 9px 12px;
+    border-radius: 11px;
+    border: 1px solid var(--line-2);
+    background: var(--panel-3);
+    color: var(--text);
+    font: inherit; font-size: 13px;
+    outline: none;
+    box-sizing: border-box;
+}
+.edu-form textarea { min-height: 92px; resize: vertical; }
+.edu-form input:focus, .edu-form select:focus, .edu-form textarea:focus, .edu-input:focus {
+    border-color: rgba(139, 92, 246, .55);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.edu-check {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--line-2);
+    border-radius: 11px;
+    background: var(--panel-2);
+    font-size: 13px; font-weight: 600;
+    cursor: pointer;
+}
+.edu-check input { width: 16px; height: 16px; accent-color: var(--green); flex: 0 0 auto; }
+.edu-check.on { border-color: rgba(34, 197, 94, .5); background: var(--green-soft); color: var(--text); }
+.edu-checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+
+/* ── misc blocks ──────────────────────────────────────────── */
+.edu-list { display: grid; gap: 2px; }
+.edu-list .it { display: flex; gap: 12px; padding: 13px 18px; border-bottom: 1px solid var(--line); }
+.edu-list .it:last-child { border-bottom: 0; }
+.edu-list .it:hover { background: rgba(255, 255, 255, .022); }
+html[data-theme="light"] .edu-list .it:hover { background: rgba(23, 20, 37, .025); }
+.edu-list .it .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; flex: 0 0 auto; }
+.edu-list .it .t { font-size: 13px; font-weight: 700; color: var(--text); }
+.edu-list .it .d { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+.edu-list .it .r { margin-left: auto; text-align: right; font-size: 11px; color: var(--text-3); white-space: nowrap; }
+
+.edu-empty { padding: 34px 18px; text-align: center; color: var(--text-2); font-size: 13px; }
+.edu-empty i {
+    display: grid; place-items: center;
+    width: 54px; height: 54px; margin: 0 auto 12px;
+    border-radius: 16px; background: var(--accent-soft);
+    color: var(--accent); font-size: 20px;
+}
+.edu-kv { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 12.5px; }
+.edu-kv:last-child { border-bottom: 0; }
+.edu-kv span { color: var(--text-3); }
+.edu-kv b { color: var(--text); font-weight: 700; }
+.edu-bar { height: 7px; border-radius: 999px; background: var(--panel-3); overflow: hidden; }
+.edu-bar i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--teal)); }
+.edu-grid { display: grid; gap: 16px; }
+.edu-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.edu-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.edu-split { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 16px; align-items: start; }
+.edu-muted { color: var(--text-3); }
+.edu-mono { font-variant-numeric: tabular-nums; }
+
+/* calendar */
+.edu-cal { width: 100%; border-collapse: separate; border-spacing: 4px; }
+.edu-cal th { font-size: 9.5px; font-weight: 800; letter-spacing: .6px; color: var(--text-3); text-transform: uppercase; padding: 2px 0; text-align: center; background: none; border: 0; }
+.edu-cal td { text-align: center; padding: 0; border: 0; }
+.edu-cal .d {
+    display: grid; place-items: center; gap: 2px;
+    height: 30px; border-radius: 9px;
+    font-size: 11.5px; font-weight: 600; color: var(--text-2);
+    border: 1px solid transparent;
+}
+.edu-cal .d.pad { color: var(--text-3); opacity: .3; }
+.edu-cal .d.mark { background: var(--accent-soft); border-color: rgba(139, 92, 246, .35); color: var(--text); }
+.edu-cal .d.today { background: linear-gradient(140deg, var(--accent), var(--accent-2)); color: #fff; font-weight: 800; }
+.edu-cal .d i { width: 4px; height: 4px; border-radius: 50%; display: block; }
+
+/* ── footer status bar ────────────────────────────────────── */
+.edu-foot {
+    position: fixed; left: 258px; right: 0; bottom: 0; z-index: 50;
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    padding: 0 20px; min-height: 38px;
+    font-size: 11.5px; color: var(--text-3);
+    background: var(--shell);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line);
+    transition: left .2s;
+}
+body.nav-collapsed .edu-foot { left: 0; }
+.edu-foot b { color: var(--text-2); font-weight: 700; }
+.edu-foot .sep { width: 1px; height: 14px; background: var(--line-2); }
+.edu-foot .clock { font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; color: var(--accent); font-weight: 700; letter-spacing: .5px; }
+.edu-foot .right { margin-left: auto; }
+.edu-foot .heart { color: var(--red); }
+
+/* ── legacy component bridge ───────────────────────────────
+   Pages written against the old admin/teacher/student shell keep their
+   class names (.card, .btn-primary, table.data, .badge.ok …); this maps
+   them onto the tokens so a page needs no markup edit to go dark. */
+html[data-theme] .card {
+    background: linear-gradient(165deg, var(--panel-2), var(--panel) 62%);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .055);
+    padding: 18px;
+    margin-bottom: 16px;
+    color: var(--text);
+}
+html[data-theme] .card h2, html[data-theme] .card h3 { font-size: 15.5px; font-weight: 800; letter-spacing: -.2px; color: var(--text); }
+html[data-theme] .grid { display: grid; gap: 16px; }
+html[data-theme] .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+html[data-theme] .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+html[data-theme] .grid-4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+html[data-theme] .btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    height: 38px; padding: 0 15px;
+    border-radius: 10px; border: 1px solid var(--line-2);
+    background: var(--panel-2); color: var(--text);
+    font: inherit; font-size: 13px; font-weight: 700;
+    cursor: pointer; text-decoration: none; white-space: nowrap;
+    box-shadow: 0 12px 24px -16px rgba(0, 0, 0, .9);
+    transition: transform .14s ease, filter .14s ease, box-shadow .14s ease;
+}
+html[data-theme] .btn:hover { filter: brightness(1.14); transform: translateY(-1px); box-shadow: 0 16px 28px -16px rgba(0, 0, 0, .95); }
+html[data-theme] .btn:active { transform: translateY(0); filter: brightness(.97); }
+html[data-theme] .btn-primary { background: linear-gradient(135deg, var(--btn-1), var(--btn-2)); color: #fff; border-color: transparent; }
+html[data-theme] .btn-primary:hover { box-shadow: 0 16px 30px -15px rgba(124, 58, 237, .75); }
+html[data-theme] .btn-secondary { background: var(--panel-2); color: var(--text); border-color: var(--line-2); }
+html[data-theme] .btn-info { background: linear-gradient(135deg, #38bdf8, var(--blue)); color: #fff; border-color: transparent; }
+html[data-theme] .btn-success { background: linear-gradient(135deg, #2fd27a, #0f9f57); color: #04220f; border-color: transparent; }
+html[data-theme] .btn-success:hover { box-shadow: 0 16px 30px -15px rgba(24, 160, 88, .7); }
+html[data-theme] .btn-danger { background: linear-gradient(135deg, #f87171, #dc2626); color: #fff; border-color: transparent; }
+html[data-theme] .btn-warning { background: linear-gradient(135deg, #f6c445, #e29a06); color: #221703; border-color: transparent; }
+html[data-theme] .btn-warning:hover { box-shadow: 0 16px 30px -15px rgba(226, 154, 6, .7); }
+html[data-theme] .btn-sm { height: 31px; padding: 0 11px; font-size: 12px; border-radius: 9px; }
+
+html[data-theme] table.data {
+    width: 100%; border-collapse: collapse;
+    background: var(--panel); color: var(--text-2);
+    border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+    font-size: 13px;
+}
+html[data-theme] table.data th {
+    background: var(--panel-2); color: var(--text-3);
+    font-size: 10.5px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase;
+    padding: 11px 15px; text-align: left; border-bottom: 1px solid var(--line);
+}
+html[data-theme] table.data td { padding: 12px 15px; border-bottom: 1px solid var(--line); }
+html[data-theme] table.data tr:last-child td { border-bottom: 0; }
+html[data-theme] table.data tbody tr:hover td { background: rgba(255, 255, 255, .022); }
+html[data-theme] table.data td b, html[data-theme] table.data td.strong { color: var(--text); }
+
+html[data-theme] .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 9px; border-radius: 999px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: .4px; text-transform: uppercase;
+    border: 1px solid transparent;
+}
+html[data-theme] .badge.ok, html[data-theme] .badge.success { color: var(--green); background: var(--green-soft); border-color: rgba(34, 197, 94, .3); }
+html[data-theme] .badge.bad, html[data-theme] .badge.danger { color: var(--red); background: var(--red-soft); border-color: rgba(239, 68, 68, .3); }
+html[data-theme] .badge.warn, html[data-theme] .badge.warning { color: var(--gold); background: var(--gold-soft); border-color: rgba(240, 180, 41, .3); }
+html[data-theme] .badge.info { color: var(--blue); background: var(--blue-soft); border-color: rgba(59, 130, 246, .3); }
+html[data-theme] .badge.muted { color: var(--text-2); background: var(--panel-3); border-color: var(--line); }
+
+html[data-theme] .stat-box {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px;
+    background: linear-gradient(160deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line); border-radius: 15px; box-shadow: var(--shadow);
+}
+html[data-theme] .stat-box .icon {
+    width: 42px; height: 42px; border-radius: 12px; flex: 0 0 auto;
+    display: grid; place-items: center; font-size: 15px;
+    color: var(--accent); background: var(--accent-soft);
+}
+html[data-theme] .stat-box .icon.ok { color: var(--green); background: var(--green-soft); }
+html[data-theme] .stat-box .icon.bad { color: var(--red); background: var(--red-soft); }
+html[data-theme] .stat-box .icon.warn { color: var(--gold); background: var(--gold-soft); }
+html[data-theme] .stat-box .icon.info { color: var(--blue); background: var(--blue-soft); }
+html[data-theme] .stat-box .value { font-size: 23px; font-weight: 800; letter-spacing: -.6px; color: var(--text); }
+/* the export/id-card screens name the figure .number and carry their own near-black,
+   which the value remap leaves alone because it reads as "dark text on a chip" */
+html[data-theme] .stat-box .number { font-size: 24px; font-weight: 800; color: var(--text); }
+html[data-theme] .stat-box .label { font-size: 10.5px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; color: var(--text-3); }
+
+html[data-theme] .filter-bar {
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;
+    margin-bottom: 16px; padding: 14px;
+    background: linear-gradient(160deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line); border-radius: 14px;
+}
+html[data-theme] .form-control, html[data-theme] .form-group input, html[data-theme] .form-group select, html[data-theme] .form-group textarea {
+    width: 100%; min-height: 38px; padding: 9px 12px;
+    border-radius: 11px; border: 1px solid var(--line-2);
+    background: var(--panel); color: var(--text);
+    font: inherit; font-size: 13px; outline: none; box-sizing: border-box;
+    box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, .8);
+    transition: border-color .16s ease, box-shadow .16s ease;
+}
+html[data-theme] textarea.form-control { min-height: 100px; resize: vertical; }
+html[data-theme] .form-control:focus, html[data-theme] .form-group input:focus,
+html[data-theme] .form-group select:focus, html[data-theme] .form-group textarea:focus {
+    border-color: rgba(139, 92, 246, .55); box-shadow: 0 0 0 3px var(--accent-soft), inset 0 2px 5px -3px rgba(0, 0, 0, .8);
+}
+html[data-theme] .form-group { margin-bottom: 14px; }
+/* field captions, but a label that *holds* a tick control is an inline
+   choice row — forcing it to block splits the box from its text.
+   .toggle-label is excluded for the same reason: it is a sentence beside a
+   switch (create-class "Enable Join Button"), not a caption above a field. */
+html[data-theme] .form-group label:not(:has(input[type=checkbox], input[type=radio])):not(.toggle-label) { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
+html[data-theme] .form-group small { display: block; font-size: 11.5px; color: var(--text-3); margin-top: 5px; }
+
+html[data-theme] .alert {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 16px; margin-bottom: 16px;
+    border-radius: 12px; border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft); color: var(--text); font-size: 13px;
+}
+html[data-theme] .alert-success { color: var(--green); background: var(--green-soft); border-color: rgba(34, 197, 94, .28); border-left-color: var(--green); }
+html[data-theme] .alert-danger { color: var(--red); background: var(--red-soft); border-color: rgba(239, 68, 68, .28); border-left-color: var(--red); }
+html[data-theme] .alert-warning { color: var(--gold); background: var(--gold-soft); border-color: rgba(240, 180, 41, .28); border-left-color: var(--gold); }
+html[data-theme] .alert-info { color: var(--blue); background: var(--blue-soft); border-color: rgba(59, 130, 246, .28); border-left-color: var(--blue); }
+
+html[data-theme] .tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+html[data-theme] .tabs a {
+    padding: 10px 16px; font-size: 13px; font-weight: 700; color: var(--text-3);
+    border-bottom: 2px solid transparent; margin-bottom: -1px; text-decoration: none;
+}
+html[data-theme] .tabs a:hover { color: var(--text); }
+html[data-theme] .tabs a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+html[data-theme] .empty-state {
+    padding: 46px 20px; text-align: center;
+    background: linear-gradient(165deg, var(--panel-2), var(--panel) 62%);
+    border: 1px solid var(--line); border-radius: 16px;
+    box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .055);
+}
+html[data-theme] .empty-state i {
+    display: grid; place-items: center;
+    width: 60px; height: 60px; margin: 0 auto 14px;
+    border-radius: 18px; background: var(--accent-soft);
+    color: var(--accent); font-size: 22px;
+}
+html[data-theme] .empty-state h3 { font-size: 16px; font-weight: 800; color: var(--text); }
+html[data-theme] .empty-state p { font-size: 13px; color: var(--text-3); }
+html[data-theme] .muted { color: var(--text-3); }
+html[data-theme] .notice-item {
+    padding: 16px 18px; margin-bottom: 12px;
+    background: linear-gradient(160deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    border-radius: 14px; color: var(--text-2);
+}
+html[data-theme] .notice-item.event { border-left-color: var(--blue); }
+html[data-theme] .notice-item.news { border-left-color: var(--green); }
+html[data-theme] .notice-item.alert, html[data-theme] .notice-item.warning { border-left-color: var(--red); }
+html[data-theme] .notice-item h3 { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+html[data-theme] .notice-item .meta { font-size: 11.5px; color: var(--text-3); display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+html[data-theme] .notice-item .body { font-size: 13.5px; color: var(--text-2); white-space: pre-wrap; }
+html[data-theme] h1, html[data-theme] h2, html[data-theme] h3, html[data-theme] h4 { color: var(--text); }
+html[data-theme] a { color: inherit; }
+
+/* old shell content wrapper, when a page still uses it */
+html[data-theme] .main-content {
+    margin: 62px 0 0 258px;
+    padding: 24px 28px 64px;
+    min-height: calc(100vh - 62px);
+}
+html[data-theme] .page-header { display: flex; align-items: flex-start; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; }
+html[data-theme] .page-header h1 { margin: 0; font-size: 25px; font-weight: 800; letter-spacing: -.5px; }
+html[data-theme] .page-header h1 i { color: var(--accent); margin-right: 9px; }
+html[data-theme] .page-header p { margin: 4px 0 0; font-size: 13px; color: var(--text-2); }
+html[data-theme] .page-header > div:last-child { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+@media (max-width: 991px) {
+    html[data-theme] .main-content { margin-left: 0; padding: 18px 16px 72px; }
+}
+
+/* ── page-transition loader (its own styles ship in the body) ─ */
+html[data-theme="dark"] #al-nav-loader { background: rgba(7, 6, 13, .88) !important; color: #a78bfa !important; }
+html[data-theme="dark"] #al-nav-loader .al-nav-spin { border-color: rgba(255, 255, 255, .12) !important; border-top-color: var(--accent) !important; }
+html[data-theme="light"] #al-nav-loader { background: rgba(255, 255, 255, .9) !important; }
+
+/* ============================================================
+   LEGACY PAGE BRIDGE — old admin/teacher/student pages ship ~200
+   lines of their own <style> that reads design tokens off :root.
+   html[data-theme] (0,1,1) beats a page's :root (0,1,0) on the same
+   element, so remapping the legacy names here darkens every page
+   that keeps its inline CSS — no markup edit needed.
+   ============================================================ */
+html[data-theme] {
+    --primary: var(--accent);
+    --primary-dark: var(--accent-2);
+    --primary-light: var(--accent-soft);
+    --secondary: var(--text-2);
+    --gray-50: var(--panel-2);
+    --gray-100: var(--panel-2);
+    --gray-200: var(--panel-3);
+    --gray-300: var(--line-2);
+    --gray-400: var(--text-3);
+    --gray-500: var(--text-2);
+    --gray-600: var(--text-2);
+    --gray-700: var(--text);
+    --gray-800: var(--text);
+    --gray-900: var(--text);
+    --success: var(--green);  --ok: var(--green);
+    --danger: var(--red);     --bad: var(--red);
+    --warning: var(--gold);   --warn: var(--gold);
+    --info: var(--blue);
+    --radius: 14px; --radius-lg: 18px; --radius-sm: 10px;
+    --shadow-lg: 0 26px 60px -26px rgba(0, 0, 0, .85);
+    --transition: .2s ease;
+    --font-bn: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* a migrated page keeps its own <div class="main-content"><div class="container">
+   wrappers — inside the chrome they must add no margin, padding or width cap.
+   The chrome already reserves the 258px sidebar with .edu-main's margin, so a page's
+   own max-width: calc(100% - 260px) would shrink the column by the sidebar a second time. */
+html[data-theme] .edu-main .main-content { margin: 0; padding: 0; min-height: 0; max-width: 100%; width: 100%; flex: 1 1 auto; }
+/* the same offset under page-invented wrapper class names */
+html[data-theme] .edu-main .teacher-main-content,
+html[data-theme] .edu-main .ceq-main,
+html[data-theme] .edu-main .mr-main,
+html[data-theme] .edu-main .ar-main,
+html[data-theme] .edu-main .am-main,
+html[data-theme] .edu-main .arpt-main,
+html[data-theme] .edu-main .atr-main,
+html[data-theme] .edu-main .bt-main,
+html[data-theme] .edu-main .cq-main,
+html[data-theme] .edu-main .cr-main,
+html[data-theme] .edu-main .mcq-main,
+html[data-theme] .edu-main .qb-main,
+html[data-theme] .edu-main .qz-main,
+html[data-theme] .edu-main .sat-main,
+html[data-theme] .edu-main .sb-main,
+html[data-theme] .edu-main .tat-main { margin: 0; padding: 0; min-height: 0; max-width: 100%; width: 100%; }
+html[data-theme] .edu-main .container { max-width: 100%; margin: 0; padding: 0; width: 100%; }
+/* a standalone settings card keeps its own readable measure on purpose, but flush-left
+   leaves the whole right side of the column empty; auto margins centre it and are a
+   no-op on a card that already fills the column */
+html[data-theme] .edu-main > .card,
+html[data-theme] .edu-main > .container > .card,
+html[data-theme] .edu-main > .main-content > .card,
+html[data-theme] .edu-main > .main-content > .container > .card { margin-left: auto; margin-right: auto; }
+/* student-sidebar.css keys its layout off an #id, which outranks every class
+   selector above; the light panel it paints must not show through the shell */
+html[data-theme] #sidebar-root ~ .main-content { background: transparent; }
+html[data-theme] .edu-main .page-header { display: none; }
+
+/* bare tables (legacy pages use <table>, not table.data) */
+html[data-theme] .edu-main table { width: 100%; border-collapse: collapse; background: transparent; color: var(--text); }
+html[data-theme] .edu-main table th {
+    background: var(--panel-3); color: var(--text-2);
+    font-size: 10.5px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase;
+    padding: 11px 13px; text-align: left; border-bottom: 1px solid var(--line);
+}
+html[data-theme] .edu-main table td { padding: 11px 13px; border-bottom: 1px solid var(--line); color: var(--text-2); font-size: 13px; }
+
+/* tick controls: the UA white square is the one light pocket a hex remap cannot reach */
+html[data-theme] .edu-main input[type=checkbox], html[data-theme] .edu-main input[type=radio] {
+    width: 15px; height: 15px; accent-color: var(--accent); cursor: pointer;
+}
+/* an actions cell of small buttons must not fold onto two lines and double the row height */
+html[data-theme] .edu-main td:has(.btn) { white-space: nowrap; }
+html[data-theme] .edu-main td .btn-sm + .btn-sm { margin-left: 5px; }
+html[data-theme] .edu-main .actions { flex-wrap: nowrap; }
+html[data-theme] .edu-main td:has(.actions) { white-space: nowrap; }
+html[data-theme] .edu-main .actions .btn-icon {
+    background: var(--panel-2); border: 1px solid var(--line);
+    transition: transform .14s ease, background .14s ease, color .14s ease;
+}
+html[data-theme] .edu-main .actions .btn-icon:hover { transform: translateY(-1px); }
+html[data-theme] .edu-main table tbody tr:hover td { background: var(--accent-soft); color: var(--text); }
+html[data-theme] .edu-main table tr:last-child td { border-bottom: none; }
+html[data-theme] .edu-main .table-responsive { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* bare form controls (legacy pages use plain <input>/<select> without .form-control)
+   only the surface is forced; pages keep their own sizing and borders */
+html[data-theme] .edu-main select,
+html[data-theme] .edu-main textarea,
+html[data-theme] .edu-main input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]):not([type=button]):not([type=submit]):not([type=reset]):not([type=image]) {
+    background-color: var(--panel-2); color: var(--text);
+}
+html[data-theme] .edu-main input::placeholder, html[data-theme] .edu-main textarea::placeholder { color: var(--text-3); }
+
+/* card titles, stat cards, section heads */
+html[data-theme] .card-title { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 800; color: var(--text); margin: 0 0 14px; padding: 0 0 10px; border-bottom: 1px solid var(--line); }
+html[data-theme] .card-title i { color: var(--accent); }
+html[data-theme] .header-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+html[data-theme] .stat-card { background: linear-gradient(165deg, var(--panel-2), var(--panel) 62%); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .055); padding: 16px 18px; color: var(--text); }
+html[data-theme] .stat-card .stat-icon, html[data-theme] .stat-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; background: var(--accent-soft); color: var(--accent); }
+html[data-theme] .stat-card .stat-number, html[data-theme] .stat-number { font-size: 23px; font-weight: 800; letter-spacing: -.6px; color: var(--text); }
+html[data-theme] .stat-card .stat-label, html[data-theme] .stat-label { font-size: 10.5px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; color: var(--text-3); }
+html[data-theme] .section-title { font-size: 15px; font-weight: 800; color: var(--text); margin: 0 0 12px; }
+html[data-theme] .section-divider { border: none; border-top: 1px solid var(--line); margin: 18px 0; }
+html[data-theme] .section-hint { font-size: 12px; color: var(--text-3); }
+
+/* badges — legacy pastel chips become tinted pills */
+html[data-theme] .badge, html[data-theme] .status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: .3px; background: var(--panel-3); color: var(--text-2); }
+html[data-theme] .badge-success, html[data-theme] .status-badge.success { background: var(--green-soft); color: var(--green); }
+html[data-theme] .badge-danger, html[data-theme] .badge-failed, html[data-theme] .status-badge.danger { background: var(--red-soft); color: var(--red); }
+html[data-theme] .badge-warning, html[data-theme] .status-badge.warning { background: var(--gold-soft); color: var(--gold); }
+html[data-theme] .badge-info, html[data-theme] .badge-primary, html[data-theme] .badge-secondary { background: var(--blue-soft); color: var(--blue); }
+
+/* modals */
+html[data-theme] .modal-overlay, html[data-theme] .modal-backdrop { position: fixed; inset: 0; background: rgba(3, 2, 8, .68); backdrop-filter: blur(3px); }
+html[data-theme] .modal-content, html[data-theme] .edu-main .modal { background: linear-gradient(160deg, var(--panel-2), var(--panel)); border: 1px solid var(--line-2); border-radius: 18px; color: var(--text); box-shadow: var(--shadow-lg); }
+html[data-theme] .modal-header { border-bottom: 1px solid var(--line); }
+html[data-theme] .modal-header h2, html[data-theme] .modal-header h3 { font-size: 16px; font-weight: 800; color: var(--text); }
+html[data-theme] .modal-close, html[data-theme] .close-btn { background: none; border: none; color: var(--text-3); font-size: 22px; cursor: pointer; }
+html[data-theme] .modal-close:hover, html[data-theme] .close-btn:hover { color: var(--text); }
+html[data-theme] .modal-footer { border-top: 1px solid var(--line); }
+
+/* forms in rows, tabs, pagination, progress */
+html[data-theme] .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+html[data-theme] .filter-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+html[data-theme] .form-control::placeholder { color: var(--text-3); }
+html[data-theme] .form-control option { background: var(--panel-2); color: var(--text); }
+html[data-theme] select.form-control { appearance: none; background-color: var(--panel-2); }
+/* a multi-select is a list, not a one-line control: the shared min-height above and the
+   single-line arrow below would both render it wrong */
+html[data-theme] select[multiple] {
+    appearance: auto; background-image: none; padding: 4px; min-height: 0; height: auto;
+}
+html[data-theme] select[multiple] option { padding: 5px 8px; border-radius: 6px; }
+html[data-theme] select[multiple] option:checked {
+    background: var(--accent-soft) linear-gradient(0deg, var(--accent-soft), var(--accent-soft));
+    color: var(--accent); font-weight: 700;
+}
+html[data-theme] .tab-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 15px; font: inherit; font-size: 13px; font-weight: 700; color: var(--text-2); cursor: pointer; }
+html[data-theme] .tab-btn:hover { color: var(--text); }
+html[data-theme] .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+html[data-theme] .pagination-wrap, html[data-theme] .pagination { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+html[data-theme] .pagination a, html[data-theme] .pagination button { min-width: 34px; height: 34px; padding: 0 9px; border-radius: 9px; border: 1px solid var(--line-2); background: var(--panel-2); color: var(--text-2); font-size: 13px; font-weight: 700; cursor: pointer; text-decoration: none; }
+html[data-theme] .pagination a.active, html[data-theme] .pagination .active > a, html[data-theme] .pagination button:hover { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+html[data-theme] .progress { height: 8px; border-radius: 20px; background: var(--panel-3); overflow: hidden; }
+html[data-theme] .progress > div, html[data-theme] .progress-bar { height: 100%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+html[data-theme] .detail-grid, html[data-theme] .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+html[data-theme] .detail-row { border-bottom: 1px solid var(--line); padding: 9px 0; }
+html[data-theme] .info-item, html[data-theme] .note-block { background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--text-2); }
+html[data-theme] .hero-header, html[data-theme] .hero-content { color: var(--text); }
+html[data-theme] .avatar-preview { background: var(--panel-3); border: 1px dashed var(--line-2); }
+html[data-theme] .spinner, html[data-theme] .fa-spinner { color: var(--accent); }
+html[data-theme] .close-alert { background: none; border: none; color: var(--text-3); font-size: 18px; cursor: pointer; }
+html[data-theme] .required { color: var(--red); }
+html[data-theme] hr { border: none; border-top: 1px solid var(--line); }
+html[data-theme] code { background: var(--panel-3); color: var(--gold); padding: 1px 6px; border-radius: 6px; font-size: 12.5px; }
+html[data-theme] .edu-main input[type="checkbox"], html[data-theme] .edu-main input[type="radio"] { accent-color: var(--accent); }
+html[data-theme] .edu-main input[type="date"], html[data-theme] .edu-main input[type="time"],
+html[data-theme] .edu-main input[type="datetime-local"] { color-scheme: dark; }
+html[data-theme="light"] .edu-main input[type="date"], html[data-theme="light"] .edu-main input[type="time"],
+html[data-theme="light"] .edu-main input[type="datetime-local"] { color-scheme: light; }
+html[data-theme] .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 20px; }
+
+/* ── STEP19 control pass: buttons, dropdowns, upload panels, switches ──
+   Every portal page reaches its controls through one of the legacy class
+   names below, so the whole portal is restyled from here — no page file is
+   edited. The rules are written to outrank the per-page <style> blocks that
+   still define .upload-area / .toggle-switch locally (create-class.php and
+   friends), which is why they carry the html[data-theme] prefix. */
+
+/* buttons: one rhythm for size, weight and press feedback */
+html[data-theme] .btn { font-size: 12.5px; letter-spacing: .1px; gap: 8px; user-select: none; }
+html[data-theme] .btn > i { font-size: 12.5px; line-height: 1; opacity: .95; }
+html[data-theme] .btn:focus-visible,
+html[data-theme] .edu-btn:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+html[data-theme] .btn:disabled, html[data-theme] .btn[disabled], html[data-theme] .btn.disabled {
+    opacity: .45; cursor: not-allowed; filter: none; transform: none; box-shadow: none;
+}
+html[data-theme] .btn-xs { height: 26px; padding: 0 9px; font-size: 11px; border-radius: 8px; gap: 5px; }
+html[data-theme] .btn-xs > i { font-size: 10.5px; }
+html[data-theme] .btn-lg { height: 45px; padding: 0 22px; font-size: 14.5px; border-radius: 12px; }
+html[data-theme] .btn-icon { width: 34px; height: 34px; padding: 0; justify-content: center; border-radius: 10px; }
+html[data-theme] .btn-icon.btn-sm { width: 29px; height: 29px; }
+html[data-theme] .btn-outline { background: transparent; color: var(--text-2); border-color: var(--line-2); box-shadow: none; }
+html[data-theme] .btn-outline:hover { color: var(--text); background: var(--accent-soft); border-color: var(--accent); }
+html[data-theme] .btn-ghost { background: transparent; border-color: transparent; color: var(--text-2); box-shadow: none; }
+html[data-theme] .btn-ghost:hover { background: var(--panel-3); color: var(--text); }
+html[data-theme] a.btn { text-decoration: none; line-height: 1; }
+html[data-theme] .btn-group, html[data-theme] .header-actions { display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+/* dropdowns: the arrow was missing on every select that lost its Bootstrap CSS */
+html[data-theme] select.form-control,
+html[data-theme] .edu-main select:not([multiple]):not([size]) {
+    appearance: none; -webkit-appearance: none; cursor: pointer;
+    padding-right: 34px;
+    background-color: var(--panel-2);
+    background-repeat: no-repeat;
+    background-position: right 11px center;
+    background-size: 13px;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b8599' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
+html[data-theme] select.form-control:hover,
+html[data-theme] .edu-main select:not([multiple]):not([size]):hover { border-color: var(--accent); }
+html[data-theme] select.form-control:focus,
+html[data-theme] .edu-main select:not([multiple]):not([size]):focus {
+    border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft);
+}
+html[data-theme] .edu-main select:not([multiple]):not([size])[disabled] { opacity: .5; cursor: not-allowed; }
+
+/* upload panels: the dashed box, its icon, its hint and its button */
+html[data-theme] .upload-area,
+html[data-theme] .drop-zone,
+html[data-theme] .avatar-upload {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 6px; padding: 26px 20px; text-align: center; cursor: pointer;
+    border: 1.5px dashed var(--line-2); border-radius: 15px;
+    background: linear-gradient(165deg, var(--panel-2), var(--panel) 70%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05);
+    transition: border-color .16s ease, background .16s ease, box-shadow .16s ease;
+}
+html[data-theme] .upload-area:hover, html[data-theme] .drop-zone:hover,
+html[data-theme] .upload-area.dragover, html[data-theme] .drop-zone.dragover,
+html[data-theme] .upload-area.is-dragover, html[data-theme] .drop-zone.is-dragover,
+html[data-theme] .avatar-upload:hover {
+    border-color: var(--accent); background: var(--accent-soft);
+    box-shadow: 0 0 0 3px var(--accent-soft), inset 0 1px 0 rgba(255, 255, 255, .05);
+}
+html[data-theme] .upload-area > i:first-child,
+html[data-theme] .drop-zone > i:first-child {
+    width: 52px; height: 52px; margin: 0 0 4px; display: grid; place-items: center;
+    border-radius: 50%; font-size: 20px; color: var(--accent); background: var(--panel-3);
+    border: 1px solid var(--line);
+}
+html[data-theme] .upload-area p, html[data-theme] .drop-zone p { margin: 0; font-size: 13.5px; font-weight: 700; color: var(--text); }
+html[data-theme] .upload-area .hint, html[data-theme] .drop-zone .hint,
+html[data-theme] .upload-area small, html[data-theme] .drop-zone small {
+    font-size: 11.5px; color: var(--text-3); line-height: 1.5;
+}
+html[data-theme] .upload-area .upload-input,
+html[data-theme] .drop-zone input[type=file],
+html[data-theme] .avatar-upload input[type=file] { display: none; }
+html[data-theme] .upload-area .btn, html[data-theme] .drop-zone .btn,
+html[data-theme] .avatar-upload .btn { margin-top: 8px; }
+html[data-theme] .thumb-preview, html[data-theme] .drop-file { margin-top: 12px; }
+html[data-theme] .thumb-preview img, html[data-theme] .avatar-preview img {
+    border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+html[data-theme] .avatar-preview {
+    width: 78px; height: 78px; border-radius: 50%; overflow: hidden; flex: 0 0 auto;
+    display: grid; place-items: center; background: var(--panel-3);
+    border: 1px dashed var(--line-2); color: var(--text-3); font-size: 24px;
+}
+
+/* a bare <input type=file> that never got an upload panel: the native button is the one
+   grey control left on an otherwise themed form */
+html[data-theme] .edu-main input[type=file] {
+    padding: 8px 10px; border: 1px solid var(--line-2); border-radius: 11px;
+    background: var(--panel-2); color: var(--text-2); font-size: 13px;
+}
+html[data-theme] .edu-main input[type=file]::file-selector-button {
+    margin-right: 12px; padding: 7px 14px; border: none; border-radius: 9px;
+    background: var(--accent-soft); color: var(--accent);
+    font: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
+}
+html[data-theme] .edu-main input[type=file]::file-selector-button:hover {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff;
+}
+html[data-theme] .edu-main input[type=file]:disabled { opacity: .5; cursor: not-allowed; }
+
+/* the switch beside a sentence, not a caption */
+html[data-theme] .toggle-switch { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+html[data-theme] .toggle-switch input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none; flex: 0 0 auto; position: relative;
+    width: 44px; height: 24px; margin: 1px 0 0; border-radius: 999px; cursor: pointer;
+    background: var(--panel-3); border: 1px solid var(--line-2);
+    box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, .8);
+    transition: background .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+html[data-theme] .toggle-switch input[type="checkbox"]:checked {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent;
+    box-shadow: 0 6px 14px -8px rgba(124, 58, 237, .9);
+}
+html[data-theme] .toggle-switch input[type="checkbox"]:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+html[data-theme] .toggle-switch input[type="checkbox"]::before {
+    content: ''; position: absolute; width: 18px; height: 18px; top: 2px; left: 3px;
+    border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, .35);
+    transition: left .16s ease;
+}
+html[data-theme] .toggle-switch input[type="checkbox"]:checked::before { left: 23px; }
+html[data-theme] .toggle-switch .toggle-label,
+html[data-theme] .form-group label.toggle-label {
+    display: block; margin: 0; padding: 0;
+    font-size: 13px; font-weight: 600; letter-spacing: 0; text-transform: none;
+    line-height: 1.5; color: var(--text-2); cursor: pointer;
+}
+html[data-theme] .toggle-switch:hover .toggle-label { color: var(--text); }
+
+/* ── selection controls ─────────────────────────────────────────
+   One language for the five shapes a form asks about: a rounded tick box,
+   a ringed radio, the pill switch above, a soft ticked pill when several
+   options can be picked and a solid pill when only one can. Central on
+   purpose — no page carries its own copy of these.
+   :where() inside :not() keeps the exclusions free of specificity, so the
+   switch and the chips (which style their own box) are never caught here.
+   The tick and the dot are painted as backgrounds rather than pseudo-elements:
+   pages that hide a checkbox (position:absolute;opacity:0) must keep their own
+   positioning, and a ::after would have needed a positioned box to sit in. */
+html[data-theme] .edu-main input[type=checkbox]:not(:where(.toggle-switch input, .ff-chip input, .yr-chip input)),
+html[data-theme] .edu-main input[type=radio] {
+    appearance: none; -webkit-appearance: none; flex: 0 0 auto;
+    width: 20px; height: 20px; margin: 0; vertical-align: -5px; cursor: pointer;
+    background-color: var(--panel-2); border: 1.5px solid var(--line-2);
+    transition: background .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+html[data-theme] .edu-main input[type=checkbox]:not(:where(.toggle-switch input, .ff-chip input, .yr-chip input)) { border-radius: 7px; }
+html[data-theme] .edu-main input[type=radio] { border-radius: 50%; }
+html[data-theme] .edu-main input[type=checkbox]:hover:not(:where(.toggle-switch input, .ff-chip input, .yr-chip input)),
+html[data-theme] .edu-main input[type=radio]:hover { border-color: var(--accent); }
+html[data-theme] .edu-main input[type=checkbox]:focus-visible:not(:where(.toggle-switch input, .ff-chip input, .yr-chip input)),
+html[data-theme] .edu-main input[type=radio]:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+html[data-theme] .edu-main input[type=checkbox][disabled]:not(:where(.toggle-switch input, .ff-chip input, .yr-chip input)),
+html[data-theme] .edu-main input[type=radio][disabled] { opacity: .45; cursor: not-allowed; }
+
+/* the tick, white on the accent fill */
+html[data-theme] .edu-main input[type=checkbox]:checked:not(:where(.toggle-switch input, .ff-chip input, .yr-chip input)) {
+    border-color: transparent; box-shadow: 0 5px 12px -7px rgba(124, 58, 237, .95);
+    background-color: var(--accent);
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4.5 12.5 9.8 18 19.5 6.5'/%3E%3C/svg%3E"),
+                      linear-gradient(140deg, var(--accent), var(--accent-2));
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    background-size: 13px 13px, cover;
+}
+html[data-theme] .edu-main input[type=checkbox]:indeterminate:not(:where(.toggle-switch input, .ff-chip input, .yr-chip input)) {
+    border-color: var(--accent); background-color: var(--accent-soft);
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-repeat: no-repeat; background-position: center; background-size: 10px 2.5px;
+}
+/* radio: the gap between ring and dot is the box's own background */
+html[data-theme] .edu-main input[type=radio]:checked {
+    border: 2px solid var(--accent); box-shadow: 0 5px 12px -8px rgba(124, 58, 237, .95);
+    background-color: var(--panel-2);
+    background-image: radial-gradient(circle at center, var(--accent) 0 4.5px, rgba(0, 0, 0, 0) 5.5px);
+    background-repeat: no-repeat; background-position: center; background-size: 100% 100%;
+}
+
+/* chips: the pill carries the state, so the box inside it steps aside but
+   stays focusable — Tab still moves through the options */
+html[data-theme] .edu-main .ff-chips { display: flex; flex-wrap: wrap; gap: 9px; }
+html[data-theme] .edu-main .ff-chip,
+html[data-theme] .edu-main .yr-chip,
+html[data-theme] .edu-main .type-chip,
+html[data-theme] .edu-main .cpl-chip {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px;
+    border: 1.5px solid var(--line-2); border-radius: 999px;
+    background: var(--panel-2); color: var(--text-2);
+    font-size: 12.5px; font-weight: 750; line-height: 1.25; font-family: inherit;
+    cursor: pointer; user-select: none;
+    transition: border-color .15s ease, background .15s ease, color .15s ease,
+                transform .15s ease, box-shadow .15s ease;
+}
+html[data-theme] .edu-main .ff-chip:hover, html[data-theme] .edu-main .yr-chip:hover,
+html[data-theme] .edu-main .type-chip:hover, html[data-theme] .edu-main .cpl-chip:hover {
+    border-color: var(--accent); color: var(--text); transform: translateY(-1px);
+}
+html[data-theme] .edu-main .ff-chip:has(input[type=checkbox]),
+html[data-theme] .edu-main .yr-chip:has(input[type=checkbox]) { position: relative; }
+html[data-theme] .edu-main .ff-chip > input[type=checkbox],
+html[data-theme] .edu-main .yr-chip > input[type=checkbox] {
+    position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none;
+}
+html[data-theme] .edu-main .ff-chip:has(input:focus-visible),
+html[data-theme] .edu-main .yr-chip:has(input:focus-visible) {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft);
+}
+/* picking several: soft fill and a tick */
+html[data-theme] .edu-main .ff-chip.on, html[data-theme] .edu-main .yr-chip.on {
+    background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
+}
+html[data-theme] .edu-main .ff-chip.on::before, html[data-theme] .edu-main .yr-chip.on::before {
+    content: '\2713'; font-size: 13px; font-weight: 900; line-height: 1;
+}
+/* picking one: solid pill */
+html[data-theme] .edu-main .cpl-chip.on {
+    background: linear-gradient(140deg, var(--accent), var(--accent-2));
+    border-color: transparent; color: #fff; box-shadow: 0 8px 18px -11px rgba(124, 58, 237, .95);
+}
+html[data-theme] .edu-main .type-chip.active { color: #fff; border-color: transparent; }
+
+/* the bridge must not beat a legacy page's own narrow-screen collapse */
+@media (max-width: 700px) {
+    html[data-theme] .form-row, html[data-theme] .stats-grid, html[data-theme] .detail-grid, html[data-theme] .info-grid { grid-template-columns: minmax(0, 1fr); }
+    html[data-theme] .filter-row { flex-direction: column; align-items: stretch; }
+    html[data-theme] .header-actions { width: 100%; }
+}
+
+/* ── responsive ──────────────────────────────────────────── */
+@media (max-width: 1360px) {
+    .edu-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .edu-split { grid-template-columns: minmax(0, 1fr); }
+    .edu-checks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 1100px) {
+    .tb-search { display: none; }
+    .edu-grid.two, .edu-grid.three { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 991px) {
+    .edu-sidebar { transform: translateX(-100%); box-shadow: 24px 0 60px rgba(0, 0, 0, .5); }
+    body.nav-open .edu-sidebar { transform: translateX(0); }
+    .edu-main { margin-left: 0; padding: 18px 16px 72px; }
+    .edu-foot { left: 0; }
+    .tb-me .who { display: none; }
+    /* wide tables scroll inside themselves instead of stretching the page */
+    .edu-table, html[data-theme] table.data { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+@media (max-width: 640px) {
+    .edu-stats { grid-template-columns: minmax(0, 1fr); }
+    .edu-form .cols, .edu-form .cols.c3, .edu-checks { grid-template-columns: minmax(0, 1fr); }
+    .edu-page-head h1 { font-size: 21px; }
+    .edu-page-head .acts { margin-left: 0; width: 100%; }
+    .edu-main { padding-bottom: 104px; }
+    .tb-lang, .tb-brand .ver { display: none; }
+    .tb-right { gap: 4px; }
+    .edu-topbar { gap: 10px; padding: 0 12px; }
+    .tb-burger, .tb-icon { width: 34px; height: 34px; }
+    .tb-brand b { font-size: 15px; }
+    .tb-me { padding: 3px 4px; }
+    .tb-me .av { width: 32px; height: 32px; font-size: 11px; }
+    .tb-me i { display: none; }
+    .edu-foot .whoami, .edu-foot .foot-date, .edu-foot .right, .edu-foot .sep { display: none; }
+}
+@media print {
+    .edu-topbar, .edu-sidebar, .edu-foot, .edu-page-head .acts { display: none !important; }
+    .edu-main { margin: 0; padding: 0; }
+    html[data-theme] body { background: #fff; color: #000; }
+}

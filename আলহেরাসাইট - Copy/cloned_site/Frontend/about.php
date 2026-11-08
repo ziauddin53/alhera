@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>আল হেরা অনলাইন মাদরাসা</title>
+            <link rel="icon" href="../uploads/1787225537_favicon_logoalhera.png" type="image/x-icon">
+        <link rel="stylesheet" href="/assets/css/inter-local.css">
+    <link rel="stylesheet" href="/assets/vendor/fontawesome-6.5.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0e14;
+            color: #fff;
+            padding-top: 80px;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: #000000;
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,215,0,0.12);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+            height: 80px;
+        }
+        .header-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logo-link .logo-img {
+            max-height: 50px;
+            width: auto;
+            transition: opacity 0.3s ease;
+        }
+        .logo-link:hover .logo-img {
+            opacity: 0.8;
+        }
+        .logo-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+        .logo-link .brand {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            transition: color 0.3s ease;
+            line-height: 1.2;
+        }
+        .logo-link:hover .brand {
+            color: #f5d77b;
+        }
+        .logo-link .tagline {
+            font-size: 12px;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-menu li a {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f5d77b;
+            transition: width 0.3s ease;
+        }
+        .nav-menu li a:hover {
+            color: #f5d77b;
+        }
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .btn-login {
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+        .btn-login:hover {
+            background: rgba(255,255,255,0.08);
+            color: #f5d77b;
+            border-color: #f5d77b;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+        }
+        .menu-toggle span {
+            width: 26px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #000000;
+                backdrop-filter: blur(16px);
+                padding: 24px 30px;
+                gap: 18px;
+                border-bottom: 1px solid rgba(255,215,0,0.1);
+            }
+            .nav-menu.open { display: flex; }
+            .menu-toggle { display: flex; }
+            .header-actions .btn-login { font-size: 12px; padding: 6px 14px; }
+        }
+        @media (max-width: 600px) {
+            .logo-link .brand { font-size: 20px; }
+            .logo-link .tagline { font-size: 10px; }
+            .logo-link .logo-img { max-height: 40px; }
+            .header-actions .btn-login {
+                display: inline-block;
+                font-size: 12px;
+                padding: 5px 12px;
+            }
+        }
+        @media (max-width: 400px) {
+            .logo-link .brand { font-size: 17px; }
+            .logo-link .logo-img { max-height: 35px; }
+            .header-actions .btn-login {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="main-header">
+    <div class="header-container">
+
+        <!-- Logo + site name -->
+        <a href="https://alheraonline.com" class="logo-link">
+                            <img src="../uploads/1787224184_logo_logoalhera.png" alt="আল হেরা অনলাইন মাদরাসা" class="logo-img">
+                        <div class="logo-text-wrapper">
+                <span class="brand">
+                    আল হেরা অনলাইন মাদরাসা                </span>
+                <span class="tagline">কুরআন ও সুন্নাহ ভিত্তিক শিক্ষা</span>
+            </div>
+        </a>
+
+        <!-- Navigation menu -->
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="/">হোম</a></li>
+            <li><a href="/Frontend/courses.php">কোর্স</a></li>
+            <li><a href="/Frontend/about.php">আমাদের সম্পর্কে</a></li>
+            <li><a href="/Frontend/blog.php">ব্লগ</a></li>
+            <li><a href="/Frontend/contact.php">যোগাযোগ</a></li>
+        </ul>
+
+        <!-- Right-side actions (login only, no language switcher) -->
+        <div class="header-actions">
+            <a href="/login.php" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i> লগইন            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<!-- ===== JavaScript ===== -->
+<script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('navMenu').classList.toggle('open');
+        this.classList.toggle('active');
+    });
+    document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.remove('open');
+            document.getElementById('menuToggle').classList.remove('active');
+        });
+    });
+</script><!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>আমাদের সম্পর্কে - আল হেরা অনলাইন মাদরাসা</title>
+    <link rel="stylesheet" href="/assets/vendor/fontawesome-6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/fonts-hind-siliguri.css"><link rel="stylesheet" href="/assets/css/fonts-noto-nastaliq-urdu.css">
+    <style>
+        :root {
+            --gold: #d4a017;
+            --gold-bright: #f5c842;
+            --gold-dark: #a67c00;
+            --gold-muted: rgba(212,160,23,0.10);
+            --emerald: #0d7c5f;
+            --emerald-light: #10a37f;
+            --dark-1: #050d0f;
+            --dark-2: #0a191f;
+            --dark-3: #0f2429;
+            --dark-4: #152f35;
+            --light-1: #f8f9fa;
+            --light-2: #eef0f2;
+            --light-3: #dde1e6;
+            --text-primary: #0a191f;
+            --text-secondary: #4a5568;
+            --text-muted: #8896a6;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+            --shadow-gold: 0 8px 30px rgba(212,160,23,0.2);
+            --r-sm: 8px;
+            --r-md: 14px;
+            --r-lg: 20px;
+            --r-xl: 28px;
+            --ease: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-out: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: var(--light-1);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { display: block; max-width: 100%; }
+
+        .scroll-prog {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--emerald-light), var(--gold-bright));
+            width: 0%; z-index: 10000; transition: width 0.1s linear;
+        }
+        .btt {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 46px; height: 46px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark-1); border: none; border-radius: 50%;
+            font-size: 16px; cursor: pointer; z-index: 9999;
+            opacity: 0; transform: translateY(20px) scale(0.8);
+            transition: var(--ease); box-shadow: var(--shadow-gold);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .btt.vis { opacity: 1; transform: translateY(0) scale(1); }
+        .btt:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 40px rgba(212,160,23,0.35); }
+
+        .rv { opacity: 0; transform: translateY(50px); transition: opacity var(--ease-out), transform var(--ease-out); }
+        .rv.vis { opacity: 1; transform: translateY(0); }
+        .rv-l { opacity: 0; transform: translateX(-50px); transition: opacity var(--ease-out), transform var(--ease-out); }
+        .rv-l.vis { opacity: 1; transform: translateX(0); }
+        .rv-r { opacity: 0; transform: translateX(50px); transition: opacity var(--ease-out), transform var(--ease-out); }
+        .rv-r.vis { opacity: 1; transform: translateX(0); }
+        .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
+        .d5{transition-delay:.30s}.d6{transition-delay:.36s}.d7{transition-delay:.42s}.d8{transition-delay:.48s}
+
+        .btn-g {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark-1); font-weight: 700; border-radius: 50px;
+            font-size: 0.92rem; border: none; cursor: pointer;
+            transition: var(--ease); position: relative; overflow: hidden;
+        }
+        .btn-g::before {
+            content:''; position:absolute; inset:0;
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+            opacity: 0; transition: var(--ease);
+        }
+        .btn-g span,.btn-g i { position: relative; z-index: 1; }
+        .btn-g:hover::before { opacity: 1; }
+        .btn-g:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(212,160,23,0.35); }
+        .btn-g i { transition: transform .3s ease; font-size: .78rem; }
+        .btn-g:hover i { transform: translateX(3px); }
+
+        .btn-o {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; background: transparent;
+            color: var(--white); font-weight: 700; border-radius: 50px;
+            font-size: 0.92rem; cursor: pointer; transition: var(--ease);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .btn-o:hover { background: var(--white); color: var(--dark-2); border-color: var(--white); transform: translateY(-3px); }
+
+        .sh { text-align: center; margin-bottom: 50px; }
+        .sh h2 { font-size: 2.5rem; font-weight: 800; color: var(--dark-2); line-height: 1.2; margin-bottom: 10px; }
+        .sh h2 .g {
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .sh p { color: var(--text-secondary); font-size: 1.02rem; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+        .sh .line { width: 50px; height: 3px; margin: 14px auto 0; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); border-radius: 10px; }
+
+        /* ============================================================
+           1. Hero
+           ============================================================ */
+        .about-hero {
+            position: relative; overflow: hidden;
+            background: #006894;
+                    }
+        .about-hero::before { content:''; position:absolute; inset:0; background: rgba(5,13,15,0.75); z-index:0; }
+        .hero-inner {
+            position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1fr 1fr;
+            align-items: center; gap: 60px;
+            min-height: 520px; padding: 100px 0 80px;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.15);
+            color: var(--gold-bright); padding: 5px 18px; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 600; margin-bottom: 20px;
+        }
+        .hero-left h1 {
+            font-size: 3.4rem; font-weight: 800; line-height: 1.1; margin-bottom: 14px;
+            color: #f2a900;
+        }
+        .hero-left .h-sub { 
+            font-size: 1.5rem; 
+            color: #ffffff; 
+            margin-bottom: 8px; 
+        }
+        .hero-left .h-tag { 
+            font-size: 1.05rem; 
+            color: #ffffff; 
+            margin-bottom: 30px; font-style: italic; 
+        }
+        .hero-left .h-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        .hero-right { display: flex; flex-direction: column; gap: 16px; }
+        .h-feat {
+            display: flex; align-items: center; gap: 16px;
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--r-md); padding: 18px 22px;
+            backdrop-filter: blur(12px); transition: var(--ease);
+        }
+        .h-feat:hover { background: rgba(255,255,255,0.1); border-color: rgba(212,160,23,0.2); transform: translateX(-6px); }
+        .h-feat .hf-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: rgba(212,160,23,0.12); display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; color: var(--gold-bright); flex-shrink: 0;
+        }
+        .h-feat .hf-text h4 { color: var(--white); font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+        .h-feat .hf-text p { color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+
+        .hero-wave {
+            position: absolute; bottom: -2px; left: 0; right: 0; z-index: 2;
+            height: 60px; background: var(--light-1);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        .estd-badge {
+            position: absolute; top: 100px; right: 40px; z-index: 3;
+            width: 90px; height: 90px; border-radius: 50%;
+            background: linear-gradient(145deg, var(--dark-3), var(--dark-4));
+            border: 2px solid rgba(212,160,23,0.3);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: var(--gold-bright); font-weight: 800;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        .estd-badge span { font-size: 0.6rem; letter-spacing: 2px; opacity: 0.7; }
+        .estd-badge strong { font-size: 1.4rem; line-height: 1; }
+
+        /* ============================================================
+           2. About us
+           ============================================================ */
+        .about-sec { 
+            padding: 100px 0; 
+            background: #ffffff;
+                    }
+        .about-wrap {
+            display: grid; grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px; align-items: center;
+        }
+        .about-text h2 { 
+            font-size: 2.2rem; font-weight: 800; 
+            color: #0a2745; 
+            margin-bottom: 20px; line-height: 1.25; 
+        }
+        .about-text h2 .g {
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold-dark));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .about-text p { 
+            font-size: 0.98rem; line-height: 1.85; 
+            color: #1e1e1e; 
+            margin-bottom: 14px; 
+        }
+        .about-img-box { position: relative; }
+        .about-img-box img {
+            width: 100%; border-radius: var(--r-lg); box-shadow: var(--shadow-lg);
+            transition: var(--ease);
+        }
+        .about-img-box:hover img { transform: translateY(-6px); }
+        .about-img-box .a-badge {
+            position: absolute; bottom: -14px; left: -14px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark-1); padding: 14px 20px; border-radius: var(--r-md);
+            font-weight: 800; font-size: 0.85rem; box-shadow: var(--shadow-gold);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .about-img-box .a-corner {
+            position: absolute; top: -12px; right: -12px;
+            width: 56px; height: 56px; border-radius: 50%;
+            background: var(--dark-2); color: var(--gold-bright);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.68rem; font-weight: 700; text-align: center;
+            border: 3px solid var(--gold); box-shadow: var(--shadow-md);
+        }
+
+        /* ============================================================
+           3. Mission and vision - with dynamic items
+           ============================================================ */
+        .mv-sec { 
+            padding: 100px 0; 
+            background: #ffffff;
+                    }
+        .mv-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 28px; 
+        }
+        .mv-card {
+            padding: 44px 36px;
+            border-radius: var(--r-lg);
+            position: relative;
+            overflow: hidden;
+            transition: var(--ease);
+        }
+        .mv-card .mv-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: var(--r-md);
+            margin-bottom: 16px;
+        }
+        .mv-card.mission { 
+            background: #0a2745; 
+            color: #ffffff;
+        }
+        .mv-card.vision { 
+            background: #ffffff; 
+            color: #1e1e1e;
+            box-shadow: var(--shadow-md); 
+            border: 1px solid rgba(0,0,0,0.04); 
+        }
+        .mv-card:hover { 
+            transform: translateY(-8px); 
+            background: #fce8b3;
+        }
+        .mv-card .mv-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 4px 14px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 18px;
+        }
+        .mv-card.mission .mv-tag { 
+            background: rgba(212,160,23,0.12); 
+            color: #f2a900; 
+        }
+        .mv-card.vision .mv-tag { 
+            background: var(--gold-muted); 
+            color: var(--gold-dark); 
+        }
+        .mv-card .mv-icon { 
+            font-size: 2.2rem; 
+            margin-bottom: 16px; 
+        }
+        .mv-card.mission .mv-icon { 
+            color: #f2a900; 
+        }
+        .mv-card.vision .mv-icon { 
+            color: #d4a017; 
+        }
+        .mv-card h3 { 
+            font-size: 1.6rem; 
+            font-weight: 800; 
+            margin-bottom: 14px; 
+        }
+        .mv-card.mission h3 { 
+            color: #f2a900; 
+        }
+        .mv-card.vision h3 { 
+            color: #0a2745; 
+        }
+        .mv-card p { 
+            line-height: 1.8; 
+            font-size: 0.95rem; 
+        }
+        .mv-card.mission p { 
+            color: rgba(255,255,255,0.55); 
+        }
+        .mv-card.vision p { 
+            color: #4a5568; 
+        }
+        .mv-card .mv-bg-icon { 
+            position: absolute; 
+            right: -20px; 
+            bottom: -20px; 
+            font-size: 8rem; 
+            opacity: 0.04; 
+            pointer-events: none; 
+        }
+
+        /* ============================================================
+           4. Courses
+           ============================================================ */
+        .course-sec { padding: 100px 0; }
+        .course-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .c-card {
+            background: var(--white); border-radius: var(--r-lg);
+            padding: 32px 18px 28px; text-align: center;
+            border: 1px solid rgba(0,0,0,0.04); box-shadow: var(--shadow-sm);
+            transition: var(--ease); position: relative; overflow: hidden;
+        }
+        .c-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+            transform: scaleX(0); transition: var(--ease); transform-origin: left;
+        }
+        .c-card:hover::before { transform: scaleX(1); }
+        .c-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); border-color: rgba(212,160,23,0.12); }
+        .c-card .c-icon {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: var(--gold-muted); display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: var(--gold); margin: 0 auto 16px;
+            transition: var(--ease); border: 2px solid transparent;
+        }
+        .c-card:hover .c-icon { background: var(--gold); color: var(--dark-1); border-color: var(--gold-dark); transform: rotate(6deg) scale(1.08); }
+        .c-card h4 { font-size: 1.05rem; color: var(--dark-2); margin-bottom: 6px; font-weight: 700; }
+        .c-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; }
+
+        /* ============================================================
+           5. Why us
+           ============================================================ */
+        .why-sec {
+            padding: 100px 0; background: var(--dark-2);
+            position: relative; overflow: hidden;
+        }
+        .why-sec::before {
+            content: ''; position: absolute; inset: 0; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4a017' stroke-width='0.4'%3E%3Ccircle cx='30' cy='30' r='18'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+        .why-sec .sh h2 { color: var(--white); }
+        .why-sec .sh p { color: rgba(255,255,255,0.45); }
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; position: relative; z-index: 1; }
+        .w-card {
+            display: flex; align-items: flex-start; gap: 18px;
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+            padding: 24px 22px; border-radius: var(--r-md); transition: var(--ease);
+        }
+        .w-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(212,160,23,0.2); transform: translateX(6px); }
+        .w-card .w-icon {
+            width: 46px; height: 46px; border-radius: 12px;
+            background: rgba(212,160,23,0.1); display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; color: var(--gold-bright); flex-shrink: 0; transition: var(--ease);
+        }
+        .w-card:hover .w-icon { background: var(--gold); color: var(--dark-1); }
+        .w-card h4 { color: var(--gold-bright); font-size: 1rem; margin-bottom: 6px; font-weight: 700; }
+        .w-card p { color: rgba(255,255,255,0.5); font-size: 0.88rem; line-height: 1.65; }
+
+        /* ============================================================
+           6. Teaching method
+           ============================================================ */
+        .method-sec { padding: 100px 0; }
+        .method-track { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0; }
+        .m-step { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 16px; }
+        .m-dot {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: var(--white); border: 3px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.1rem; color: var(--gold-dark);
+            transition: var(--ease); z-index: 1; box-shadow: var(--shadow-sm);
+        }
+        .m-step:hover .m-dot {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark-1); transform: scale(1.12); box-shadow: var(--shadow-gold);
+        }
+        .m-label { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); text-align: center; max-width: 90px; }
+        .m-line { width: 40px; height: 2px; background: var(--light-3); position: relative; top: -18px; }
+        .m-line::after {
+            content: ''; position: absolute; right: -4px; top: -3px;
+            width: 0; height: 0;
+            border-left: 6px solid var(--light-3);
+            border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+        }
+
+        /* ============================================================
+           7. Statistics
+           ============================================================ */
+        .stats-sec { 
+            padding: 100px 0; 
+            background: #ffffff;
+                    }
+        .stats-bar {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            background: var(--white); border-radius: var(--r-xl);
+            box-shadow: var(--shadow-md); border: 1px solid rgba(0,0,0,0.04); overflow: hidden; position: relative;
+        }
+        .stats-bar::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--emerald-light), var(--gold-bright));
+        }
+        .st-box { padding: 40px 20px; text-align: center; border-right: 1px solid var(--light-2); transition: var(--ease); }
+        .st-box:last-child { border-right: none; }
+        .st-box:hover { background: var(--gold-muted); }
+        .st-box h3 { 
+            font-size: 2.8rem; font-weight: 800; 
+            color: #f2a900; 
+            line-height: 1; margin-bottom: 6px; 
+        }
+        .st-box:hover h3 { 
+            color: #c48a00; 
+        }
+        .st-box p { 
+            font-size: 0.9rem; 
+            color: #0a2745; 
+            font-weight: 500; 
+        }
+
+        /* ============================================================
+           8. Teachers
+           ============================================================ */
+        .team-sec { 
+            padding: 100px 0; 
+            background: #0c181d;
+                    }
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .t-card {
+            background: #16252a;
+            border-radius: var(--r-lg); overflow: hidden;
+            box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04);
+            transition: var(--ease); display: flex; flex-direction: column;
+        }
+        .t-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 16px 48px rgba(0,0,0,0.08); 
+            background: #f2a900;
+        }
+        .t-card .t-img {
+            height: 220px; background: var(--dark-3);
+            background-size: cover; background-position: center top; position: relative; flex-shrink: 0;
+        }
+        .t-card .t-img::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.2)); }
+        .t-card .t-body { padding: 24px; flex: 1; display: flex; flex-direction: column; text-align: center; }
+        .t-card .t-body h4 { 
+            font-size: 1.15rem; 
+            color: #0a2745; 
+            font-weight: 700; margin-bottom: 4px; 
+        }
+        .t-card:hover .t-body h4 {
+            color: #ffffff;
+        }
+        .t-card .t-body p { 
+            color: #0a2745; 
+            font-size: 0.88rem; margin-bottom: 16px; 
+        }
+        .t-card:hover .t-body p {
+            color: #ffffff;
+        }
+        .t-card .t-social { display: flex; justify-content: center; gap: 8px; margin-top: auto; }
+        .t-card .t-social a {
+            width: 34px; height: 34px; border-radius: 50%;
+            border: 1px solid var(--light-3); background: var(--white);
+            color: var(--text-muted); font-size: 0.78rem;
+            display: flex; align-items: center; justify-content: center; transition: var(--ease-fast);
+        }
+        .t-card .t-social a:hover { border-color: var(--gold); color: var(--gold-dark); background: var(--gold-muted); }
+
+        /* ============================================================
+           9. Timeline
+           ============================================================ */
+        .tl-sec { padding: 100px 0; background: linear-gradient(180deg, var(--light-1), var(--light-2)); }
+        .tl { display: flex; flex-direction: column; gap: 0; position: relative; max-width: 680px; margin: 0 auto; }
+        .tl::before {
+            content: ''; position: absolute; left: 50%; top: 20px; bottom: 20px;
+            width: 2px; transform: translateX(-50%);
+            background: linear-gradient(180deg, var(--gold), var(--gold-dark), rgba(212,160,23,0.15)); border-radius: 10px;
+        }
+        .tl-item { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 0; align-items: center; }
+        .tl-item .tl-left { text-align: right; padding: 20px 24px 20px 0; }
+        .tl-item .tl-right { text-align: left; padding: 20px 0 20px 24px; }
+        .tl-item .tl-dot {
+            width: 16px; height: 16px; border-radius: 50%;
+            background: var(--gold); border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--gold-dark); z-index: 1; justify-self: center;
+        }
+        .tl-item:nth-child(odd) .tl-left { opacity: 0; pointer-events: none; }
+        .tl-item:nth-child(even) .tl-right { opacity: 0; pointer-events: none; }
+        .tl-item .tl-content {
+            background: var(--white); padding: 20px 24px;
+            border-radius: var(--r-md); box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04); transition: var(--ease);
+        }
+        .tl-item .tl-content:hover { transform: scale(1.02); box-shadow: var(--shadow-md); border-color: rgba(212,160,23,0.15); }
+        .tl-item .tl-year { font-size: 1.3rem; font-weight: 800; color: var(--gold); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+        .tl-item:nth-child(odd) .tl-year { justify-content: flex-end; }
+        .tl-item .tl-year i { font-size: 0.85rem; }
+        .tl-item .tl-desc { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; }
+
+        /* ============================================================
+           10. Testimonials
+           ============================================================ */
+        .test-sec { padding: 100px 0; }
+        .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .test-card {
+            background: var(--white); padding: 30px; border-radius: var(--r-lg);
+            box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04);
+            transition: var(--ease); position: relative;
+        }
+        .test-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .test-card .t-stars { color: var(--gold); font-size: 0.78rem; margin-bottom: 14px; display: flex; gap: 2px; }
+        .test-card .t-quote { font-size: 2rem; color: var(--gold); opacity: 0.15; margin-bottom: -8px; }
+        .test-card .t-text { color: var(--text-secondary); font-style: italic; line-height: 1.75; font-size: 0.93rem; margin-bottom: 20px; }
+        .test-card .t-user {
+            display: flex; align-items: center; gap: 12px;
+            padding-top: 16px; border-top: 1px solid var(--light-2);
+        }
+        .test-card .t-avatar {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--dark-3); background-size: cover; background-position: center;
+            border: 2px solid var(--gold-muted); flex-shrink: 0;
+        }
+        .test-card .t-name { font-weight: 700; color: var(--dark-2); font-size: 0.92rem; }
+        .test-card .t-loc { font-size: 0.76rem; color: var(--text-muted); margin-top: 2px; }
+        .test-card .t-loc i { color: var(--gold); margin-right: 3px; font-size: 0.65rem; }
+
+        /* ============================================================
+           11. CTA
+           ============================================================ */
+        .cta-sec { 
+            padding: 100px 0; 
+            background: #0a1a20;
+                    }
+        .cta-box {
+            background: linear-gradient(145deg, var(--dark-2), var(--dark-3), var(--dark-4));
+            padding: 70px 50px; border-radius: var(--r-xl);
+            text-align: center; color: var(--white);
+            position: relative; overflow: hidden; border: 1px solid rgba(212,160,23,0.08);
+        }
+        .cta-box::before {
+            content: ''; position: absolute; top: -30%; right: -10%;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(212,160,23,0.08), transparent 70%); border-radius: 50%;
+        }
+        .cta-box::after {
+            content: ''; position: absolute; bottom: -20%; left: -8%;
+            width: 250px; height: 250px;
+            background: radial-gradient(circle, rgba(13,124,95,0.06), transparent 70%); border-radius: 50%;
+        }
+        .cta-box h2 { 
+            font-size: 2.4rem; font-weight: 800; margin-bottom: 14px; position: relative; z-index: 1; 
+            color: #f2a900;
+        }
+        .cta-box h2 .g {
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .cta-box p { 
+            font-size: 1.02rem; 
+            color: #ffffff; 
+            max-width: 540px; margin: 0 auto 30px; line-height: 1.7; position: relative; z-index: 1; 
+        }
+        .cta-box .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+        /* ============================================================
+           Responsive
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; min-height: auto; padding: 80px 0 60px; }
+            .hero-left .h-btns { justify-content: center; }
+            .hero-right { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .h-feat { max-width: 320px; }
+            .estd-badge { top: 20px; right: 20px; width: 70px; height: 70px; }
+            .estd-badge strong { font-size: 1.1rem; }
+            .about-wrap { grid-template-columns: 1fr; }
+            .mv-grid { grid-template-columns: 1fr; }
+            .course-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .st-box { border-right: none; border-bottom: 1px solid var(--light-2); }
+            .st-box:nth-child(3), .st-box:nth-child(4) { border-bottom: none; }
+            .team-grid { grid-template-columns: 1fr 1fr; }
+            .test-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .hero-left h1 { font-size: 2.4rem; }
+            .hero-left .h-sub { font-size: 1.2rem; }
+            .hero-right { flex-direction: column; }
+            .h-feat { max-width: 100%; }
+            .estd-badge { display: none; }
+            .sh h2 { font-size: 2rem; }
+            .method-track { flex-direction: column; }
+            .m-line { width: 2px; height: 30px; top: 0; left: 50%; transform: translateX(-50%); }
+            .m-line::after { display: none; }
+            .tl-item { grid-template-columns: 24px 1fr; }
+            .tl::before { left: 11px; }
+            .tl-item .tl-left { display: none; }
+            .tl-item .tl-right { padding: 0 0 0 28px; }
+            .tl-item .tl-dot { justify-self: start; }
+            .tl-item .tl-year { justify-content: flex-start; }
+        }
+        @media (max-width: 580px) {
+            .course-grid { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: 1fr 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .test-grid { grid-template-columns: 1fr; }
+            .hero-left h1 { font-size: 1.9rem; }
+            .sh h2 { font-size: 1.7rem; }
+            .st-box h3 { font-size: 2.2rem; }
+            .cta-box { padding: 50px 24px; }
+            .cta-box h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="scroll-prog" id="scrollProg"></div>
+<button class="btt" id="btt"><i class="fas fa-arrow-up"></i></button>
+
+<!-- ============================================================ -->
+<!-- 1. Hero -->
+<!-- ============================================================ -->
+<section class="about-hero">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="hero-inner">
+            <div class="hero-left rv-l">
+                <div class="hero-badge"><i class="fas fa-mosque"></i> স্বাগতম</div>
+                <h1>আমাদের সম্পর্কে</h1>
+                <div class="h-sub">আল হেরা অনলাইন মাদ্রাসার পূর্ণাঙ্গ পরিচিতি</div>
+                <div class="h-tag">&quot;শিক্ষা, সংস্কৃতি ও নৈতিকতার সমন্বয়&quot;</div>
+                <div class="h-btns">
+                    <a href="#" class="btn-g">
+                        <span>আরও জানুন</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#" class="btn-o">যোগাযোগ</a>
+                </div>
+            </div>
+            <div class="hero-right rv-r">
+                <div class="h-feat">
+                    <div class="hf-icon"><i class="fas fa-globe"></i></div>
+                    <div class="hf-text"><h4>অনলাইন মাদ্রাসা</h4><p>বিশ্বের যেকোনো প্রান্ত থেকে শিক্ষা গ্রহণ</p></div>
+                </div>
+                <div class="h-feat">
+                    <div class="hf-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="hf-text"><h4>স্বীকৃত সনদ</h4><p>আন্তর্জাতিক মানের সনদপত্র প্রদান</p></div>
+                </div>
+                <div class="h-feat">
+                    <div class="hf-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <div class="hf-text"><h4>দক্ষ শিক্ষক</h4><p>অভিজ্ঞ ও যোগ্য আলেমদের তত্ত্বাবধানে</p></div>
+                </div>
+                <div class="h-feat">
+                    <div class="hf-icon"><i class="fas fa-book-quran"></i></div>
+                    <div class="hf-text"><h4>কুরআন কেন্দ্রিক শিক্ষা</h4><p>কুরআন ও হাদিসের আলোকে পাঠ্যক্রম</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="estd-badge"><span>ESTD</span><strong>১০+ বছর</strong></div>
+    <div class="hero-wave"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 2. About us -->
+<!-- ============================================================ -->
+<section class="about-sec" id="about-desc">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="about-wrap">
+            <div class="about-text rv-l">
+                <h2>আমাদের <span class="g">সম্পর্কে</span></h2>
+                <p>দ্বীনের আলো এবং পথহারা মানুষের মাঝে হেদায়াতের আলো পৌঁছাতে আমাদের এই আত্মনিবেদন। সমাজের সর্বস্তরের মানুষ—পেশাজীবী, শিক্ষার্থী, ব্যবসায়ী, গৃহিণী—সবার জন্য দ্বীনি শিক্ষা সহজ ও সুলভ করাই আমাদের মূল লক্ষ্য। এখানে সকল শ্রেণি-পেশার মানুষের স্বতঃস্ফূর্ত অংশগ্রহণ ও ভালোবাসা আমাদের পথচলার মূল প্রেরণা। আমরা আশা করি আল-হেরা অনলাইন মাদরাসার শিক্ষার্থীরা আদর্শবান হয়ে সমাজ গঠনে ভূমিকা রাখবে এবং দুনিয়া ও আখেরাতের কল্যাণে মুত্তাকীনদের কাফেলায় অন্তর্ভুক্ত হবে—ইনশাআল্লাহ।</p>
+                <p>মাদ্রাসাটি প্রতিষ্ঠা করা হয়েছে কুরআন, হাদিস ও ইসলামী জ্ঞানের আলোকে একটি আদর্শ প্রজন্ম গড়ে তোলার জন্য। আমরা অনলাইন প্ল্যাটফর্ম-এর মাধ্যমে লাইভ ক্লাস, রেকর্ডেড সেশন ও ইন্টারঅ্যাকটিভ লার্নিং সিস্টেম চালু করেছি, যাতে ঘরে বসেই শিক্ষার্থীরা দ্বীনি শিক্ষা নিতে পারে।</p>
+                <a href="#" class="btn-g" style="margin-top:6px;">
+                    <span>আমাদের সম্পর্কে</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="about-img-box rv-r">
+                <img src="../uploads/1787253860_about_logoalhera.png" onerror="this.src='/assets/img/placeholder.svg'" alt="আলহেরা অনলাইন মাদরাসা">
+                <div class="a-badge"><i class="fas fa-award"></i> শিক্ষার্থী প্রিয়</div>
+                <div class="a-corner">শিক্ষার্থী প্রিয়</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3. Mission and vision - with dynamic items -->
+<!-- ============================================================ -->
+<section class="mv-sec">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="mv-grid">
+            <!-- ====== Mission items ====== -->
+            <div class="mission-items">
+                                    <div class="mv-card mission rv d1">
+                        <div class="mv-tag"><i class="fas fa-bullseye"></i> MISSION 1</div>
+                                                <div class="mv-icon"><i class="fas fa-crosshairs"></i></div>
+                        <h3>আমাদের লক্ষ্য</h3>
+                        <p>সহজ, সুন্দর ও মানসম্মত পদ্ধতিতে কুরআন, হাদিস ও ইসলামী শিক্ষা সবার কাছে পৌঁছে দেওয়া।</p>
+                        <div class="mv-bg-icon"><i class="fas fa-crosshairs"></i></div>
+                    </div>
+                            </div>
+
+            <!-- ====== Vision items ====== -->
+            <div class="vision-items">
+                                    <div class="mv-card vision rv d3">
+                        <div class="mv-tag"><i class="fas fa-eye"></i> VISION 1</div>
+                                                <div class="mv-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>আমাদের ভবিষ্যৎ পরিকল্পনা</h3>
+                        <p>দেশ-বিদেশের শিক্ষার্থীদের কাছে ইসলামী শিক্ষা পৌঁছে দেওয়া এবং আন্তর্জাতিক পর্যায়ে Online Madrasa হিসেবে প্রতিষ্ঠিত হওয়া।</p>
+                        <div class="mv-bg-icon"><i class="fas fa-rocket"></i></div>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4. Courses -->
+<!-- ============================================================ -->
+<section class="course-sec" id="courses">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="sh rv">
+            <h2>আমরা কী কী <span class="g">শিক্ষা দিই</span></h2>
+            <p>আপনার দ্বীনি শিক্ষার যাত্রা শুরু করুন আমাদের কোর্সগুলোর মাধ্যমে</p>
+            <div class="line"></div>
+        </div>
+        <div class="course-grid">
+                            <div class="c-card rv d1">
+                    <div class="c-icon"><i class="fas fa-quran"></i></div>
+                    <h4>📖 কুরআন শিক্ষা</h4>
+                    <p>সঠিক তিলাওয়াত ও অর্থসহ কুরআন শিক্ষা</p>
+                </div>
+                            <div class="c-card rv d2">
+                    <div class="c-icon"><i class="fas fa-book"></i></div>
+                    <h4>🕌 নূরানী কায়দা</h4>
+                    <p>শুদ্ধভাবে কুরআন পড়ার প্রাথমিক পদ্ধতি</p>
+                </div>
+                            <div class="c-card rv d3">
+                    <div class="c-icon"><i class="fas fa-microphone-alt"></i></div>
+                    <h4>🎧 তাজবিদ</h4>
+                    <p>কুরআন তিলাওয়াতের নিয়ম ও উচ্চারণ শুদ্ধিকরণ</p>
+                </div>
+                            <div class="c-card rv d4">
+                    <div class="c-icon"><i class="fas fa-hadith"></i></div>
+                    <h4>📚 হাদিস</h4>
+                    <p>নবীজির জীবনী ও হাদিসের গুরুত্বপূর্ণ গ্রন্থসমূহ</p>
+                </div>
+                            <div class="c-card rv d5">
+                    <div class="c-icon"><i class="fas fa-mosque"></i></div>
+                    <h4>🌙 মাসআলা-মাসায়েল</h4>
+                    <p>প্রাত্যহিক জীবনের ফিকহি সমস্যা ও সমাধান</p>
+                </div>
+                            <div class="c-card rv d6">
+                    <div class="c-icon"><i class="fas fa-handshake"></i></div>
+                    <h4>🕋 ইসলামী আদব ও আখলাক</h4>
+                    <p>চারিত্রিক গুণাবলী ও ইসলামী জীবনাচার</p>
+                </div>
+                            <div class="c-card rv d7">
+                    <div class="c-icon"><i class="fas fa-language"></i></div>
+                    <h4>🗣️ আরবি ভাষা</h4>
+                    <p>কুরআন বোঝার জন্য প্রয়োজনীয় আরবি ব্যাকরণ</p>
+                </div>
+                            <div class="c-card rv d8">
+                    <div class="c-icon"><i class="fas fa-memory"></i></div>
+                    <h4>📜 হিফজ / নাজেরা</h4>
+                    <p>পবিত্র কুরআন মুখস্থ ও তিলাওয়াতের বিশেষ কোর্স</p>
+                </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5. Why Alhera -->
+<!-- ============================================================ -->
+<section class="why-sec">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="sh rv">
+            <h2>কেন <span class="g">আলহেরা অনলাইন মাদরাসা</span>?</h2>
+            <p>আমাদের শিক্ষা ব্যবস্থার স্বতন্ত্রতা</p>
+            <div class="line"></div>
+        </div>
+        <div class="why-grid">
+                            <div class="w-card rv d1">
+                    <div class="w-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div><h4>অভিজ্ঞ ও যোগ্য শিক্ষক</h4><p>দেশের শীর্ষস্থানীয় আলেম ও শিক্ষাবিদ</p></div>
+                </div>
+                            <div class="w-card rv d2">
+                    <div class="w-icon"><i class="fas fa-video"></i></div>
+                    <div><h4>Live Online Class</h4><p>সরাসরি লাইভ ক্লাস, প্রশ্নোত্তরের সুযোগ</p></div>
+                </div>
+                            <div class="w-card rv d3">
+                    <div class="w-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div><h4>যেকোনো স্থান থেকে</h4><p>বিশ্বের যেকোনো প্রান্ত থেকে অংশগ্রহণ</p></div>
+                </div>
+                            <div class="w-card rv d4">
+                    <div class="w-icon"><i class="fas fa-clock"></i></div>
+                    <div><h4>নির্দিষ্ট Class Routine</h4><p>সুবিধাজনক সময়সূচী, নিয়মিত ক্লাস</p></div>
+                </div>
+                            <div class="w-card rv d5">
+                    <div class="w-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <div><h4>Attendance Monitoring</h4><p>নিয়মিত উপস্থিতি ট্র্যাকিং</p></div>
+                </div>
+                            <div class="w-card rv d6">
+                    <div class="w-icon"><i class="fas fa-file-alt"></i></div>
+                    <div><h4>পরীক্ষা ও ফলাফল</h4><p>নিয়মিত অ্যাসেসমেন্ট ও রিপোর্ট</p></div>
+                </div>
+                            <div class="w-card rv d7">
+                    <div class="w-icon"><i class="fas fa-play-circle"></i></div>
+                    <div><h4>Recorded Class</h4><p>মিসড ক্লাসের রেকর্ডিং ও স্টাডি মেটেরিয়াল</p></div>
+                </div>
+                            <div class="w-card rv d8">
+                    <div class="w-icon"><i class="fas fa-user-cog"></i></div>
+                    <div><h4>Student Portal</h4><p>শিক্ষার্থীদের জন্য ডেডিকেটেড ড্যাশবোর্ড</p></div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 6. Teaching method -->
+<!-- ============================================================ -->
+<section class="method-sec">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="sh rv">
+            <h2>আমাদের <span class="g">শিক্ষা পদ্ধতি</span></h2>
+            <p>শিক্ষার্থীর যাত্রা সহজ ও সুসংহত করার জন্য স্টেপ বাই স্টেপ প্রক্রিয়া</p>
+            <div class="line"></div>
+        </div>
+        <div class="method-track rv">
+                            <div class="m-step">
+                    <div class="m-dot">1</div>
+                    <div class="m-label">Registration</div>
+                </div>
+                <div class="m-line"></div>                            <div class="m-step">
+                    <div class="m-dot">2</div>
+                    <div class="m-label">Course Selection</div>
+                </div>
+                <div class="m-line"></div>                            <div class="m-step">
+                    <div class="m-dot">3</div>
+                    <div class="m-label">Class Routine</div>
+                </div>
+                <div class="m-line"></div>                            <div class="m-step">
+                    <div class="m-dot">4</div>
+                    <div class="m-label">Live Class</div>
+                </div>
+                <div class="m-line"></div>                            <div class="m-step">
+                    <div class="m-dot">5</div>
+                    <div class="m-label">Assignment</div>
+                </div>
+                <div class="m-line"></div>                            <div class="m-step">
+                    <div class="m-dot">6</div>
+                    <div class="m-label">Exam</div>
+                </div>
+                <div class="m-line"></div>                            <div class="m-step">
+                    <div class="m-dot">7</div>
+                    <div class="m-label">Result</div>
+                </div>
+                                    </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 7. Statistics -->
+<!-- ============================================================ -->
+<section class="stats-sec">
+    <div style="max-width:1000px; margin:0 auto; padding:0 28px;">
+        <div class="sh rv">
+            <h2>আমাদের <span class="g">পরিসংখ্যান</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="stats-bar rv">
+                            <div class="st-box">
+                    <h3 class="counter" data-target="0">৫০ +</h3>
+                    <p>অভিজ্ঞ উস্তাদ</p>
+                </div>
+                            <div class="st-box">
+                    <h3 class="counter" data-target="0">২৫০০ +</h3>
+                    <p>শিক্ষার্থী</p>
+                </div>
+                            <div class="st-box">
+                    <h3 class="counter" data-target="0">৮৫-৯৫ %</h3>
+                    <p>সফলতার হার</p>
+                </div>
+                            <div class="st-box">
+                    <h3 class="counter" data-target="0">২৫ +</h3>
+                    <p>প্রতি ক্লাসে শিক্ষার্থী</p>
+                </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 8. Teachers -->
+<!-- ============================================================ -->
+<section class="team-sec">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="sh rv">
+            <h2>আমাদের <span class="g">শিক্ষকবৃন্দ</span></h2>
+            <p>সময়ের সকল জটিল সমস্যার এক অমলিন মিলনক্ষেত্র আমাদের এই আবাসস্থল।</p>
+            <div class="line"></div>
+        </div>
+        <div class="team-grid">
+                            <div class="t-card rv d1">
+                    <div class="t-img" style="background-image: url('../uploads/1788624602_teacher_0_768551048_1381873443366318_5309649793600053212_n.jpg');"></div>
+                    <div class="t-body">
+                        <h4>ডাঃ শফিকুল ইসলাম </h4>
+                        <p>ভাষা ও শাস্ত্রের শিক্ষক</p>
+                        <div class="t-social">
+                            <a href="https://www.youtube.com/watch?v=1Q0X0X0X0X0" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                            <div class="t-card rv d2">
+                    <div class="t-img" style="background-image: url('../uploads/1788624602_teacher_1_768551048_1381873443366318_5309649793600053212_n.jpg');"></div>
+                    <div class="t-body">
+                        <h4>মুফতি আশরাফুল ইসলাম</h4>
+                        <p> হাদিস ও কোরআন শিক্ষা দানকারী</p>
+                        <div class="t-social">
+                            <a href="https://www.youtube.com/watch?v=1Q0X0X0X0X1" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                            <div class="t-card rv d3">
+                    <div class="t-img" style="background-image: url('../uploads/1788624602_teacher_2_768551048_1381873443366318_5309649793600053212_n.jpg');"></div>
+                    <div class="t-body">
+                        <h4>মাওলানা মাসুম বিল্লাহ</h4>
+                        <p>ইসলামি চিন্তাবিদ</p>
+                        <div class="t-social">
+                            <a href="https://www.youtube.com/watch?v=1Q0X0X0X0X2" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 9. Timeline -->
+<!-- ============================================================ -->
+<section class="tl-sec">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="sh rv">
+            <h2>আমাদের <span class="g">যাত্রা</span></h2>
+            <p>প্রতিষ্ঠার ইতিহাস ও অগ্রগতি</p>
+            <div class="line"></div>
+        </div>
+        <div class="tl">
+                            <div class="tl-item rv d1">
+                    <div class="tl-left">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২০</div>
+                            <p class="tl-desc">প্রতিষ্ঠার যাত্রা শুরু</p>
+                        </div>
+                    </div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-right">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২০</div>
+                            <p class="tl-desc">প্রতিষ্ঠার যাত্রা শুরু</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="tl-item rv d2">
+                    <div class="tl-left">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২১</div>
+                            <p class="tl-desc">প্রথম Online Course চালু</p>
+                        </div>
+                    </div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-right">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২১</div>
+                            <p class="tl-desc">প্রথম Online Course চালু</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="tl-item rv d3">
+                    <div class="tl-left">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২৩</div>
+                            <p class="tl-desc">Student Portal চালু</p>
+                        </div>
+                    </div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-right">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২৩</div>
+                            <p class="tl-desc">Student Portal চালু</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="tl-item rv d4">
+                    <div class="tl-left">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২৫</div>
+                            <p class="tl-desc">Live Class System উন্মোচন</p>
+                        </div>
+                    </div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-right">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২৫</div>
+                            <p class="tl-desc">Live Class System উন্মোচন</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="tl-item rv d5">
+                    <div class="tl-left">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২৬</div>
+                            <p class="tl-desc">পূর্ণাঙ্গ Online Madrasa Platform</p>
+                        </div>
+                    </div>
+                    <div class="tl-dot"></div>
+                    <div class="tl-right">
+                        <div class="tl-content">
+                            <div class="tl-year"><i class="fas fa-calendar-check"></i> ২০২৬</div>
+                            <p class="tl-desc">পূর্ণাঙ্গ Online Madrasa Platform</p>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 10. Testimonials -->
+<!-- ============================================================ -->
+<section class="test-sec">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="sh rv">
+            <h2>শিক্ষার্থীদের <span class="g">মতামত</span></h2>
+            <p>আমাদের শিক্ষার্থীদের অভিজ্ঞতা</p>
+            <div class="line"></div>
+        </div>
+        <div class="test-grid">
+                            <div class="test-card rv d1">
+                    <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="t-quote"><i class="fas fa-quote-right"></i></div>
+                    <p class="t-text">আলহেরা অনলাইন মাদ্রাসার মাধ্যমে ঘরে বসেই নিয়মিত কুরআন শিক্ষা নিতে পারছি। শিক্ষকরা খুবই যত্নশীল।</p>
+                    <div class="t-user">
+                        <div class="t-avatar" style="background-image: url('');"></div>
+                        <div>
+                            <div class="t-name">মোঃ আব্দুল্লাহ</div>
+                            <div class="t-loc"><i class="fas fa-map-marker-alt"></i> বাংলাদেশ</div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="test-card rv d2">
+                    <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="t-quote"><i class="fas fa-quote-right"></i></div>
+                    <p class="t-text">অনলাইনে এত সুন্দরভাবে ইসলামী শিক্ষা পাওয়া যাবে ভাবিনি। ক্লাসের গুণগত মান অসাধারণ।</p>
+                    <div class="t-user">
+                        <div class="t-avatar" style="background-image: url('');"></div>
+                        <div>
+                            <div class="t-name">আয়েশা খাতুন</div>
+                            <div class="t-loc"><i class="fas fa-map-marker-alt"></i> যুক্তরাজ্য</div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="test-card rv d3">
+                    <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <div class="t-quote"><i class="fas fa-quote-right"></i></div>
+                    <p class="t-text">মাদ্রাসার লাইভ ক্লাস ও রেকর্ডিং সুবিধা অনেক কাজে দেয়। সময়মতো পড়াশোনা চালিয়ে যেতে পারছি।</p>
+                    <div class="t-user">
+                        <div class="t-avatar" style="background-image: url('');"></div>
+                        <div>
+                            <div class="t-name">সাফওয়ান আহমেদ</div>
+                            <div class="t-loc"><i class="fas fa-map-marker-alt"></i> কানাডা</div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 11. CTA -->
+<!-- ============================================================ -->
+<section class="cta-sec">
+    <div style="max-width:1280px; margin:0 auto; padding:0 28px;">
+        <div class="cta-box rv">
+            <h2>আজই শুরু করুন আপনার ইসলামী শিক্ষার পথচলা</h2>
+            <p>আপনার সন্তান বা নিজের জন্য মানসম্মত ইসলামী শিক্ষা নিশ্চিত করতে আজই আমাদের সাথে যুক্ত হোন।</p>
+            <div class="cta-btns">
+                <a href="#courses" class="btn-g"><span>আমাদের সম্পর্কে</span><i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="btn-o">ভর্তি হন</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-section">
+    <style>
+        .footer-section {
+            background: #0b1119;
+            color: rgba(255,255,255,0.8);
+            padding: 60px 0 0;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+        .footer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #f5d77b, transparent);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .footer-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px 30px;
+            margin-bottom: 50px;
+        }
+        .footer-col h5 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #f5d77b;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 12px;
+            position: relative;
+        }
+        .footer-col h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 32px;
+            height: 2.5px;
+            background: linear-gradient(to right, #f5d77b, transparent);
+            border-radius: 4px;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .footer-col ul li a i {
+            color: #f5d77b;
+            font-size: 11px;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: all 0.25s ease;
+        }
+        .footer-col ul li a:hover {
+            color: #f5d77b;
+            transform: translateX(4px);
+        }
+        .footer-col ul li a:hover i {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 280px;
+        }
+        .newsletter-form .input-wrap {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 0 14px;
+            transition: 0.3s;
+        }
+        .newsletter-form .input-wrap:focus-within {
+            border-color: #f5d77b;
+            background: rgba(255,255,255,0.07);
+        }
+        .newsletter-form .input-wrap i {
+            color: rgba(255,255,255,0.3);
+        }
+        .newsletter-form .input-wrap input {
+            flex: 1;
+            padding: 14px 10px;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 14px;
+        }
+        .newsletter-form .input-wrap input::placeholder {
+            color: rgba(255,255,255,0.35);
+        }
+        .newsletter-form .btn-subscribe {
+            padding: 14px 20px;
+            background: #f5d77b;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #0b1119;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .newsletter-form .btn-subscribe:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(245,215,123,0.25);
+        }
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 22px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 50%;
+            color: rgba(255,255,255,0.6);
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: #f5d77b;
+            border-color: #f5d77b;
+            color: #0b1119;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(245,215,123,0.2);
+        }
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #f5d77b, transparent);
+            margin: 40px 0 30px;
+        }
+        .footer-bottom {
+            padding: 24px 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .footer-bottom .copy {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+        }
+        .footer-bottom .copy strong {
+            color: rgba(255,255,255,0.7);
+        }
+        .footer-links-bottom {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .footer-links-bottom a {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            transition: 0.25s;
+            position: relative;
+        }
+        .footer-links-bottom a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: #f5d77b;
+            transition: width 0.3s ease;
+        }
+        .footer-links-bottom a:hover {
+            color: #f5d77b;
+        }
+        .footer-links-bottom a:hover::after {
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .footer-row { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-links-bottom { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .footer-row { grid-template-columns: 1fr; }
+            .newsletter-form { max-width: 100%; }
+        }
+    </style>
+
+    <div class="container">
+        <div class="footer-row">
+            <div class="footer-col">
+                <h5><i class="fas fa-globe"></i> আমাদের সম্পর্কে</h5>
+                <ul>
+                    <li><a href="https://alheraonline.comabout.php"><i class="fas fa-angle-right"></i> আমাদের সম্পর্কে</a></li>
+                    <li><a href="https://alheraonline.comcontact.php"><i class="fas fa-angle-right"></i> যোগাযোগ</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> আমাদের টিম</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-link"></i> দ্রুত লিংক</h5>
+                <ul>
+                    <li><a href="https://alheraonline.com"><i class="fas fa-angle-right"></i> হোম</a></li>
+                    <li><a href="https://alheraonline.comcourses.php"><i class="fas fa-angle-right"></i> কোর্সসমূহ</a></li>
+                    <li><a href="https://alheraonline.comblog.php"><i class="fas fa-angle-right"></i> ব্লগ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-graduation-cap"></i> জনপ্রিয় কোর্স</h5>
+                <ul>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> কুরআন তিলাওয়াত</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> তাজভীদ</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> আরবি ভাষা</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-headset"></i> সহায়তা ও নীতি</h5>
+                <ul>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> FAQ</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> গোপনীয়তা নীতি</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> শর্তাবলী</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-bell"></i> নিউজলেটার</h5>
+                <p style="font-size:14px; color:rgba(255,255,255,0.65); margin-bottom:16px;">
+                    নিয়মিত আপডেট পেতে আমাদের সাথে থাকুন                </p>
+                <form class="newsletter-form" id="footerNewsletter">
+                    <div class="input-wrap">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="আপনার ইমেইল" required />
+                    </div>
+                    <button type="submit" class="btn-subscribe">
+                        <i class="fas fa-paper-plane" style="margin-right:8px;"></i> সাবস্ক্রাইব করুন                    </button>
+                </form>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-bottom">
+            <div class="copy">
+                &copy; 2026 <strong>আল হেরা অনলাইন মাদরাসা</strong> &bull; সর্বস্বত্ব সংরক্ষিত            </div>
+            <div class="footer-links-bottom">
+                <a href="#">গোপনীয়তা নীতি</a>
+                <a href="#">শর্তাবলী</a>
+                <a href="#">কুকি নীতি</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('footerNewsletter').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const input = this.querySelector('input[type="email"]');
+            if (input.value.trim()) {
+                alert('ধন্যবাদ! আপনি সফলভাবে সাবস্ক্রাইব করেছেন।');
+                input.value = '';
+            }
+        });
+    </script>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var sp = document.getElementById('scrollProg');
+    var bt = document.getElementById('btt');
+    function onScroll() {
+        var st = window.scrollY, dh = document.documentElement.scrollHeight - window.innerHeight;
+        sp.style.width = (dh > 0 ? (st / dh) * 100 : 0) + '%';
+        bt.classList.toggle('vis', st > 400);
+    }
+    var tk = false;
+    window.addEventListener('scroll', function() {
+        if (!tk) { requestAnimationFrame(function() { onScroll(); tk = false; }); tk = true; }
+    });
+    bt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    var els = document.querySelectorAll('.rv, .rv-l, .rv-r');
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('vis');
+                e.target.querySelectorAll('.counter').forEach(function(c) {
+                    if (c.dataset.done) return; c.dataset.done = '1';
+                    var t = parseInt(c.dataset.target);
+                    if (!isNaN(t) && t > 0) runC(c, t);
+                });
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+    onScroll();
+});
+
+function runC(el, target) {
+    var cur = 0, inc = Math.ceil(target / 65);
+    var bd = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    var suf = el.textContent.includes('+') ? '+' : '';
+    function bn(n) { return n.toString().replace(/\d/g, function(d) { return bd[parseInt(d)]; }); }
+    var t = setInterval(function() {
+        cur += inc;
+        if (cur >= target) { cur = target; clearInterval(t); }
+        el.textContent = bn(cur) + suf;
+    }, 30);
+}
+</script>
+
+</body>
+</html>

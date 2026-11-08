@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>আল হেরা অনলাইন মাদরাসা — কুরআন ও সুন্নাহ ভিত্তিক শিক্ষা</title>
+            <link rel="icon" href="../uploads/1787225537_favicon_logoalhera.png" type="image/x-icon">
+        <link rel="stylesheet" href="/assets/css/inter-local.css">
+    <link rel="stylesheet" href="/assets/vendor/fontawesome-6.5.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0e14;
+            color: #fff;
+            padding-top: 80px;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: #000000;
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,215,0,0.12);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+            height: 80px;
+        }
+        .header-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logo-link .logo-img {
+            max-height: 50px;
+            width: auto;
+            transition: opacity 0.3s ease;
+        }
+        .logo-link:hover .logo-img {
+            opacity: 0.8;
+        }
+        .logo-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+        .logo-link .brand {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            transition: color 0.3s ease;
+            line-height: 1.2;
+        }
+        .logo-link:hover .brand {
+            color: #f5d77b;
+        }
+        .logo-link .tagline {
+            font-size: 12px;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-menu li a {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f5d77b;
+            transition: width 0.3s ease;
+        }
+        .nav-menu li a:hover {
+            color: #f5d77b;
+        }
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .btn-login {
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+        .btn-login:hover {
+            background: rgba(255,255,255,0.08);
+            color: #f5d77b;
+            border-color: #f5d77b;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+        }
+        .menu-toggle span {
+            width: 26px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #000000;
+                backdrop-filter: blur(16px);
+                padding: 24px 30px;
+                gap: 18px;
+                border-bottom: 1px solid rgba(255,215,0,0.1);
+            }
+            .nav-menu.open { display: flex; }
+            .menu-toggle { display: flex; }
+            .header-actions .btn-login { font-size: 12px; padding: 6px 14px; }
+        }
+        @media (max-width: 600px) {
+            .logo-link .brand { font-size: 20px; }
+            .logo-link .tagline { font-size: 10px; }
+            .logo-link .logo-img { max-height: 40px; }
+            .header-actions .btn-login {
+                display: inline-block;
+                font-size: 12px;
+                padding: 5px 12px;
+            }
+        }
+        @media (max-width: 400px) {
+            .logo-link .brand { font-size: 17px; }
+            .logo-link .logo-img { max-height: 35px; }
+            .header-actions .btn-login {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+        }
+    </style>
+<meta name="description" content="আল হেরা অনলাইন মাদরাসা — কুরআন ও সুন্নাহ ভিত্তিক অনলাইন দ্বীনি শিক্ষা। ৭ বছরে আলেম, আন্তর্জাতিক হিফজুল কুরআন ও ফরজে আইন কোর্স। ২০২৬-২০২৭ সেশনে ভর্তি চলছে।">
+<meta property="og:title" content="আল হেরা অনলাইন মাদরাসা — কুরআন ও সুন্নাহ ভিত্তিক শিক্ষা">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/uploads/1787224184_logo_logoalhera.png">
+<link rel="canonical" href="https://alheraonline.com/Frontend/index.html">
+<link rel="stylesheet" href="/assets/css/fonts-hind-siliguri.css">
+<link rel="stylesheet" href="/assets/vendor/fontawesome-6.5.0/css/all.min.css">
+<style>
+/* ===== Al-Hera public site shell (shared) ===== */
+:root { --ah-gold:#f2a900; --ah-gold-soft:#f5d77b; --ah-ink:#0a0e14; --ah-ink2:#0f1720; --ah-line:rgba(242,169,0,.22); --ah-muted:#9aa4b2; }
+.ah-topbar { position:relative; z-index:1001; background:#062017; color:#cfe8d9; font-size:12.5px; }
+.ah-topbar .ah-in { max-width:1240px; margin:0 auto; padding:8px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.ah-topbar a { color:#cfe8d9; }
+.ah-topbar a:hover { color:var(--ah-gold-soft); }
+.ah-topbar .ah-tb-right { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.ah-topbar .ah-pill { display:inline-flex; align-items:center; gap:6px; background:rgba(242,169,0,.14); border:1px solid var(--ah-line); color:var(--ah-gold-soft); padding:2px 10px; border-radius:999px; font-weight:600; }
+
+.ah-header { position:sticky; top:0; z-index:1000; background:#000; border-bottom:1px solid rgba(255,215,0,.12); box-shadow:0 4px 30px rgba(0,0,0,.4); }
+.ah-header .ah-in { max-width:1240px; margin:0 auto; padding:0 24px; height:74px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+.ah-brand { display:flex; align-items:center; gap:12px; }
+.ah-brand img { max-height:46px; width:auto; }
+.ah-brand .ah-bt { display:flex; flex-direction:column; line-height:1.15; }
+.ah-brand .ah-b1 { color:#fff; font-size:22px; font-weight:700; letter-spacing:-.3px; }
+.ah-brand .ah-b2 { color:#cfd6df; font-size:11.5px; }
+.ah-brand:hover .ah-b1 { color:var(--ah-gold-soft); }
+.ah-nav { display:flex; align-items:center; gap:22px; list-style:none; }
+.ah-nav a { color:#fff; font-size:14px; font-weight:500; position:relative; padding:4px 0; }
+.ah-nav a::after { content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--ah-gold-soft); transition:width .3s; }
+.ah-nav a:hover { color:var(--ah-gold-soft); }
+.ah-nav a:hover::after, .ah-nav a.is-active::after { width:100%; }
+.ah-nav a.is-active { color:var(--ah-gold-soft); }
+.ah-actions { display:flex; align-items:center; gap:10px; }
+.ah-btn { display:inline-flex; align-items:center; gap:7px; padding:9px 18px; border-radius:30px; font-size:13px; font-weight:700; border:1px solid #fff; color:#fff; transition:all .25s; white-space:nowrap; }
+.ah-btn:hover { background:rgba(255,255,255,.08); color:var(--ah-gold-soft); border-color:var(--ah-gold-soft); }
+.ah-btn-apply { background:linear-gradient(135deg,#f2a900,#e08e00); border-color:transparent; color:#1a1200; }
+.ah-btn-apply:hover { background:linear-gradient(135deg,#ffc233,#f2a900); color:#1a1200; border-color:transparent; }
+.ah-search-btn { width:38px; height:38px; display:grid; place-items:center; border-radius:50%; border:1px solid rgba(255,255,255,.35); color:#fff; background:transparent; cursor:pointer; }
+.ah-search-btn:hover { color:var(--ah-gold-soft); border-color:var(--ah-gold-soft); }
+.ah-burger { display:none; flex-direction:column; gap:5px; background:none; border:0; padding:6px; cursor:pointer; }
+.ah-burger span { width:24px; height:2px; background:#fff; border-radius:4px; transition:.3s; }
+.ah-burger.on span:nth-child(1){ transform:rotate(45deg) translate(4px,5px); }
+.ah-burger.on span:nth-child(2){ opacity:0; }
+.ah-burger.on span:nth-child(3){ transform:rotate(-45deg) translate(4px,-5px); }
+.ah-skip { position:absolute; left:-9999px; }
+.ah-skip:focus { left:12px; top:12px; z-index:9999; background:#fff; color:#000; padding:8px 14px; border-radius:6px; }
+
+@media (max-width:1100px){ .ah-nav{ gap:16px; } .ah-nav a{ font-size:13px; } }
+@media (max-width:992px){
+  .ah-nav { display:none; flex-direction:column; position:absolute; top:100%; left:0; width:100%; background:#000; padding:20px 24px; gap:14px; align-items:flex-start; border-bottom:1px solid rgba(255,215,0,.1); }
+  .ah-nav.open { display:flex; }
+  .ah-burger { display:flex; }
+  .ah-header .ah-in { height:68px; }
+  .ah-btn-apply span { display:none; }
+}
+@media (max-width:600px){
+  .ah-brand .ah-b1 { font-size:17px; }
+  .ah-brand .ah-b2 { font-size:10px; }
+  .ah-brand img { max-height:38px; }
+  .ah-topbar .ah-in { justify-content:center; text-align:center; font-size:11.5px; }
+  .ah-actions .ah-btn { padding:7px 12px; font-size:12px; }
+}
+
+/* page hero used by the new pages */
+.ah-page { max-width:1240px; margin:0 auto; padding:36px 24px 70px; }
+.ah-hero { background:radial-gradient(ellipse 70% 60% at 20% 0%, #0d3a2a 0%, #061a12 55%, #030b08 100%); border:1px solid var(--ah-line); border-radius:24px; padding:44px 40px; color:#fff; margin-bottom:36px; }
+.ah-hero h1 { font-size:clamp(1.6rem,3.4vw,2.4rem); line-height:1.3; margin-bottom:12px; }
+.ah-hero h1 span { color:var(--ah-gold); }
+.ah-hero p { color:#c9d6cf; font-size:1.02rem; line-height:1.8; max-width:820px; }
+.ah-crumb { color:var(--ah-muted); font-size:13px; margin-bottom:14px; }
+.ah-crumb a { color:var(--ah-gold-soft); }
+.ah-card { background:#fff; border:1px solid #e8e8e8; border-radius:18px; padding:26px; box-shadow:0 10px 30px -22px rgba(0,0,0,.5); }
+.ah-card h2 { font-size:1.35rem; margin-bottom:14px; color:#0f2419; }
+.ah-card h3 { font-size:1.08rem; margin:18px 0 10px; color:#173b2a; }
+.ah-grid { display:grid; gap:22px; }
+.ah-g2 { grid-template-columns:1fr 1fr; }
+.ah-g3 { grid-template-columns:repeat(3,1fr); }
+.ah-g4 { grid-template-columns:repeat(4,1fr); }
+@media (max-width:992px){ .ah-g3,.ah-g4{ grid-template-columns:1fr 1fr; } .ah-g2{ grid-template-columns:1fr; } }
+@media (max-width:640px){ .ah-g3,.ah-g4{ grid-template-columns:1fr; } .ah-hero{ padding:30px 22px; } .ah-page{ padding:24px 16px 56px; } }
+
+.ah-tile { background:#fff; border:1px solid #e6e6e6; border-radius:16px; padding:22px; transition:.25s; }
+.ah-tile:hover { transform:translateY(-4px); box-shadow:0 16px 36px -24px rgba(0,0,0,.55); border-color:var(--ah-line); }
+.ah-tile .ah-ic { width:46px; height:46px; border-radius:12px; display:grid; place-items:center; background:rgba(242,169,0,.14); color:#b07d00; font-size:1.15rem; margin-bottom:14px; }
+.ah-tile h4 { font-size:1.02rem; margin-bottom:8px; color:#10291d; }
+.ah-tile p { font-size:.92rem; color:#5b6673; line-height:1.7; }
+
+.ah-note { border-left:4px solid var(--ah-gold); background:#fffaf0; padding:14px 18px; border-radius:10px; color:#5a4700; font-size:.93rem; line-height:1.7; margin:16px 0; }
+
+/* tables */
+.ah-table-wrap { overflow-x:auto; border:1px solid #e6e6e6; border-radius:14px; }
+.ah-table { width:100%; border-collapse:collapse; font-size:.92rem; min-width:520px; }
+.ah-table th, .ah-table td { padding:12px 14px; text-align:left; border-bottom:1px solid #eee; }
+.ah-table th { background:#0f3a29; color:#fff; font-weight:600; }
+.ah-table tr:last-child td { border-bottom:0; }
+.ah-table tbody tr:nth-child(even) { background:#fafafa; }
+
+/* notice list */
+.ah-notices { display:flex; flex-direction:column; gap:12px; }
+.ah-notice { display:flex; gap:16px; align-items:flex-start; background:#fff; border:1px solid #e8e8e8; border-radius:14px; padding:16px 18px; transition:.2s; }
+.ah-notice:hover { border-color:var(--ah-line); box-shadow:0 12px 28px -24px rgba(0,0,0,.6); }
+.ah-notice .ah-date { flex:none; width:64px; text-align:center; background:#0f3a29; color:#fff; border-radius:10px; padding:8px 4px; }
+.ah-notice .ah-date b { display:block; font-size:1.25rem; line-height:1; color:var(--ah-gold); }
+.ah-notice .ah-date span { font-size:11px; }
+.ah-notice .ah-nt b { display:block; color:#10291d; margin-bottom:4px; }
+.ah-notice .ah-nt p { color:#5b6673; font-size:.9rem; line-height:1.7; }
+.ah-tag { display:inline-block; font-size:11px; padding:2px 9px; border-radius:999px; background:rgba(242,169,0,.16); color:#8a6200; margin-left:8px; vertical-align:middle; }
+.ah-tag.green { background:rgba(20,120,80,.14); color:#0d6b47; }
+.ah-tag.red { background:rgba(200,40,40,.12); color:#a52626; }
+
+/* gallery */
+.ah-gal { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+.ah-gal figure { position:relative; border-radius:14px; overflow:hidden; background:#000; aspect-ratio:4/3; margin:0; cursor:zoom-in; }
+.ah-gal img { width:100%; height:100%; object-fit:cover; transition:.4s; }
+.ah-gal figure:hover img { transform:scale(1.07); opacity:.85; }
+.ah-gal figcaption { position:absolute; inset:auto 0 0 0; padding:10px 12px; font-size:.82rem; color:#fff; background:linear-gradient(transparent,rgba(0,0,0,.78)); }
+.ah-lightbox { position:fixed; inset:0; background:rgba(0,0,0,.92); display:none; align-items:center; justify-content:center; z-index:99999; padding:24px; }
+.ah-lightbox.on { display:flex; }
+.ah-lightbox img { max-width:94vw; max-height:86vh; border-radius:12px; }
+.ah-lightbox button { position:absolute; top:18px; right:20px; width:44px; height:44px; border-radius:50%; border:1px solid #fff5; background:#000a; color:#fff; font-size:1.2rem; cursor:pointer; }
+
+/* forms */
+.ah-form { display:grid; gap:18px; }
+.ah-form .ah-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media (max-width:640px){ .ah-form .ah-row{ grid-template-columns:1fr; } }
+.ah-field label { display:block; font-size:.88rem; font-weight:600; color:#1c3a2b; margin-bottom:6px; }
+.ah-field label .req { color:#c0392b; }
+.ah-field input, .ah-field select, .ah-field textarea { width:100%; padding:11px 13px; border:1px solid #d6dbe0; border-radius:10px; font-size:.95rem; font-family:inherit; background:#fff; color:#1e1e1e; }
+.ah-field input:focus, .ah-field select:focus, .ah-field textarea:focus { outline:none; border-color:var(--ah-gold); box-shadow:0 0 0 3px rgba(242,169,0,.15); }
+.ah-field .ah-help { font-size:.8rem; color:#78838f; margin-top:5px; }
+.ah-field .ah-err { font-size:.8rem; color:#c0392b; margin-top:5px; display:none; }
+.ah-field.bad input, .ah-field.bad select, .ah-field.bad textarea { border-color:#c0392b; }
+.ah-field.bad .ah-err { display:block; }
+.ah-submit { background:linear-gradient(135deg,#0f3a29,#175a40); color:#fff; border:0; padding:14px 28px; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:9px; transition:.25s; }
+.ah-submit:hover { background:linear-gradient(135deg,#175a40,#1f7a55); transform:translateY(-2px); }
+.ah-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+.ah-ok { display:none; background:#e9f7ef; border:1px solid #a9dfbf; color:#1e6b43; padding:16px 18px; border-radius:12px; font-size:.95rem; line-height:1.7; margin-bottom:18px; }
+.ah-ok.on { display:block; }
+.ah-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; counter-reset:st; }
+@media (max-width:900px){ .ah-steps{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .ah-steps{ grid-template-columns:1fr; } }
+.ah-step { background:#fff; border:1px solid #e6e6e6; border-radius:14px; padding:18px; }
+.ah-step::before { counter-increment:st; content:counter(st); display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#0f3a29; color:var(--ah-gold); font-weight:700; margin-bottom:10px; }
+.ah-step b { display:block; margin-bottom:6px; color:#10291d; }
+.ah-step p { font-size:.88rem; color:#5b6673; line-height:1.7; }
+
+/* FAQ accordion */
+.ah-faq { display:flex; flex-direction:column; gap:10px; }
+.ah-faq details { background:#fff; border:1px solid #e6e6e6; border-radius:12px; padding:0; overflow:hidden; }
+.ah-faq summary { cursor:pointer; padding:15px 18px; font-weight:600; color:#10291d; list-style:none; display:flex; justify-content:space-between; gap:12px; }
+.ah-faq summary::-webkit-details-marker { display:none; }
+.ah-faq summary::after { content:'\f078'; font-family:'Font Awesome 6 Free'; font-weight:900; font-size:.8rem; color:var(--ah-gold); transition:.25s; }
+.ah-faq details[open] summary::after { transform:rotate(180deg); }
+.ah-faq .ah-a { padding:0 18px 16px; color:#5b6673; font-size:.93rem; line-height:1.8; }
+
+/* floating contact */
+.ah-float { position:fixed; right:16px; bottom:16px; z-index:9998; display:flex; flex-direction:column; gap:10px; }
+.ah-float a { width:50px; height:50px; border-radius:50%; display:grid; place-items:center; color:#fff; font-size:1.2rem; box-shadow:0 10px 26px -10px rgba(0,0,0,.6); transition:.25s; }
+.ah-float a:hover { transform:translateY(-3px) scale(1.06); }
+.ah-float .wa { background:#25d366; }
+.ah-float .ph { background:#0f3a29; }
+.ah-float .tp { background:#0b1b2b; }
+
+/* footer */
+.ah-footer { background:#05130d; color:#b9c7c0; margin-top:40px; }
+.ah-footer .ah-fin { max-width:1240px; margin:0 auto; padding:54px 24px 0; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:34px; }
+.ah-footer h5 { color:#fff; font-size:1rem; margin-bottom:16px; }
+.ah-footer a { color:#b9c7c0; font-size:.9rem; }
+.ah-footer a:hover { color:var(--ah-gold-soft); }
+.ah-footer ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.ah-footer .ah-fbrand { display:flex; gap:12px; align-items:center; margin-bottom:14px; }
+.ah-footer .ah-fbrand img { max-height:48px; }
+.ah-footer .ah-fbrand b { color:#fff; font-size:1.05rem; display:block; }
+.ah-footer p { font-size:.9rem; line-height:1.85; }
+.ah-footer .ah-social { display:flex; gap:10px; margin-top:16px; }
+.ah-footer .ah-social a { width:36px; height:36px; border-radius:50%; display:grid; place-items:center; background:#0d2a1e; color:#fff; }
+.ah-footer .ah-social a:hover { background:var(--ah-gold); color:#1a1200; }
+.ah-footer .ah-fbot { border-top:1px solid rgba(255,255,255,.08); margin-top:40px; padding:18px 24px; text-align:center; font-size:.84rem; color:#8ba396; }
+@media (max-width:992px){ .ah-footer .ah-fin{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .ah-footer .ah-fin{ grid-template-columns:1fr; padding:40px 18px 0; } }
+
+/* live search */
+.ah-searchbar { display:flex; gap:10px; }
+.ah-searchbar input { flex:1; padding:14px 16px; border:1px solid #d6dbe0; border-radius:12px; font-size:1rem; }
+.ah-res { display:flex; flex-direction:column; gap:10px; margin-top:20px; }
+.ah-res a { display:block; background:#fff; border:1px solid #e8e8e8; border-radius:12px; padding:14px 16px; }
+.ah-res a:hover { border-color:var(--ah-line); }
+.ah-res b { color:#10291d; display:block; margin-bottom:3px; }
+.ah-res span { color:#6b7682; font-size:.88rem; }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EducationalOrganization","name":"আল হেরা অনলাইন মাদরাসা","alternateName":"Al-Hera Online Madrasha","url":"https://alheraonline.com/","logo":"https://alheraonline.com/uploads/1787224184_logo_logoalhera.png","telephone":"+8801700000000","email":"info@alheraonline.com","address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"}}
+</script>
+<style>
+/* ===== Al-Hera design tokens & polish (shared) ===== */
+:root{
+  --ah-green-900:#04120c; --ah-green-800:#062017; --ah-green-700:#0a3325; --ah-green-600:#0f4a34;
+  --ah-gold:#f2a900; --ah-gold-2:#f5d77b; --ah-cream:#fbf8f1; --ah-text:#16232e; --ah-muted:#5f6b76;
+  --ah-radius:18px; --ah-shadow:0 18px 44px -28px rgba(4,18,12,.55); --ah-shadow-lg:0 30px 70px -40px rgba(4,18,12,.7);
+  --ah-ease:cubic-bezier(.16,1,.3,1);
+}
+html{ scroll-behavior:smooth; }
+body{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+img{ max-width:100%; }
+::selection{ background:rgba(242,169,0,.28); }
+:focus-visible{ outline:2px solid var(--ah-gold); outline-offset:3px; border-radius:6px; }
+
+/* headings get a touch more presence on the light pages */
+.ah-page h1, .ah-hero h1{ letter-spacing:-.2px; }
+.ah-hero{ box-shadow:var(--ah-shadow-lg); }
+
+/* reveal-on-scroll */
+.ah-rv{ opacity:0; transform:translateY(26px); transition:opacity .7s var(--ah-ease), transform .7s var(--ah-ease); }
+.ah-rv.on{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .ah-rv{ opacity:1 !important; transform:none !important; transition:none !important; }
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+
+/* reading progress bar */
+.ah-progress{ position:fixed; top:0; left:0; height:3px; width:0; background:linear-gradient(90deg,var(--ah-gold),#ffd766); z-index:9999; transition:width .1s linear; }
+
+/* sticky mobile admission bar */
+.ah-mobcta{ display:none; }
+@media (max-width:768px){
+  .ah-mobcta{ display:flex; position:fixed; left:0; right:0; bottom:0; z-index:9997; background:#04120c; border-top:1px solid rgba(242,169,0,.3); padding:10px 12px; gap:10px; }
+  .ah-mobcta a{ flex:1; text-align:center; padding:11px 8px; border-radius:11px; font-size:.9rem; font-weight:700; }
+  .ah-mobcta .m1{ background:linear-gradient(135deg,#f2a900,#e08e00); color:#1a1200; }
+  .ah-mobcta .m2{ border:1px solid rgba(255,255,255,.3); color:#fff; }
+  body{ padding-bottom:64px !important; }
+  .ah-float{ bottom:76px; }
+}
+
+/* ------- dark-theme correction for the older PHP pages ------- */
+.ah-darkbody{ background:#f5f6f7 !important; color:var(--ah-text) !important; }
+.ah-darkbody .main-header{ position:sticky; top:0; background:#04120c; }
+.ah-darkbody .course-card{ background:#fff !important; color:var(--ah-text) !important; border:1px solid #e8e8e8 !important; box-shadow:var(--ah-shadow) !important; }
+.ah-darkbody .course-card *{ color:inherit; }
+.ah-darkbody .course-card .card-title,
+.ah-darkbody .course-card h3{ color:#10291d !important; }
+.ah-darkbody .course-card p{ color:#5b6673 !important; }
+.ah-darkbody .course-card .cat-b{ color:#0d3a2a !important; }
+.ah-darkbody .courses-hero,
+.ah-darkbody .blog-hero,
+.ah-darkbody .about-hero,
+.ah-darkbody .contact-hero{ background:radial-gradient(ellipse 80% 90% at 15% 0%, #0d3a2a 0%, #062017 55%, #04120c 100%) !important; }
+.ah-darkbody .courses-hero h1,
+.ah-darkbody .blog-hero h1,
+.ah-darkbody .about-hero h1,
+.ah-darkbody .contact-hero h1,
+.ah-darkbody .hero-title{ color:#fff !important; }
+.ah-darkbody .hero-sub,
+.ah-darkbody .courses-hero p,
+.ah-darkbody .contact-hero p{ color:#c3d2ca !important; }
+.ah-darkbody .filter-bar{ background:#fff !important; border:1px solid #e8e8e8; }
+.ah-darkbody .filter-input-wrap input,
+.ah-darkbody .filter-select{ background:#f7f8f9 !important; color:#16232e !important; border:1px solid #dfe3e7 !important; }
+.ah-darkbody .filter-btn{ background:#0f4a34 !important; color:#fff !important; }
+.ah-darkbody .courses-section{ background:transparent !important; }
+.ah-darkbody .contact-form-wrap,
+.ah-darkbody .contact-info{ background:#fff !important; color:var(--ah-text) !important; border:1px solid #e8e8e8; }
+.ah-darkbody .contact-form input,
+.ah-darkbody .contact-form select,
+.ah-darkbody .contact-form textarea{ background:#f7f8f9 !important; color:#16232e !important; border:1px solid #dfe3e7 !important; }
+.ah-darkbody .contact-form label{ color:#1c3a2b !important; }
+</style>
+<style>
+.ah-hero-cta { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+.ah-btn-ghost { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:8px; border:1px solid rgba(15,58,41,.35); color:#0f3a29; font-weight:600; transition:.25s; }
+.ah-btn-ghost:hover { background:rgba(15,58,41,.06); border-color:#f2a900; color:#8a6200; }
+.ah-trust { list-style:none; display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:22px; }
+.ah-trust li { font-size:.88rem; color:#5b6673; display:flex; align-items:center; gap:7px; }
+.ah-trust li i { color:#0f7a4f; }
+</style>
+<style>
+/* ===== footer v2 ===== */
+.ah-fnews{ background:linear-gradient(135deg,#0d3a2a,#061a12); border-bottom:1px solid rgba(242,169,0,.16); }
+.ah-fnews .ah-fn-in{ max-width:1240px; margin:0 auto; padding:26px 24px; display:flex; align-items:center; gap:28px; justify-content:space-between; flex-wrap:wrap; }
+.ah-fnews .ah-fn-txt b{ display:flex; align-items:center; gap:9px; color:#fff; font-size:1.02rem; margin-bottom:5px; }
+.ah-fnews .ah-fn-txt b i{ color:var(--ah-gold); }
+.ah-fnews .ah-fn-txt span{ color:#b9c7c0; font-size:.87rem; }
+.ah-fn-form{ display:flex; gap:9px; flex-wrap:wrap; position:relative; }
+.ah-fn-form input{ min-width:260px; flex:1; padding:12px 15px; border-radius:11px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.07); color:#fff; font-family:inherit; font-size:.9rem; }
+.ah-fn-form input::placeholder{ color:#9db3a8; }
+.ah-fn-form input:focus{ outline:none; border-color:var(--ah-gold); background:rgba(242,169,0,.09); }
+.ah-fn-form button{ padding:12px 22px; border:0; border-radius:11px; background:linear-gradient(135deg,#f2a900,#e08e00); color:#1a1200; font-weight:700; font-family:inherit; font-size:.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:8px; transition:.2s; }
+.ah-fn-form button:hover{ transform:translateY(-2px); }
+.ah-fn-msg{ flex-basis:100%; color:#8fe0b6; font-size:.82rem; min-height:1em; }
+
+.ah-footer .ah-fin{ grid-template-columns:1.5fr 1fr 1fr 1fr 1.1fr; gap:30px; }
+.ah-fcol h5{ position:relative; padding-bottom:10px; }
+.ah-fcol h5::after{ content:''; position:absolute; left:0; bottom:0; width:34px; height:2px; background:linear-gradient(90deg,var(--ah-gold),transparent); }
+.ah-footer .ah-fabout p{ margin-bottom:16px; }
+.ah-fmeta{ display:flex; flex-direction:column; gap:9px; margin-bottom:16px; }
+.ah-fmeta li{ font-size:.86rem; color:#a9bcb3; display:flex; align-items:center; gap:9px; }
+.ah-fmeta i{ color:var(--ah-gold); width:15px; }
+.ah-fcontact li{ display:flex; align-items:center; gap:9px; font-size:.88rem; }
+.ah-fcontact i{ color:var(--ah-gold); width:15px; }
+.ah-fcta{ display:inline-flex; align-items:center; gap:8px; margin-top:14px; padding:10px 16px; border-radius:10px; background:rgba(242,169,0,.14); border:1px solid rgba(242,169,0,.35); color:#f5d77b !important; font-weight:700; font-size:.85rem; }
+.ah-fcta:hover{ background:rgba(242,169,0,.24); color:#fff !important; }
+.ah-fbot{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; max-width:1240px; margin:0 auto; }
+.ah-fbot nav{ display:flex; gap:16px; flex-wrap:wrap; }
+.ah-fbot a{ font-size:.82rem; }
+@media (max-width:1100px){ .ah-footer .ah-fin{ grid-template-columns:1fr 1fr 1fr; } }
+@media (max-width:992px){ .ah-footer .ah-fin{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .ah-footer .ah-fin{ grid-template-columns:1fr; } .ah-fn-form input{ min-width:0; } .ah-fbot{ justify-content:center; text-align:center; } }
+</style>
+</head>
+<body>
+<main id="ah-main">
+
+<!-- ===== Header (shared) ===== -->
+<a class="ah-skip" href="#ah-main">মূল কনটেন্টে যান</a>
+<div class="ah-topbar"><div class="ah-in">
+  <div><i class="fa-solid fa-phone"></i> <a href="tel:+8801700000000">01700-000000</a> &nbsp;·&nbsp; <i class="fa-solid fa-envelope"></i> <a href="mailto:info@alheraonline.com">info@alheraonline.com</a></div>
+  <div class="ah-tb-right">
+    <span class="ah-pill"><i class="fa-solid fa-bullhorn"></i> ২০২৬-২০২৭ সেশনে ভর্তি চলছে</span>
+    <a href="/Frontend/faq.html">সাধারণ জিজ্ঞাসা</a>
+    <a href="/Frontend/downloads.html">ডাউনলোড</a>
+  </div>
+</div></div>
+<header class="ah-header">
+  <div class="ah-in">
+    <a href="/" class="ah-brand">
+      <img src="/uploads/1787224184_logo_logoalhera.png" alt="আল হেরা অনলাইন মাদরাসা">
+      <span class="ah-bt"><span class="ah-b1">আল হেরা অনলাইন মাদরাসা</span><span class="ah-b2">কুরআন ও সুন্নাহ ভিত্তিক শিক্ষা</span></span>
+    </a>
+    <nav aria-label="প্রধান মেনু">
+      <ul class="ah-nav" id="ahNav">
+      <li><a href="/" class="is-active" aria-current="page">হোম</a></li>
+      <li><a href="/Frontend/courses.html">কোর্স</a></li>
+      <li><a href="/Frontend/admission.html">ভর্তি</a></li>
+      <li><a href="/Frontend/notice.html">নোটিশ</a></li>
+      <li><a href="/Frontend/result.html">ফলাফল</a></li>
+      <li><a href="/Frontend/gallery.html">গ্যালারি</a></li>
+      <li><a href="/Frontend/about.html">আমাদের সম্পর্কে</a></li>
+      <li><a href="/Frontend/contact.html">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+    <div class="ah-actions">
+      <a href="/Frontend/search.html" class="ah-search-btn" aria-label="সার্চ"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="/login.html" class="ah-btn"><i class="fa-solid fa-right-to-bracket"></i> লগইন</a>
+      <a href="/Frontend/admission.html" class="ah-btn ah-btn-apply"><i class="fa-solid fa-user-plus"></i> <span>ভর্তি আবেদন</span></a>
+      <button class="ah-burger" id="ahBurger" aria-label="মেনু" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== JavaScript ===== -->
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>আল হেরা অনলাইন মাদ্রাসা</title>
+    <link rel="stylesheet" href="/assets/vendor/fontawesome-6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/fonts-hind-siliguri.css">
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Hind Siliguri',sans-serif; }
+        body { background-color:#f9f9f9; color:#1e1e1e; overflow-x:hidden; padding:0; }
+        .animate-on-scroll { opacity:0; transform:translateY(60px); transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+        .animate-on-scroll.visible { opacity:1; transform:translateY(0); }
+        .animate-on-scroll.delay-1 { transition-delay:0.1s; }
+        .animate-on-scroll.delay-2 { transition-delay:0.2s; }
+        .animate-on-scroll.delay-3 { transition-delay:0.3s; }
+        .animate-on-scroll.delay-4 { transition-delay:0.4s; }
+        .animate-on-scroll.delay-5 { transition-delay:0.5s; }
+        .section-container { max-width:1240px; margin:0 auto; padding:0 24px; }
+        .section-gap { margin-bottom:60px; }
+        a { text-decoration:none; color:inherit; }
+        :root { --gold: #f2a900; }
+
+        .floating-btn { position:fixed; bottom:30px; right:30px; background:linear-gradient(135deg,#155a62,#758b1c); color:#fff; padding:12px 24px; border-radius:50px; font-weight:600; display:flex; align-items:center; gap:10px; box-shadow:0 4px 15px rgba(0,0,0,0.3); z-index:999; cursor:pointer; transition:all 0.3s ease; animation:pulse-float 2s ease-in-out infinite; }
+        .floating-btn:hover { transform:scale(1.1); }
+        @keyframes pulse-float { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);box-shadow:0 8px 30px rgba(0,0,0,0.4);} }
+
+        .sec-1 { background:#0084a8; background-image:url('../uploads/1787312710_ChatGPT Image Aug 21, 2026, 05_44_43 PM.png');background-size:cover;background-position:center; border-radius:30px; padding:40px 60px; position:relative; margin-top:100px; overflow:hidden; color:#1e1e1e; }
+        .sec-1::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.05); z-index:0; }
+        .sec-1-inner { display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center; position:relative; z-index:1; }
+        .sec-1-content h1 { font-size:3.5rem; color:#171616; line-height:1.1; margin-bottom:10px; animation:fadeInUp 1s ease; }
+        .sec-1-content h2 { font-size:2rem; color:#1e1e1e; margin-bottom:20px; animation:fadeInUp 1s ease 0.2s both; }
+        .sec-1-content p { font-size:1.1rem; color:#1e1e1e; margin-bottom:20px; line-height:1.6; animation:fadeInUp 1s ease 0.4s both; }
+        .sec-1-badges { display:flex; gap:15px; margin-bottom:25px; flex-wrap:wrap; animation:fadeInUp 1s ease 0.6s both; }
+        .sec-1-badges span { display:flex; align-items:center; gap:8px; color:#1e1e1e; }
+        .sec-1-badges span:nth-child(2) { color:#1e1e1e; }
+        .sec-1-badges span:nth-child(3) { color:#1e1e1e; }
+        .sec-1-badges i { color:#f2a900; background:white; border-radius:50%; padding:5px; }
+        .btn-primary { background:#007bff; color:#ffffff; padding:12px 30px; border-radius:8px; font-weight:bold; display:inline-block; transition:all 0.3s ease; animation:fadeInUp 1s ease 0.8s both; }
+        .btn-primary:hover { background:#f2a900; color:#ffffff; transform:translateY(-3px) scale(1.02); box-shadow:0 8px 30px rgba(0,0,0,0.2); }
+        .sec-1-img-wrap { position:relative; border-radius:15px; overflow:hidden; display:flex; flex-wrap:wrap; justify-content:center; background:#1f4a43; padding:20px; animation:zoomIn 1.2s ease; }
+        .sec-1-img-wrap img { max-width:100%; height:auto; border-radius:10px; transition:transform 0.5s ease; }
+        .sec-1-img-wrap img:hover { transform:scale(1.05); }
+        .badge-corner { position:absolute; background:#f5fafb; padding:10px 15px; border-radius:10px; right:-10px; top:10px; font-weight:bold; color:#1e1e1e; box-shadow:0 5px 10px rgba(0,0,0,0.1); animation:slideInRight 0.8s ease; }
+        .badge-bottom { position:absolute; bottom:20px; left:20px; background:#f5fafb; padding:10px 15px; border-radius:10px; color:#1e1e1e; box-shadow:0 5px 10px rgba(0,0,0,0.1); animation:slideInUp 0.8s ease; }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+        @keyframes zoomIn { from{opacity:0;transform:scale(0.8);} to{opacity:1;transform:scale(1);} }
+        @keyframes slideInRight { from{opacity:0;transform:translateX(50px);} to{opacity:1;transform:translateX(0);} }
+        @keyframes slideInUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+
+        .sec-2 { background:#ffffff;  border:2px solid #000000; border-radius:20px; padding:40px 20px; text-align:center; color:#0a2745; }
+        .sec-2 h2 { font-size:2rem; color:#0a2745; margin-bottom:40px; }
+        .sec-2 h2 span { color:var(--gold); }
+        .sec-2-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+        .stat-box h3 { font-size:2rem; color:#0a2745; margin:10px 0 5px; transition:all 0.3s ease; }
+        .stat-box:hover h3 { transform:scale(1.1); color:#f2a900; }
+        .stat-box p { font-size:1rem; color:#0a2745; }
+
+        .sec-3 { background:#ffffff;  border-radius:30px; padding:60px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; color:#000000; }
+        .sec-3-text h2 { color:#f2a900; font-size:2.5rem; margin-bottom:20px; }
+        .sec-3-text h2 span { color:white; }
+        .sec-3-text p { font-size:1.1rem; color:#000000; line-height:1.7; margin-bottom:30px; }
+        .sec-3-text .btn { background:#0c738f; color:#ffffff; padding:12px 25px; border-radius:8px; display:inline-block; transition:all 0.3s ease; }
+        .sec-3-text .btn:hover { background:#eeb643; color:#ffffff; transform:translateY(-3px); }
+        .sec-3-img-wrap img { border-radius:30px; width:100%; height:auto; border:8px solid #eeb643; max-width:400px; transition:transform 0.5s ease; }
+        .sec-3-img-wrap img:hover { transform:scale(1.03); }
+
+        .sec-4 { background:#0c181d;  border-radius:30px; padding:60px; text-align:center; color:#141414; }
+        .sec-4-head-icon { background:#2c3e35; width:80px; height:80px; border-radius:50%; margin:0 auto 40px; display:flex; align-items:center; justify-content:center; border:2px solid var(--gold); font-size:2rem; color:#4aa6b8; transition:all 0.3s ease; }
+        .sec-4-head-icon:hover { transform:rotate(180deg) scale(1.1); }
+        .sec-4-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+        .feature-card { background:#f5fafa; padding:30px 20px; border-radius:15px; border:1px solid #e0e0e0; text-align:center; color:#0a2a32; transition:all 0.4s ease; }
+        .feature-card:hover { background:#ffffff; color:#0a2a32; transform:translateY(-10px) scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,0.15); }
+        .feature-card i { font-size:2.5rem; color:#4aa6b8; margin-bottom:10px; transition:all 0.3s ease; }
+        .feature-card:hover i { color:#f2a900; transform:scale(1.2) rotate(5deg); }
+        .feature-card h4 { font-size:1rem; }
+
+        .sec-5 { background:#0c181d;  border-radius:30px; padding:40px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:15px; }
+        .sec-5 .card { background:#1a2d33; border-radius:10px; padding:20px; color:#ffffff; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:160px; position:relative; transition:all 0.4s ease; overflow:hidden; background-size:cover; background-position:center; }
+        .sec-5 .card:hover { background:#22404a; transform:translateY(-8px) scale(1.02); box-shadow:0 15px 30px rgba(0,0,0,0.3); }
+        .sec-5 .card h4 { position:relative; z-index:1; transition:color 0.3s ease; }
+        .sec-5 .card:hover h4 { color:#f2a900; }
+        .sec-5 .card .card-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.3); z-index:0; }
+        .sec-5 .card img, .sec-5 .card i { position:relative; z-index:1; }
+        .sec-5 .card img { max-width:100%; max-height:100px; border-radius:8px; margin-top:10px; transition:transform 0.5s ease; object-fit:contain; }
+        .sec-5 .card:hover img { transform:scale(1.05); }
+
+        .sec-6 { background:#ffffff;  border-radius:30px; padding:50px 40px; position:relative; overflow:hidden; border:2px solid rgba(242,169,0,0.3); box-shadow:0 10px 50px rgba(0,0,0,0.5); }
+        .sec-6::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle at 30% 50%, rgba(242,169,0,0.05) 0%, transparent 60%), radial-gradient(circle at 70% 80%, rgba(12,115,143,0.08) 0%, transparent 50%); animation:bgFloat 20s ease-in-out infinite; z-index:1; }
+        @keyframes bgFloat { 0%,100%{transform:translate(0,0) rotate(0deg);} 33%{transform:translate(30px,-20px) rotate(5deg);} 66%{transform:translate(-20px,30px) rotate(-3deg);} }
+        .sec-6 .particle { position:absolute; border-radius:50%; background:rgba(242,169,0,0.1); z-index:1; animation:particleFloat 15s ease-in-out infinite; }
+        .sec-6 .particle:nth-child(1) { width:80px; height:80px; top:10%; left:5%; }
+        .sec-6 .particle:nth-child(2) { width:120px; height:120px; bottom:10%; right:5%; animation-delay:-5s; }
+        .sec-6 .particle:nth-child(3) { width:60px; height:60px; top:50%; left:50%; animation-delay:-10s; }
+        .sec-6 .particle:nth-child(4) { width:40px; height:40px; top:20%; right:20%; animation-delay:-3s; }
+        .sec-6 .particle:nth-child(5) { width:90px; height:90px; bottom:20%; left:30%; animation-delay:-7s; }
+        @keyframes particleFloat { 0%,100%{transform:translate(0,0) scale(1);opacity:0.3;} 25%{transform:translate(30px,-40px) scale(1.2);opacity:0.6;} 50%{transform:translate(-20px,20px) scale(0.8);opacity:0.4;} 75%{transform:translate(40px,30px) scale(1.1);opacity:0.5;} }
+        .sec-6-inner { position:relative; z-index:2; }
+        .notice-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:30px; flex-wrap:wrap; gap:15px; }
+        .notice-badge { display:inline-flex; align-items:center; gap:10px; background:#f2a900; color:#ffffff; padding:10px 25px; border-radius:50px; font-weight:700; font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; animation:pulseBadge 2s ease-in-out infinite; box-shadow:0 4px 20px rgba(242,169,0,0.4); }
+        @keyframes pulseBadge { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);box-shadow:0 4px 40px rgba(242,169,0,0.7);} }
+        .notice-nav button { width:45px; height:45px; border-radius:50%; border:2px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); color:white; font-size:1.2rem; cursor:pointer; transition:all 0.3s ease; backdrop-filter:blur(5px); }
+        .notice-nav button:hover { background:var(--gold); color:#0a1a20; border-color:var(--gold); transform:scale(1.1); }
+        .slider-container { overflow:hidden; position:relative; border-radius:20px; width:100%; }
+        .slider-track { display:flex; transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); width:100%; }
+        .slide-item-banner { min-width:100%; padding:30px 35px; border-radius:20px; position:relative; overflow:hidden; background:linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(10px); transition:all 0.5s ease; box-sizing:border-box; background-size:cover; background-position:center; }
+        .slide-item-banner::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(242,169,0,0.05), transparent 60%); z-index:0; }
+        .slide-item-banner .slide-content { position:relative; z-index:1; display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center; }
+        .slide-item-banner .slide-text h3 { font-size:1.8rem; color:#ffffff; margin-bottom:8px; font-weight:700; transition:color 0.3s ease; }
+        .slide-item-banner:hover .slide-text h3 { color:#f2a900; }
+        .slide-item-banner .slide-text h3 i { margin-right:10px; }
+        .slide-item-banner .slide-text .sub-title { font-size:1.1rem; color:#ffffff; margin-bottom:5px; }
+        .slide-item-banner .slide-text p { color:#ffffff; font-size:0.95rem; line-height:1.6; max-width:500px; }
+        .slide-item-banner .slide-text .highlight { display:inline-block; background:rgba(242,169,0,0.15); color:#f2a900; padding:4px 15px; border-radius:20px; font-size:0.85rem; font-weight:600; margin-top:10px; border:1px solid rgba(242,169,0,0.2); }
+        .slide-item-banner .slide-btn { display:inline-block; padding:12px 30px; font-weight:700; border-radius:50px; transition:all 0.3s ease; border:none; cursor:pointer; font-size:0.95rem; }
+        .slide-item-banner .slide-icon { font-size:4rem; color:rgba(242,169,0,0.2); min-width:80px; text-align:center; }
+        .slider-dots { display:flex; justify-content:center; gap:10px; margin-top:25px; }
+        .slider-dots span { width:12px; height:12px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:all 0.3s ease; }
+        .slider-dots span.active { background:var(--gold); width:35px; border-radius:6px; box-shadow:0 0 20px rgba(242,169,0,0.4); }
+        .slider-dots span:hover:not(.active) { background:rgba(255,255,255,0.4); }
+
+        .sec-7 { background:#f6f0e3;  border-radius:30px; padding:50px; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; color:#1e1e1e; }
+        .sec-7-vid-wrap { background-color:#000000; border-radius:15px; padding:0; position:relative; color:white; min-height:320px; display:flex; flex-direction:column; justify-content:center; align-items:center; background-size:cover; background-position:center; transition:transform 0.4s ease, box-shadow 0.4s ease; overflow:hidden; cursor:pointer; isolation:isolate; }
+        .sec-7-vid-wrap::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.55)); z-index:1; pointer-events:none; }
+        .sec-7-vid-wrap:hover { transform:scale(1.02); box-shadow:0 15px 40px rgba(0,0,0,0.3); }
+        .sec-7-vid-wrap .vid-title-overlay { position:absolute; top:20px; left:20px; right:20px; z-index:2; text-align:center; }
+        .sec-7-vid-wrap .vid-title-overlay h2 { font-size:1.4rem; color:white; font-weight:700; text-shadow:2px 2px 8px rgba(0,0,0,0.9); margin:0; }
+        .sec-7-vid-wrap .play-btn { font-size:2.5rem; color:white; background:rgba(255,255,255,0.25); border-radius:50%; width:75px; height:75px; display:flex; justify-content:center; align-items:center; backdrop-filter:blur(4px); transition:all 0.4s ease; position:relative; z-index:3; border:2px solid rgba(255,255,255,0.5); padding-left:8px; }
+        .sec-7-vid-wrap:hover .play-btn { transform:scale(1.15); background:var(--gold); color:#0a1a20; }
+        .sec-7-text h2 { font-size:2.5rem; margin-bottom:20px; color:#f2a900; }
+        .sec-7-text h2 span { color:var(--gold); }
+        .sec-7-text p { font-size:1.1rem; line-height:1.7; color:#1e1e1e; }
+
+        .sec-8 { background:#0c181d;  border-radius:30px; padding:60px 60px 50px; position:relative; overflow:hidden; color:#ffffff; }
+        .sec-8-header { position:relative; z-index:1; text-align:center; margin-bottom:40px; }
+        .sec-8-badge { display:inline-block; background:rgba(242,169,0,0.15); color:var(--gold); padding:6px 20px; border-radius:50px; font-size:0.85rem; font-weight:600; border:1px solid rgba(242,169,0,0.2); margin-bottom:15px; }
+        .sec-8-badge i { margin-right:8px; }
+        .sec-8-header h2 { font-size:2.8rem; margin-bottom:15px; color:#f2a900; }
+        .sec-8-header h2 span { color:var(--gold); }
+        .sec-8-header p { font-size:1.05rem; max-width:700px; margin:0 auto; line-height:1.7; }
+        .years-tabs { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-bottom:40px; position:relative; z-index:1; }
+        .year-tab { display:flex; flex-direction:column; align-items:center; padding:14px 28px; background:#000000; border:2px solid rgba(255,255,255,0.06); border-radius:16px; cursor:pointer; transition:all 0.4s ease; min-width:80px; }
+        .year-tab:hover { background:#030303; border-color:rgba(242,169,0,0.3); transform:translateY(-3px); }
+        .year-tab.active { background:#f2a900; border-color:var(--gold); box-shadow:0 8px 30px rgba(242,169,0,0.15); transform:translateY(-5px); }
+        .year-tab .year-number { font-size:2rem; font-weight:800; color:rgba(255,255,255,0.3); line-height:1; }
+        .year-tab.active .year-number { color:var(--gold); }
+        .year-tab .year-label { font-size:0.7rem; color:rgba(255,255,255,0.4); margin-top:2px; }
+        .year-tab.active .year-label { color:rgba(255,255,255,0.8); }
+        .year-tab .year-badge { font-size:0.55rem; background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.3); padding:2px 10px; border-radius:20px; margin-top:4px; font-weight:600; }
+        .year-tab.active .year-badge { background:rgba(242,169,0,0.15); color:var(--gold); }
+        .year-content-wrapper { position:relative; z-index:1; min-height:400px; }
+        .year-content { display:none; animation:fadeSlideIn 0.6s ease; }
+        .year-content.active { display:block; }
+        @keyframes fadeSlideIn { 0%{opacity:0;transform:translateY(30px);} 100%{opacity:1;transform:translateY(0);} }
+        .year-content-grid { display:grid; grid-template-columns:1.4fr 0.6fr; gap:30px; background:#000000; border-radius:20px; padding:30px; border:1px solid rgba(255,255,255,0.04); }
+        .year-info h3 { font-size:1.5rem; color:#f2a900; margin-bottom:10px; }
+        .year-info h3 i { margin-right:10px; }
+        .year-info > p { color:rgba(255,255,255,0.6); font-size:0.95rem; line-height:1.7; margin-bottom:20px; }
+        .year-features { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; }
+        .year-features li { color:rgba(255,255,255,0.7); font-size:0.9rem; display:flex; align-items:center; gap:8px; padding:4px 0; }
+        .year-features li i { color:#f2a900; font-size:0.8rem; flex-shrink:0; }
+        .year-enroll-btn { display:inline-block; margin-top:20px; padding:12px 30px; background:#f2a900; color:#0a1a20; font-weight:700; border-radius:50px; transition:all 0.3s ease; font-size:0.95rem; }
+        .year-enroll-btn:hover { background:#d4880f; transform:translateY(-3px); }
+        .year-stats { display:flex; flex-direction:column; gap:15px; }
+        .stat-card { background:rgba(255,255,255,0.03); border-radius:16px; padding:20px 25px; text-align:center; border:1px solid rgba(255,255,255,0.04); }
+        .stat-card .stat-number { font-size:2.2rem; font-weight:800; color:#f2a900; line-height:1; }
+        .stat-card .stat-label { font-size:0.8rem; color:rgba(255,255,255,0.5); margin-top:5px; }
+
+        .sec-9 { background:#0c181d;  border-radius:30px; padding:40px; display:grid; grid-template-columns:0.8fr 1.2fr; gap:20px; color:#ffffff; }
+        .sec-9-left h3 { font-size:1.5rem; margin-bottom:20px; color:#f2a900; }
+        .sec-9-menu { display:flex; flex-direction:column; gap:10px; }
+        .sec-9-menu-item { background:#16252a; padding:15px 20px; border-radius:10px; display:flex; align-items:center; gap:10px; border:1px solid #2d424a; }
+        .sec-9-menu-item.active { border:2px solid #f2a900; background:#1a2d33; }
+        .sec-9-menu-item i { font-size:1.5rem; color:#f2a900; }
+        .sec-9-menu-item h4 { color:#ffffff; }
+        .sec-9-right h3 { font-size:1.5rem; margin-bottom:20px; color:#f2a900; }
+        .module-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+        .module-card { background:#16252a; padding:15px; border-radius:10px; display:flex; align-items:flex-start; gap:10px; border:1px solid #2d424a; color:#ffffff; }
+        .module-card i { color:#f2a900; font-size:1.2rem; margin-top:3px; }
+
+        .sec-10 { background:#0c181d;  border-radius:30px; padding:60px 40px; text-align:center; color:#ffffff; overflow:hidden; }
+        .sec-10 h2 { font-size:2.5rem; margin-bottom:10px; color:#f2a900; }
+        .sec-10 h2 span { color:var(--gold); }
+        .sec-10 p { color:#acbdbf; margin-bottom:40px; }
+        .slider-wrapper { display:flex; justify-content:center; align-items:center; gap:15px; flex-wrap:wrap; }
+        .slide-item { flex:1; border-radius:15px; background:#16252a; min-height:250px; padding:20px; position:relative; max-width:300px; background-size:cover; background-position:center; overflow:hidden; cursor:pointer; }
+        .slide-item.center { flex:1.5; min-height:300px; max-width:400px; }
+        .slide-item i.play-icon { position:absolute; top:40%; left:50%; transform:translate(-50%, -50%); font-size:2.5rem; color:#ffffff; text-shadow:0 0 10px rgba(0,0,0,0.5); z-index:3; }
+        .slide-bottom-text { position:absolute; bottom:0; left:0; width:100%; padding:20px; background:linear-gradient(transparent, #000 80%); z-index:2; }
+        .slide-bottom-text h5 { font-size:1.2rem; margin-bottom:5px; color:#f2a900; }
+        .slide-bottom-text small { color:#ffffff; }
+
+        .sec-11 { background:#0a1a20;  border-radius:30px; padding:60px 40px; text-align:center; color:#ffffff; }
+        .sec-11 h2 { font-size:2.5rem; margin-bottom:20px; color:#f2a900; }
+        .sec-11 h2 span { color:var(--gold); }
+        .certificate-wrap { background:white; padding:40px; border-radius:15px; max-width:700px; margin:30px auto; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
+        .certificate-wrap img { max-width:100%; }
+        .community-boxes { display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:900px; margin:0 auto; margin-top:-50px; position:relative; z-index:2; }
+        .comm-box { background:#0a1919; border-radius:15px; padding:20px; text-align:left; display:flex; flex-direction:column; gap:10px; position:relative; }
+        .comm-box h4 { font-size:1.2rem; color:#f2a900; }
+        .comm-box p { font-size:0.8rem; color:#ffffff; }
+        .comm-box .btn-comm { background:#00d2d3; color:#000000; font-weight:bold; padding:8px 15px; border-radius:5px; display:inline-block; align-self:flex-start; }
+        .comm-box img { position:absolute; right:10px; bottom:10px; width:50px; opacity:0.7; }
+
+        .sec-12 { background:linear-gradient(90deg, #155a62, #758b1c);  border-radius:30px; padding:50px 60px; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; color:#ffffff; }
+        .sec-12-content h2 { font-size:2.8rem; line-height:1.2; margin-bottom:20px; color:#f2a900; }
+        .sec-12-content h2 span { color:var(--gold); }
+        .sec-12-content p { font-size:1.1rem; line-height:1.7; margin-bottom:30px; }
+        .btn-outline { border:1px solid #ffffff; padding:12px 30px; border-radius:8px; display:inline-block; color:#ffffff; }
+        .sec-12-img img { max-width:100%; border-radius:10px; }
+
+        @media (max-width:992px) { .sec-1-inner,.sec-3,.sec-7,.sec-12{grid-template-columns:1fr;} .sec-2-stats,.sec-4-grid,.sec-9,.community-boxes{grid-template-columns:1fr 1fr;} .module-grid{grid-template-columns:1fr;} .sec-5{grid-template-columns:1fr 1fr;} .slide-item-banner .slide-content{grid-template-columns:1fr;text-align:center;} .slide-item-banner .slide-icon{display:none;} .year-content-grid{grid-template-columns:1fr;} .year-features{grid-template-columns:1fr;} }
+        @media (max-width:768px) { .sec-1-content h1{font-size:2.5rem;} .sec-4-grid{grid-template-columns:1fr 1fr;} .sec-9{grid-template-columns:1fr;} .sec-12{grid-template-columns:1fr;} .sec-8-header h2{font-size:1.8rem;} }
+        @media (max-width:600px) { .sec-1-content h1{font-size:2rem;} .sec-2-stats,.sec-4-grid,.community-boxes,.sec-5{grid-template-columns:1fr;} .sec-7{grid-template-columns:1fr;} }
+
+        /* GLOBAL VIDEO MODAL */
+        .gvm-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.92); display:flex; align-items:center; justify-content:center; z-index:999999; opacity:0; visibility:hidden; transition:opacity 0.35s ease, visibility 0.35s ease; padding:20px; backdrop-filter:blur(8px); }
+        .gvm-overlay.active { opacity:1; visibility:visible; }
+        .gvm-inner { position:relative; width:100%; max-width:960px; background:#000; border-radius:16px; overflow:hidden; box-shadow:0 20px 80px rgba(0,0,0,0.8); transform:scale(0.85); transition:transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .gvm-overlay.active .gvm-inner { transform:scale(1); }
+        .gvm-close { position:absolute; top:12px; right:12px; width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:18px; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; }
+        .gvm-close:hover { background:#f2a900; color:#000; }
+        .gvm-video-wrap { position:relative; padding-bottom:56.25%; height:0; background:#000; }
+        .gvm-video-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+    </style>
+</head>
+<body>
+
+<!-- ===== Section 1 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-1 animate-on-scroll">
+        <div class="sec-1-inner">
+            <div class="sec-1-content">
+                <h1>৭ বছরে আলেম</h1>
+                <h2>১ম বছরই সহিহ শুদ্ধ কোরআন তেলাওয়াত ও সহিহ তরীকায় নামাজ শিক্ষা</h2>
+                <p>জেনারেল শিক্ষিত ভাই-বোনদের জন্য আরবি ভাষা ও দ্বীনিয়াত শিক্ষার একটি গবেষণালব্ধ সৃজনশীল প্রতিষ্ঠান।</p>
+                <div class="sec-1-badges">
+                    <span><i class="fas fa-check-circle"></i> আন্তর্জাতিক হিফজুল কুরআন কোর্স</span>
+                    <span><i class="fas fa-check-circle"></i> ৭ বছরে আলেম কোর্স</span>
+                    <span><i class="fas fa-check-circle"></i> ফরজে আইন কোর্স</span>
+                </div>
+                <div class="ah-hero-cta">
+                    <a href="/Frontend/admission.html" class="btn-primary">
+                        ভর্তি আবেদন করুন
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="/Frontend/courses.html" class="ah-btn-ghost">
+                        <i class="fas fa-book-open"></i> কোর্স দেখুন
+                    </a>
+                </div>
+                <ul class="ah-trust">
+                    <li><i class="fas fa-circle-check"></i> ৭ বছরে দাওরায়ে হাদিস পর্যন্ত</li>
+                    <li><i class="fas fa-circle-check"></i> লাইভ ক্লাস + রেকর্ডিং</li>
+                    <li><i class="fas fa-circle-check"></i> সার্টিফিকেট</li>
+                </ul>
+            </div>
+            <div class="sec-1-img-wrap">
+                                <img src="../uploads/1792862723_1.jpeg" alt="">
+                <div class="badge-corner">সৃজনশীল প্রতিষ্ঠান</div>
+                <div class="badge-bottom">থাকছে সার্টিফিকেশনও</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Section 2 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-2 animate-on-scroll">
+        <h2>আল হেরা অনলাইন মাদ্রাসার সংক্ষিপ্ত চিত্র</h2>
+        <div class="sec-2-stats">
+                            <div class="stat-box animate-on-scroll delay-1">
+                    <h3 class="counter" data-target="">
+                        ৫০ +                    </h3>
+                    <p>অভিজ্ঞ উস্তাদ</p>
+                </div>
+                            <div class="stat-box animate-on-scroll delay-2">
+                    <h3 class="counter" data-target="">
+                        ২৫০০ +                    </h3>
+                    <p>শিক্ষার্থী</p>
+                </div>
+                            <div class="stat-box animate-on-scroll delay-3">
+                    <h3 class="counter" data-target="">
+                        ৮৫-৯৫ %                    </h3>
+                    <p>সফলতার হার</p>
+                </div>
+                            <div class="stat-box animate-on-scroll delay-4">
+                    <h3 class="counter" data-target="">
+                        ২৫ +                    </h3>
+                    <p>প্রতি ক্লাসে শিক্ষার্থী</p>
+                </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ===== Section 3 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-3 animate-on-scroll">
+        <div class="sec-3-text">
+            <h2><span>আমাদের লক্ষ্য ও উদ্দেশ্য</span></h2>
+            <p>দ্বীনের আলো এবং পথহারা মানুষের মাঝে হেদায়াতের আলো পৌঁছাতে আমাদের এই আত্মনিবেদন। সমাজের সর্বস্তরের মানুষ—পেশাজীবী, শিক্ষার্থী, ব্যবসায়ী, গৃহিণী—সবার জন্য দ্বীনি শিক্ষা সহজ ও সুলভ করাই আমাদের মূল লক্ষ্য। এখানে সকল শ্রেণি-পেশার মানুষের স্বতঃস্ফূর্ত অংশগ্রহণ ও ভালোবাসা আমাদের পথচলার মূল প্রেরণা। আমরা আশা করি আল-হেরা অনলাইন মাদরাসার শিক্ষার্থীরা আদর্শবান হয়ে সমাজ গঠনে ভূমিকা রাখবে এবং দুনিয়া ও আখেরাতের কল্যাণে মুত্তাকীনদের কাফেলায় অন্তর্ভুক্ত হবে—ইনশাআল্লাহ।</p>
+            <a href="#" class="btn">
+                আমাদের সম্পর্কে 
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="sec-3-img-wrap">
+                        <img src="../uploads/1787253860_about_logoalhera.png" alt="">
+        </div>
+    </div>
+</section>
+
+<!-- ===== Section 4 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-4 animate-on-scroll">
+        <div class="sec-4-head-icon"><i class="fas fa-gear"></i></div>
+        <div class="sec-4-grid">
+                            <div class="feature-card animate-on-scroll delay-1">
+                    <i class="fas fa-mosque"></i>
+                                        <h4>কুরআন ও সুন্নাহ ভিত্তিক পাঠ্যক্রম</h4>
+                    <p style="font-size:.92rem;line-height:1.75;color:#5b6673;max-width:420px;margin:8px auto 0;">প্রতিটি কিতাব ও বিষয় সুন্নাহর আলোকে নির্বাচিত; অভিজ্ঞ উলামায়ে কেরামের তত্ত্বাবধানে সিলেবাস প্রণয়ন।</p>
+                </div>
+                            <div class="feature-card animate-on-scroll delay-2">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                                        <h4>অভিজ্ঞ উস্তাদ ও ছোট ব্যাচ</h4>
+                    <p style="font-size:.92rem;line-height:1.75;color:#5b6673;max-width:420px;margin:8px auto 0;">প্রতিটি ক্লাসে সীমিত সংখ্যক শিক্ষার্থী, যাতে প্রত্যেকে আলাদা করে পড়ার সুযোগ পায়।</p>
+                </div>
+                            <div class="feature-card animate-on-scroll delay-3">
+                    <i class="fas fa-calendar-check"></i>
+                                        <h4>নিয়মিত মূল্যায়ন ও হাজিরা</h4>
+                    <p style="font-size:.92rem;line-height:1.75;color:#5b6673;max-width:420px;margin:8px auto 0;">সাপ্তাহিক কুইজ, মাসিক পরীক্ষা এবং প্রতিটি ক্লাসের হাজিরা — অভিভাবক পর্যন্ত পৌঁছে যায়।</p>
+                </div>
+                            <div class="feature-card animate-on-scroll delay-4">
+                    <i class="fas fa-mobile-screen"></i>
+                                        <h4>মোবাইল থেকেই লাইভ ক্লাস</h4>
+                    <p style="font-size:.92rem;line-height:1.75;color:#5b6673;max-width:420px;margin:8px auto 0;">কম্পিউটার না থাকলেও চলে — মোবাইল বা ট্যাব থেকে জুম/গুগল মিটে ক্লাসে যুক্ত হওয়া যায়।</p>
+                </div>
+                    </div>
+                <div style="margin-top:30px;">
+            <p style="max-width:600px; margin:10px auto; color:#141414;">
+                দ্বীনি ও আধুনিক শিক্ষার এক অনন্য সমন্বয়, যেখানে অভিজ্ঞ উলামায়ে কেরামের তত্ত্বাবধানে আপনার মেধা ও সময়ের সর্বোচ্চ মূল্যায়ন নিশ্চিত করা হবে ইনশাআল্লাহ।            </p>
+        </div>
+            </div>
+</section>
+
+<!-- ===== Section 5 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-5 animate-on-scroll">
+                    <div class="card animate-on-scroll delay-1"
+                 style="background-image:url('../uploads/1787316064_card1_bg_Screenshot 2026-08-21 183427.png');background-size:cover;background-position:center;">
+                <div class="card-overlay"></div>                <h4>ক্লাস গুলো বিজ্ঞ উলামায়ে কেরামের পরামর্শে পরিচালিত হয়</h4>
+                            </div>
+                    <div class="card animate-on-scroll delay-2"
+                 style="background-image:url('../uploads/1787316064_card2_bg_Screenshot 2026-08-21 183459.png');background-size:cover;background-position:center;">
+                <div class="card-overlay"></div>                <h4>কৌশলে পড়ানো হয় তাই পড়ার চাপ খুব বেশি নেই</h4>
+                            </div>
+                    <div class="card animate-on-scroll delay-3"
+                 style="background-image:url('../uploads/1787316064_card3_bg_Screenshot 2026-08-21 183532.png');background-size:cover;background-position:center;">
+                <div class="card-overlay"></div>                <h4>স্কুল, কলেজ ও ডিগ্রির পড়াশোনার পাশাপাশি আমাদের কোর্সে অংশগ্রহণের অপুর্ব সুযোগ</h4>
+                            </div>
+                    <div class="card animate-on-scroll delay-1"
+                 style="background-image:url('../uploads/1787316064_card4_bg_Screenshot 2026-08-21 183635.png');background-size:cover;background-position:center;">
+                <div class="card-overlay"></div>                <h4>প্রত্যেক শিক্ষার্থীকে নিজ নিজ মেধানুযায়ী পড়ানো হয়</h4>
+                            </div>
+                    <div class="card animate-on-scroll delay-2"
+                 style="background-image:url('../uploads/1787316064_card5_bg_Screenshot 2026-08-21 183701.png');background-size:cover;background-position:center;">
+                <div class="card-overlay"></div>                <h4>কোর্স শেষে কওমি মাদ্রাসা শিক্ষা বোর্ড ও দাওরায়ে হাদিস পরীক্ষায় অংশগ্রহণ</h4>
+                            </div>
+                    <div class="card animate-on-scroll delay-3"
+                 style="background-image:url('../uploads/1787316064_card6_bg_Screenshot 2026-08-21 183725.png');background-size:cover;background-position:center;">
+                <div class="card-overlay"></div>                <h4>প্রতিদিনের ক্লাসের পড়া ক্লাসেই সিখিয়ে দেওয়া হয়</h4>
+                            </div>
+            </div>
+</section>
+
+
+<!-- ===== How to enrol (added) ===== -->
+<section class="section-container section-gap">
+    <div class="ah-enrol">
+        <div class="ah-enrol-head">
+            <span class="ah-enrol-badge"><i class="fas fa-user-plus"></i> ভর্তি চলছে</span>
+            <h2>ভর্তি হতে চান? <span>মাত্র ৪ ধাপে শুরু করুন</span></h2>
+            <p>অনলাইনে আবেদন করুন — আমাদের অফিস থেকে কল করে ক্লাস, রুটিন ও ফি সম্পর্কে জানিয়ে দেওয়া হবে ইনশাআল্লাহ।</p>
+        </div>
+        <div class="ah-enrol-steps">
+            <div class="ah-es"><b>১</b><h4>অনলাইন আবেদন</h4><p>ফরম পূরণ করতে ২ মিনিট</p></div>
+            <div class="ah-es"><b>২</b><h4>কথা বলুন</h4><p>আমরা ফোন করব</p></div>
+            <div class="ah-es"><b>৩</b><h4>ফি পরিশোধ</h4><p>বিকাশ / নগদ / ব্যাংক</p></div>
+            <div class="ah-es"><b>৪</b><h4>ক্লাস শুরু</h4><p>লগইন আইডি পেয়ে যাবেন</p></div>
+        </div>
+        <div class="ah-enrol-cta">
+            <a href="/Frontend/admission.html" class="ah-enrol-btn"><i class="fas fa-file-signature"></i> ভর্তি আবেদন করুন</a>
+            <a href="/Frontend/fees.html" class="ah-enrol-link">ফি ও খরচ দেখুন <i class="fas fa-arrow-right"></i></a>
+            <a href="/Frontend/notice.html" class="ah-enrol-link">নোটিশ বোর্ড <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+<style>
+.ah-enrol { background:radial-gradient(ellipse 70% 80% at 15% 0%, #0d3a2a 0%, #061a12 60%, #030b08 100%); border:1px solid rgba(242,169,0,.22); border-radius:28px; padding:44px 40px; color:#fff; }
+.ah-enrol-head h2 { font-size:clamp(1.4rem,3vw,2rem); line-height:1.35; margin:14px 0 10px; }
+.ah-enrol-head h2 span { color:#f2a900; }
+.ah-enrol-head p { color:#c3d2ca; font-size:.98rem; line-height:1.85; max-width:720px; }
+.ah-enrol-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(242,169,0,.14); border:1px solid rgba(242,169,0,.3); color:#f5d77b; padding:5px 14px; border-radius:999px; font-size:.83rem; font-weight:600; }
+.ah-enrol-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:28px 0 26px; }
+.ah-es { background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px; }
+.ah-es b { display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#f2a900; color:#1a1200; font-size:.9rem; margin-bottom:10px; }
+.ah-es h4 { font-size:.98rem; margin-bottom:5px; color:#fff; }
+.ah-es p { font-size:.84rem; color:#a9bcb3; line-height:1.6; }
+.ah-enrol-cta { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+.ah-enrol-btn { background:linear-gradient(135deg,#f2a900,#e08e00); color:#1a1200; padding:14px 26px; border-radius:12px; font-weight:700; font-size:.98rem; display:inline-flex; align-items:center; gap:9px; transition:.25s; }
+.ah-enrol-btn:hover { transform:translateY(-2px); box-shadow:0 12px 30px -12px rgba(242,169,0,.6); color:#1a1200; }
+.ah-enrol-link { color:#c3d2ca; font-size:.9rem; display:inline-flex; align-items:center; gap:7px; }
+.ah-enrol-link:hover { color:#f5d77b; }
+@media (max-width:900px){ .ah-enrol-steps{ grid-template-columns:1fr 1fr; } .ah-enrol{ padding:32px 22px; } }
+@media (max-width:520px){ .ah-enrol-steps{ grid-template-columns:1fr; } }
+</style>
+
+<!-- ===== Section 6 (Slider) ===== -->
+<section class="section-container section-gap">
+    <div class="sec-6 animate-on-scroll">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="sec-6-inner">
+            <div class="notice-header">
+                <div class="notice-badge">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>📢 নতুন ব্যাচের নোটিশ</span>
+                </div>
+                <div class="notice-nav">
+                    <button onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+                    <button onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                                            <div class="slide-item-banner style-1" style="background-image: url('../uploads/1787378365_slide_bg_0_WhatsApp%20Image%202026-08-22%20at%2011.55.43%20AM.jpeg'); background-size: cover; background-position: center;">
+                            <div class="slide-content">
+                                <div class="slide-text">
+                                    <h3><i class="fas fa-graduation-cap"></i> নতুন ব্যাচ শুরু হচ্ছে</h3>
+                                    <div class="sub-title">🎯 ৭ বছরের আলেম কোর্স</div>
+                                    <p>আল হেরা অনলাইন মাদ্রাসার নতুন ব্যাচ শুরু হতে যাচ্ছে। আপনার দ্বীনি শিক্ষার যাত্রা শুরু করুন এখনই।</p>
+                                    <span class="highlight"><i class="fas fa-calendar-alt"></i> শুরু: ১৫ জানুয়ারি, ২০২৬</span>
+                                    <div style="margin-top:15px;">
+                                        <a href="#" class="slide-btn"
+                                           style="background:#f2a900;color:#ffffff;">
+                                            এখনই রেজিস্টার করুন 
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="slide-icon"><i class="fas fa-graduation-cap"></i></div>
+                            </div>
+                        </div>
+                                            <div class="slide-item-banner style-2" style="background-image: url('../uploads/1787378365_slide_bg_1_WhatsApp%20Image%202026-08-22%20at%2011.55.43%20AM%20(1).jpeg'); background-size: cover; background-position: center;">
+                            <div class="slide-content">
+                                <div class="slide-text">
+                                    <h3><i class="fas fa-fire"></i> বিশেষ অফার</h3>
+                                    <div class="sub-title">🔥 ৫০% ছাড় প্রথম ৫০ জনের জন্য</div>
+                                    <p>সীমিত সময়ের জন্য বিশেষ ছাড়। আরবি ভাষা ও কুরআন শিক্ষার এই সুযোগ মিস করবেন না।</p>
+                                    <span class="highlight"><i class="fas fa-clock"></i> অফার শেষ: ৩১ জানুয়ারি, ২০২৬</span>
+                                    <div style="margin-top:15px;">
+                                        <a href="#" class="slide-btn"
+                                           style="background:#f2a900;color:#ffffff;">
+                                            অফারটি দেখুন 
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="slide-icon"><i class="fas fa-fire"></i></div>
+                            </div>
+                        </div>
+                                            <div class="slide-item-banner style-3" style="background-image: url('../uploads/1787378365_slide_bg_2_WhatsApp%20Image%202026-08-22%20at%2011.55.44%20AM.jpeg'); background-size: cover; background-position: center;">
+                            <div class="slide-content">
+                                <div class="slide-text">
+                                    <h3><i class="fas fa-chalkboard-teacher"></i> মুক্ত ক্লাস</h3>
+                                    <div class="sub-title">📖 ফ্রি ট্রায়াল ক্লাস</div>
+                                    <p>আমাদের শিক্ষা পদ্ধতি ও শিক্ষকদের সাথে পরিচিত হতে ফ্রি ট্রায়াল ক্লাসে অংশগ্রহণ করুন।</p>
+                                    <span class="highlight"><i class="fas fa-calendar-check"></i> প্রতি শুক্রবার বিকাল ৫টা</span>
+                                    <div style="margin-top:15px;">
+                                        <a href="#" class="slide-btn"
+                                           style="background:#f2a900;color:#ffffff;">
+                                            বুক করুন 
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="slide-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+            <div class="slider-dots" id="sliderDots">
+                                    <span class="active" onclick="goToSlide(0)"></span>
+                                    <span class="" onclick="goToSlide(1)"></span>
+                                    <span class="" onclick="goToSlide(2)"></span>
+                            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Section 7 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-7 animate-on-scroll">
+                <div class="sec-7-vid-wrap" 
+             style="background-image:url('../uploads/1787330248_sec7_thumb_ChatGPT Image Aug 21, 2026, 07_03_41 PM.png');"             >
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="sec-7-text">
+            <h2>আমাদের গল্প</h2>
+            <p>ফিতনার এই যুগে দ্বীনের হিফাযতের জন্য এবং দুনিয়ার সকল কাজ আল্লাহর সন্তুষ্টি মোতাবেক হওয়ার জন্য দ্বীনি শিক্ষার বিকল্প নেই। জেনারেল শিক্ষিত ভাই বোনের জন্য সময় যেন আর প্রতিবন্ধকতা সৃষ্টি করতে না পারে তার জন্যই আমাদের অনলাইনে এই আয়োজন।</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Section 8 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-8 animate-on-scroll">
+        <div class="sec-8-header">
+            <div class="sec-8-badge">
+                <i class="fas fa-graduation-cap"></i> 
+                আমাদের কোর্সসমূহ            </div>
+            <h2>৭ বছরের <span>পূর্ণাঙ্গ সিলেবাস</span></h2>
+            <p>জেনারেল শিক্ষিতদের জন্য আমাদের সব কোর্স, যেখানে ৭ বছরে আপনি কুরআন-হাদিস ও ফিকহ শাস্ত্রের মূল কিতাব থেকে পড়ার যোগ্যতা অর্জন করবেন।</p>
+        </div>
+        <div class="years-tabs" id="yearsTabs">
+                            <button class="year-tab active" data-year="1">
+                    <span class="year-number">1</span>
+                    <span class="year-label">প্রথম বছর - বুনিয়াদি শিক্ষা</span>
+                    <span class="year-badge">1 বছর</span>
+                </button>
+                            <button class="year-tab " data-year="2">
+                    <span class="year-number">2</span>
+                    <span class="year-label">দ্বিতীয় বছর - কুরআন ও হাদিস ভিত্তি</span>
+                    <span class="year-badge">2 বছর</span>
+                </button>
+                            <button class="year-tab " data-year="3">
+                    <span class="year-number">3</span>
+                    <span class="year-label">তৃতীয় বছর - গভীর অধ্যয়ন</span>
+                    <span class="year-badge">3 বছর</span>
+                </button>
+                            <button class="year-tab " data-year="4">
+                    <span class="year-number">4</span>
+                    <span class="year-label">চতুর্থ বছর - বিশেষায়িত অধ্যয়ন</span>
+                    <span class="year-badge">4 বছর</span>
+                </button>
+                            <button class="year-tab " data-year="5">
+                    <span class="year-number">5</span>
+                    <span class="year-label">পঞ্চম বছর - উন্নত অধ্যয়ন</span>
+                    <span class="year-badge">5 বছর</span>
+                </button>
+                            <button class="year-tab " data-year="6">
+                    <span class="year-number">6</span>
+                    <span class="year-label">ষষ্ঠ বছর - গবেষণা ও দক্ষতা</span>
+                    <span class="year-badge">6 বছর</span>
+                </button>
+                            <button class="year-tab " data-year="7">
+                    <span class="year-number">7</span>
+                    <span class="year-label">সপ্তম বছর - তাকমিল (সমাপনী)</span>
+                    <span class="year-badge">7 বছর</span>
+                </button>
+                    </div>
+        <div class="year-content-wrapper">
+                            <div class="year-content active" id="year-1">
+                    <div class="year-content-grid">
+                        <div class="year-info">
+                            <h3><i class="fas fa-book-open"></i> প্রথম বছর - বুনিয়াদি শিক্ষা</h3>
+                            <p>প্রথম বছরে শিক্ষার্থীরা কুরআন তিলাওয়াত, তাজবিদ ও মৌলিক আরবি ভাষা শিক্ষা লাভ করবে।</p>
+                            <ul class="year-features">
+                                                                    <li><i class="fas fa-check-circle"></i> সহজ কুরআন শিক্ষা (তাজবিদসহ)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> পূর্ণ কুরআনের নাযেরা শুদ্ধভাবে পড়তে পারা</li>
+                                                                    <li><i class="fas fa-check-circle"></i> এতটা অর্থ বুঝে নামাজ পড়ি</li>
+                                                                    <li><i class="fas fa-check-circle"></i> আমলী সূরা ও মাসনূন দুআ মুখস্থ করণ</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ঈমান ও ইসলামী আকীদা (মুতালায়া)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সিরাতে রাসূল ও আত-তারিখুল মাখতুম</li>
+                                                                    <li><i class="fas fa-check-circle"></i> তামরীনুল দুগাহ আল আরাবিয়া</li>
+                                                                    <li><i class="fas fa-check-circle"></i> আরবি হাতের লেখার ক্যালিগ্রাফি</li>
+                                                            </ul>
+                            <a href="#" class="year-enroll-btn">
+                                এখনই ভর্তি হোন 
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="year-stats">
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৮</div>
+                                    <div class="stat-label">মোট মডিউল</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৯৬</div>
+                                    <div class="stat-label">মোট ক্লাস</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">১৫০+</div>
+                                    <div class="stat-label">শিক্ষার্থী</div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="year-content " id="year-2">
+                    <div class="year-content-grid">
+                        <div class="year-info">
+                            <h3><i class="fas fa-book-open"></i> দ্বিতীয় বছর - কুরআন ও হাদিস ভিত্তি</h3>
+                            <p>দ্বিতীয় বছরে শিক্ষার্থীরা কুরআনের তাফসীর ও হাদিসের প্রাথমিক কিতাবসমূহ অধ্যয়ন করবে।</p>
+                            <ul class="year-features">
+                                                                    <li><i class="fas fa-check-circle"></i> কুরআনের তাফসীর (পারা ১-৫)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সহিহ বুখারী (প্রাথমিক অধ্যায়)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সহিহ মুসলিম (প্রাথমিক অধ্যায়)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> আরবি ভাষা ব্যাকরণ (সার্ফ)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী ফিকহ (তহারত ও সালাত)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সীরাতে রাসূল (মক্কী জীবন)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> হাদিস উসূল (প্রাথমিক)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> কুরআন তিলাওয়াত (তাজবিদের সাথে)</li>
+                                                            </ul>
+                            <a href="#" class="year-enroll-btn">
+                                এখনই ভর্তি হোন 
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="year-stats">
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৮</div>
+                                    <div class="stat-label">মোট মডিউল</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">১০২</div>
+                                    <div class="stat-label">মোট ক্লাস</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">১৩০+</div>
+                                    <div class="stat-label">শিক্ষার্থী</div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="year-content " id="year-3">
+                    <div class="year-content-grid">
+                        <div class="year-info">
+                            <h3><i class="fas fa-book-open"></i> তৃতীয় বছর - গভীর অধ্যয়ন</h3>
+                            <p>তৃতীয় বছরে শিক্ষার্থীরা কুরআনের পূর্ণাঙ্গ তাফসীর ও হাদিসের গুরুত্বপূর্ণ কিতাবসমূহ অধ্যয়ন করবে।</p>
+                            <ul class="year-features">
+                                                                    <li><i class="fas fa-check-circle"></i> কুরআনের তাফসীর (পারা ৬-১৫)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সহিহ বুখারী (মাধ্যমিক অধ্যায়)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সহিহ মুসলিম (মাধ্যমিক অধ্যায়)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> আরবি ভাষা ব্যাকরণ (নাহু)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী ফিকহ (যাকাত, রোযা, হজ)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সীরাতে রাসূল (মদীনী জীবন)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> হাদিস উসূল (মাধ্যমিক)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> কুরআন তিলাওয়াত (তাজবিদের সাথে)</li>
+                                                            </ul>
+                            <a href="#" class="year-enroll-btn">
+                                এখনই ভর্তি হোন 
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="year-stats">
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৮</div>
+                                    <div class="stat-label">মোট মডিউল</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">১০৮</div>
+                                    <div class="stat-label">মোট ক্লাস</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">১১০+</div>
+                                    <div class="stat-label">শিক্ষার্থী</div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="year-content " id="year-4">
+                    <div class="year-content-grid">
+                        <div class="year-info">
+                            <h3><i class="fas fa-book-open"></i> চতুর্থ বছর - বিশেষায়িত অধ্যয়ন</h3>
+                            <p>চতুর্থ বছরে শিক্ষার্থীরা ফিকহ ও হাদিসের গভীরে প্রবেশ করবে এবং বিশেষায়িত জ্ঞান অর্জন করবে।</p>
+                            <ul class="year-features">
+                                                                    <li><i class="fas fa-check-circle"></i> কুরআনের তাফসীর (পারা ১৬-২৫)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সহিহ বুখারী (উচ্চ অধ্যায়)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সহিহ মুসলিম (উচ্চ অধ্যায়)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> আরবি ভাষা সাহিত্য (প্রাথমিক)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী ফিকহ (বিবিধ মাসায়েল)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী অর্থনীতি ও ব্যবসা</li>
+                                                                    <li><i class="fas fa-check-circle"></i> হাদিস উসূল (উচ্চ)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> দাওয়াত ও তাবলীগ</li>
+                                                            </ul>
+                            <a href="#" class="year-enroll-btn">
+                                এখনই ভর্তি হোন 
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="year-stats">
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৮</div>
+                                    <div class="stat-label">মোট মডিউল</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">১১৪</div>
+                                    <div class="stat-label">মোট ক্লাস</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৯৫+</div>
+                                    <div class="stat-label">শিক্ষার্থী</div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="year-content " id="year-5">
+                    <div class="year-content-grid">
+                        <div class="year-info">
+                            <h3><i class="fas fa-book-open"></i> পঞ্চম বছর - উন্নত অধ্যয়ন</h3>
+                            <p>পঞ্চম বছরে শিক্ষার্থীরা কুরআনের পূর্ণাঙ্গ তাফসীর এবং হাদিসের সমস্ত কিতাবসমূহ অধ্য্যয়ন শেষ করবে।</p>
+                            <ul class="year-features">
+                                                                    <li><i class="fas fa-check-circle"></i> কুরআনের তাফসীর (পারা ২৬-৩০)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সহিহ বুখারী (সম্পূর্ণ)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সহিহ মুসলিম (সম্পূর্ণ)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> আরবি ভাষা সাহিত্য (মাধ্যমিক)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী ফিকহ (জটিল মাসায়েল)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী ইতিহাস ও সংস্কৃতি</li>
+                                                                    <li><i class="fas fa-check-circle"></i> তাফসীর উসূল</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সীরাত গবেষণা</li>
+                                                            </ul>
+                            <a href="#" class="year-enroll-btn">
+                                এখনই ভর্তি হোন 
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="year-stats">
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৮</div>
+                                    <div class="stat-label">মোট মডিউল</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">১২০</div>
+                                    <div class="stat-label">মোট ক্লাস</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৮০+</div>
+                                    <div class="stat-label">শিক্ষার্থী</div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="year-content " id="year-6">
+                    <div class="year-content-grid">
+                        <div class="year-info">
+                            <h3><i class="fas fa-book-open"></i> ষষ্ঠ বছর - গবেষণা ও দক্ষতা</h3>
+                            <p>ষষ্ঠ বছরে শিক্ষার্থীরা গবেষণামূলক কাজ এবং ইসলামী জ্ঞানের বিভিন্ন শাখায় দক্ষতা অর্জন করবে।</p>
+                            <ul class="year-features">
+                                                                    <li><i class="fas fa-check-circle"></i> কুরআন গবেষণা ও বিশেষায়িত তাফসীর</li>
+                                                                    <li><i class="fas fa-check-circle"></i> হাদিস গবেষণা ও সমালোচনা</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী আইন ও ফতোয়া</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী দর্শন ও চিন্তা</li>
+                                                                    <li><i class="fas fa-check-circle"></i> তুলনামূলক ধর্মতত্ত্ব</li>
+                                                                    <li><i class="fas fa-check-circle"></i> গবেষণা পদ্ধতি ও লেখালেখি</li>
+                                                                    <li><i class="fas fa-check-circle"></i> দাওয়াতি কৌশল ও যোগাযোগ</li>
+                                                                    <li><i class="fas fa-check-circle"></i> নেতৃত্ব ও প্রশাসন</li>
+                                                            </ul>
+                            <a href="#" class="year-enroll-btn">
+                                এখনই ভর্তি হোন 
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="year-stats">
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৮</div>
+                                    <div class="stat-label">মোট মডিউল</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">১২৬</div>
+                                    <div class="stat-label">মোট ক্লাস</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৬৫+</div>
+                                    <div class="stat-label">শিক্ষার্থী</div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+                            <div class="year-content " id="year-7">
+                    <div class="year-content-grid">
+                        <div class="year-info">
+                            <h3><i class="fas fa-book-open"></i> সপ্তম বছর - তাকমিল (সমাপনী)</h3>
+                            <p>সপ্তম বছরে শিক্ষার্থীরা সর্বোচ্চ জ্ঞান অর্জন করবে এবং ইসলামী জ্ঞানের সব শাখায় দক্ষ হয়ে উঠবে।</p>
+                            <ul class="year-features">
+                                                                    <li><i class="fas fa-check-circle"></i> পূর্ণাঙ্গ কুরআন তাফসীর সমাপ্তি</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ছয়টি প্রধান হাদিস কিতাব সম্পূর্ণ</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী আইন ও ফতোয়া (উন্নত)</li>
+                                                                    <li><i class="fas fa-check-circle"></i> ইসলামী অর্থনীতি ও সমাজ ব্যবস্থা</li>
+                                                                    <li><i class="fas fa-check-circle"></i> দাওয়াতি প্রকল্প ও প্র্যাকটিক্যাল</li>
+                                                                    <li><i class="fas fa-check-circle"></i> গবেষণা থিসিস/প্রকল্প</li>
+                                                                    <li><i class="fas fa-check-circle"></i> নেতৃত্ব ও প্রশাসনিক দক্ষতা</li>
+                                                                    <li><i class="fas fa-check-circle"></i> সমাজ সংস্কার ও উন্নয়ন</li>
+                                                            </ul>
+                            <a href="#" class="year-enroll-btn">
+                                এখনই ভর্তি হোন 
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="year-stats">
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৮</div>
+                                    <div class="stat-label">মোট মডিউল</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">১৩২</div>
+                                    <div class="stat-label">মোট ক্লাস</div>
+                                </div>
+                                                            <div class="stat-card">
+                                    <div class="stat-number">৫০+</div>
+                                    <div class="stat-label">শিক্ষার্থী</div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ===== Section 9 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-9 animate-on-scroll">
+        <div class="sec-9-left">
+            <h3>সিলেবাস</h3>
+            <div class="sec-9-menu">
+                                    <div class="sec-9-menu-item active">
+                        <i class="fas fa-user-graduate"></i>
+                        <div><h4>ফরজে আইন (৩-৪ মাস)</h4></div>
+                    </div>
+                                    <div class="sec-9-menu-item ">
+                        <i class="fas fa-book-quran"></i>
+                        <div><h4>কুরআন তরজমা/মাদানী নেসাব (১ম বছর)</h4></div>
+                    </div>
+                            </div>
+        </div>
+        <div class="sec-9-right">
+            <h3>মডিউল</h3>
+            <div class="module-grid">
+                                    <div class="module-card"><i class="fas fa-check-circle"></i> সহজ কুরআন শিক্ষা (তাজবিদসহ)</div>
+                                    <div class="module-card"><i class="fas fa-check-circle"></i> পূর্ণ কুরআনের নাযেরা শুদ্ধভাবে পড়তে পারা</div>
+                                    <div class="module-card"><i class="fas fa-check-circle"></i> এতটা অর্থ বুঝে নামাজ পড়ি</div>
+                                    <div class="module-card"><i class="fas fa-check-circle"></i> আমলী সূরা ও মাসনূন দুআ মুখস্থ করণ</div>
+                                    <div class="module-card"><i class="fas fa-check-circle"></i> ঈমান ও ইসলামী আকীদা (মুতালায়া)</div>
+                                    <div class="module-card"><i class="fas fa-check-circle"></i> সিরাতে রাসূল ও আত-তারিখুল মাখতুম</div>
+                                    <div class="module-card"><i class="fas fa-check-circle"></i> তামরীনুল দুগাহ আল আরাবিয়া (প্রাথমিক আরবি ভাষা চর্চা)</div>
+                                    <div class="module-card"><i class="fas fa-check-circle"></i> আরবি হাতের লেখার ক্যালিগ্রাফি</div>
+                            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Section 10 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-10 animate-on-scroll">
+        <h2>আমাদের <span>সম্পর্কে কিছু কথা</span></h2>
+        <p>সময়ের সকল জটিল সমস্যার এক অমলিন মিলনক্ষেত্র আমাদের এই আবাসস্থল।</p>
+        <div class="slider-wrapper">
+                            <div class="slide-item center animate-on-scroll delay-1"
+                     style="background-image:url('../uploads/1788624602_teacher_0_768551048_1381873443366318_5309649793600053212_n.jpg');background-size:cover;background-position:center;"
+                     onclick="openVideoModal('1Q0X0X0X0X0')">
+                                            <i class="fas fa-play-circle play-icon"></i>
+                                        <div class="slide-bottom-text">
+                        <h5>ডাঃ শফিকুল ইসলাম </h5>
+                        <small>ভাষা ও শাস্ত্রের শিক্ষক</small>
+                    </div>
+                </div>
+                            <div class="slide-item center animate-on-scroll delay-2"
+                     style="background-image:url('../uploads/1788624602_teacher_1_768551048_1381873443366318_5309649793600053212_n.jpg');background-size:cover;background-position:center;"
+                     onclick="openVideoModal('1Q0X0X0X0X1')">
+                                            <i class="fas fa-play-circle play-icon"></i>
+                                        <div class="slide-bottom-text">
+                        <h5>মুফতি আশরাফুল ইসলাম</h5>
+                        <small> হাদিস ও কোরআন শিক্ষা দানকারী</small>
+                    </div>
+                </div>
+                            <div class="slide-item center animate-on-scroll delay-3"
+                     style="background-image:url('../uploads/1788624602_teacher_2_768551048_1381873443366318_5309649793600053212_n.jpg');background-size:cover;background-position:center;"
+                     onclick="openVideoModal('1Q0X0X0X0X2')">
+                                            <i class="fas fa-play-circle play-icon"></i>
+                                        <div class="slide-bottom-text">
+                        <h5>মাওলানা মাসুম বিল্লাহ</h5>
+                        <small>ইসলামি চিন্তাবিদ</small>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ===== Section 11 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-11 animate-on-scroll">
+        <h2>সরকারি নিবন্ধন ও স্বীকৃতি প্রসঙ্গে</h2>
+        <p>অত্র দফতরের মহামান্য জজ আদালতের ১৮৬০ সালের এক্ট ২১ অনুযায়ী নিবন্ধিত প্রতিষ্ঠান। আমাদের সিলেবাস ও ফতওয়া সুন্নতের আলোকে প্রমাণিত।</p>
+        <div class="certificate-wrap">
+                        <img src="../uploads/1790187783_ChatGPT_Image_Sep_24__2026__12_22_15_AM.png" alt="">
+        </div>
+        <div class="community-boxes">
+                            <div class="comm-box animate-on-scroll delay-1">
+                    <h4>আল হেরা ইসলামিক সলিউশন (পুরুষ)</h4>
+                    <p>ভাইদের জন্য ইসলামি শিক্ষা, কর্মজীবন ও দাওয়াতি কর্মকাণ্ড</p>
+                    <a href="#" class="btn-comm">
+                        <i class="fas fa-phone"></i> 
+                        যোগাযোগ করুন                    </a>
+                                    </div>
+                            <div class="comm-box animate-on-scroll delay-2">
+                    <h4>আল হেরা ইসলামিক সলিউশন (নারী)</h4>
+                    <p>বোনদের জন্য ইসলামি শিক্ষা, কর্মজীবন ও দাওয়াতি কর্মকাণ্ড</p>
+                    <a href="#" class="btn-comm">
+                        <i class="fas fa-phone"></i> 
+                        যোগাযোগ করুন                    </a>
+                                    </div>
+                    </div>
+    </div>
+</section>
+
+<!-- ===== Section 12 ===== -->
+<section class="section-container section-gap">
+    <div class="sec-12 animate-on-scroll">
+        <div class="sec-12-content">
+            <h2>জ্ঞান অর্জনে আমাদের কিতাবসমূহ</h2>
+            <p>জ্ঞান অর্জন ও আমলে সহায়ক, কুরআন-সুন্নাহভিত্তিক আমাদের প্রকাশিত কিতাবসমূহ এখানে পড়তে পারবেন।</p>
+            <a href="#" class="btn-outline">
+                ওয়েবসাইট ভিজিট করুন 
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="sec-12-img">
+                        <img src="../uploads/1787377910_ChatGPT Image Aug 21, 2026, 10_36_34 PM.png" alt="">
+        </div>
+    </div>
+</section>
+
+<!-- Floating Call Button (DB) -->
+<a href="tel:+8801700000000" class="floating-btn">
+    <i class="fas fa-phone-alt"></i> 
+    কল করুন</a>
+
+</main>
+<footer class="ah-footer">
+  <div class="ah-fnews">
+    <div class="ah-fn-in">
+      <div class="ah-fn-txt">
+        <b><i class="fa-solid fa-envelope-open-text"></i> নিউজলেটার</b>
+        <span>নতুন ব্যাচ, নোটিশ ও দ্বীনি লেখা সবার আগে পেতে সাবস্ক্রাইব করুন।</span>
+      </div>
+      <form class="ah-fn-form" onsubmit="event.preventDefault(); var m=this.querySelector('.ah-fn-msg'); m.textContent='জাযাকাল্লাহু খাইরান! সাবস্ক্রিপশন নিশ্চিত হয়েছে ইনশাআল্লাহ।'; this.reset();">
+        <input type="email" placeholder="আপনার ইমেইল ঠিকানা" required aria-label="ইমেইল ঠিকানা">
+        <button type="submit">সাবস্ক্রাইব <i class="fa-solid fa-arrow-right"></i></button>
+        <div class="ah-fn-msg" role="status"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="ah-fin">
+    <div class="ah-fcol ah-fabout">
+      <div class="ah-fbrand">
+        <img src="/uploads/1787224184_logo_logoalhera.png" alt="আল হেরা অনলাইন মাদরাসা">
+        <b>আল হেরা অনলাইন মাদরাসা</b>
+      </div>
+      <p>জেনারেল শিক্ষিত ভাই-বোনদের জন্য আরবি ভাষা ও দ্বীনিয়াত শিক্ষার একটি গবেষণালব্ধ সৃজনশীল প্রতিষ্ঠান। কুরআন ও সুন্নাহ ভিত্তিক শিক্ষা, অভিজ্ঞ উস্তাদদের তত্ত্বাবধানে — ঘরে বসেই ৭ বছরে আলেম হওয়ার পূর্ণাঙ্গ পথ।</p>
+      <ul class="ah-fmeta">
+        <li><i class="fa-solid fa-graduation-cap"></i> ৭ বছরের আলেম · হিফজ · ফরজে আইন</li>
+        <li><i class="fa-solid fa-clock"></i> শনি–বৃহস্পতি · সকাল ৯টা – রাত ৮টা</li>
+        <li><i class="fa-solid fa-laptop"></i> সম্পূর্ণ অনলাইন — যেকোনো ডিভাইস থেকে</li>
+      </ul>
+      <div class="ah-social">
+        <a href="https://wa.me/8801700000000" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+
+    <div class="ah-fcol">
+      <h5>দ্রুত লিংক</h5>
+      <ul>
+        <li><a href="/">হোম</a></li>
+        <li><a href="/Frontend/courses.html">কোর্সসমূহ</a></li>
+        <li><a href="/Frontend/admission.html">ভর্তি আবেদন</a></li>
+        <li><a href="/Frontend/notice.html">নোটিশ বোর্ড</a></li>
+        <li><a href="/Frontend/result.html">ফলাফল</a></li>
+        <li><a href="/Frontend/blog.html">ব্লগ</a></li>
+      </ul>
+    </div>
+
+    <div class="ah-fcol">
+      <h5>সহায়তা</h5>
+      <ul>
+        <li><a href="/Frontend/faq.html">সাধারণ জিজ্ঞাসা</a></li>
+        <li><a href="/Frontend/fees.html">ভর্তি ফি ও খরচ</a></li>
+        <li><a href="/Frontend/downloads.html">সিলেবাস ও ফরম</a></li>
+        <li><a href="/Frontend/contact.html">যোগাযোগ</a></li>
+        <li><a href="/login.html">শিক্ষার্থী লগইন</a></li>
+        <li><a href="/forgot-password.html">পাসওয়ার্ড রিসেট</a></li>
+      </ul>
+    </div>
+
+    <div class="ah-fcol">
+      <h5>জনপ্রিয় কোর্স</h5>
+      <ul>
+        <li><a href="/Frontend/course-details.html?id=59">৭ বছরে আলেম কোর্স</a></li>
+        <li><a href="/Frontend/course-details.html?id=65">আন্তর্জাতিক হিফজুল কুরআন</a></li>
+        <li><a href="/Frontend/course-details.html?id=66">ফরজে আইন কোর্স</a></li>
+        <li><a href="/Frontend/gallery.html">গ্যালারি</a></li>
+        <li><a href="/Frontend/search.html">সাইটে সার্চ</a></li>
+      </ul>
+    </div>
+
+    <div class="ah-fcol">
+      <h5>যোগাযোগ</h5>
+      <ul class="ah-fcontact">
+        <li><a href="tel:+8801700000000"><i class="fa-solid fa-phone"></i> ০১৭০০-০০০০০০</a></li>
+        <li><a href="mailto:info@alheraonline.com"><i class="fa-solid fa-envelope"></i> info@alheraonline.com</a></li>
+        <li><i class="fa-solid fa-location-dot"></i> ঢাকা, বাংলাদেশ</li>
+        <li><a href="/Frontend/contact.html"><i class="fa-solid fa-map-location-dot"></i> ম্যাপে দেখুন</a></li>
+      </ul>
+      <a href="/Frontend/admission.html" class="ah-fcta"><i class="fa-solid fa-user-plus"></i> ভর্তি আবেদন করুন</a>
+    </div>
+  </div>
+
+  <div class="ah-fbot">
+    <span>&copy; ২০২৬ আল হেরা অনলাইন মাদরাসা · সর্বস্বত্ব সংরক্ষিত</span>
+    <nav>
+      <a href="/Frontend/privacy.html">গোপনীয়তা নীতি</a>
+      <a href="/Frontend/terms.html">শর্তাবলি</a>
+      <a href="/Frontend/cookies.html">কুকি নীতি</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="ah-float">
+  <a class="wa" href="https://wa.me/8801700000000" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <a class="ph" href="tel:+8801700000000" aria-label="ফোন করুন"><i class="fa-solid fa-phone"></i></a>
+  <a class="tp" href="#ah-main" aria-label="উপরে যান"><i class="fa-solid fa-arrow-up"></i></a>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('ahBurger'), n=document.getElementById('ahNav');
+  if(b&&n){ b.addEventListener('click',function(){ n.classList.toggle('open'); b.classList.toggle('on'); b.setAttribute('aria-expanded', n.classList.contains('open')?'true':'false'); }); }
+})();
+</script>
+<!-- GLOBAL VIDEO MODAL -->
+<div id="globalVideoModal" class="gvm-overlay" onclick="if(event.target===this)closeVideoModal()">
+    <div class="gvm-inner">
+        <button class="gvm-close" onclick="closeVideoModal()"><i class="fas fa-times"></i></button>
+        <div class="gvm-video-wrap">
+            <iframe id="gvmIframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+window.getYouTubeId = function(url) {
+    if (!url) return '';
+    if (/^[a-zA-Z0-9_-]{11}$/.test(url)) return url;
+    var patterns = [/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/, /[?&]v=([a-zA-Z0-9_-]{11})/];
+    for (var i = 0; i < patterns.length; i++) { var m = url.match(patterns[i]); if (m) return m[1]; }
+    return '';
+};
+window.openVideoModal = function(videoIdOrUrl) {
+    var videoId = window.getYouTubeId(videoIdOrUrl);
+    if (!videoId) return;
+    var modal = document.getElementById('globalVideoModal');
+    var iframe = document.getElementById('gvmIframe');
+    if (!modal || !iframe) return;
+    iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+};
+window.closeVideoModal = function() {
+    var modal = document.getElementById('globalVideoModal');
+    var iframe = document.getElementById('gvmIframe');
+    if (!modal || !iframe) return;
+    modal.classList.remove('active');
+    setTimeout(function() { iframe.src = ''; document.body.style.overflow = ''; }, 350);
+};
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { var m = document.getElementById('globalVideoModal'); if (m && m.classList.contains('active')) window.closeVideoModal(); }
+});
+
+// Slider
+let currentSlide = 0;
+const sliderSlides = document.querySelectorAll('.slide-item-banner');
+const totalSlides = sliderSlides.length;
+const sliderTrack = document.getElementById('sliderTrack');
+const dots = document.querySelectorAll('#sliderDots span');
+function updateSlider() {
+    if (totalSlides === 0 || !sliderTrack) return;
+    sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+}
+function nextSlide() { if (totalSlides === 0) return; currentSlide = (currentSlide + 1) % totalSlides; updateSlider(); }
+function prevSlide() { if (totalSlides === 0) return; currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateSlider(); }
+function goToSlide(i) { if (totalSlides === 0) return; currentSlide = i; updateSlider(); }
+let autoPlay = setInterval(nextSlide, 5000);
+const sec6 = document.querySelector('.sec-6');
+if (sec6) {
+    sec6.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    sec6.addEventListener('mouseleave', () => { autoPlay = setInterval(nextSlide, 5000); });
+}
+
+// Year Tabs
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.year-tab');
+    const contents = document.querySelectorAll('.year-content');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            const y = this.getAttribute('data-year');
+            const target = document.getElementById('year-' + y);
+            if (target) target.classList.add('active');
+        });
+    });
+});
+
+// Scroll Animation
+document.addEventListener('DOMContentLoaded', function() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                const counter = entry.target.querySelector('.counter');
+                if (counter && !counter.dataset.animated) {
+                    counter.dataset.animated = '1';
+                    const target = parseInt(counter.dataset.target);
+                    if (!isNaN(target) && target > 0) animateCounter(counter, target);
+                }
+            }
+        });
+    }, { threshold: 0.15 });
+    elements.forEach(el => observer.observe(el));
+});
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = Math.ceil(target / 60);
+    const interval = setInterval(() => {
+        current += increment;
+        if (current >= target) { current = target; clearInterval(interval); }
+        element.textContent = current + (element.textContent.includes('+') ? '+' : '') + (element.textContent.includes('%') ? '%' : '');
+    }, 30);
+}
+</script>
+
+
+<script>
+(function(){
+  // reading progress
+  var bar=document.createElement('div'); bar.className='ah-progress'; document.body.appendChild(bar);
+  var tick=function(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop,
+        max=(h.scrollHeight-h.clientHeight)||1;
+    bar.style.width=Math.min(100,(sc/max)*100)+'%';
+  };
+  window.addEventListener('scroll',tick,{passive:true}); tick();
+
+  // reveal on scroll
+  var els=document.querySelectorAll('.ah-card, .ah-tile, .ah-notice, .ah-gal figure, .ah-step, .ah-faq details');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('ah-rv','on'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -8% 0px', threshold:.06});
+    els.forEach(function(el,i){ el.classList.add('ah-rv'); el.style.transitionDelay=(Math.min(i,6)*45)+'ms'; io.observe(el); });
+  }
+
+  // mobile admission bar
+  if(!document.querySelector('.ah-mobcta') && window.innerWidth<=768){
+    var m=document.createElement('div'); m.className='ah-mobcta';
+    m.innerHTML='<a class="m1" href="/Frontend/admission.html"><i class="fa-solid fa-user-plus"></i> ভর্তি আবেদন</a><a class="m2" href="tel:+8801700000000"><i class="fa-solid fa-phone"></i> কল করুন</a>';
+    document.body.appendChild(m);
+  }
+})();
+</script>
+</body>
+</html>
